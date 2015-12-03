@@ -9,7 +9,7 @@ set(CPP_FILES
     pendulumSystem.cpp
     simpleSystem.cpp
     WaterSystem.cpp
-    Utils.cpp
+    Utils.h
     )
 
 set(CPP_HEADERS
@@ -20,8 +20,8 @@ set(CPP_HEADERS
     particleSystem.h
     pendulumSystem.h
     simpleSystem.h
-    WaterSystem.h
-    Utils.h
+    WaterSystem.cpp
+    Utils.cpp
     )
 
 set(LIBS_USED

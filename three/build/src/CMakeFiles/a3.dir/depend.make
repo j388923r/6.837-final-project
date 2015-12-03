@@ -26,6 +26,30 @@ src/CMakeFiles/a3.dir/TimeStepper.cpp.o: ../src/TimeStepper.cpp
 src/CMakeFiles/a3.dir/TimeStepper.cpp.o: ../src/TimeStepper.h
 src/CMakeFiles/a3.dir/TimeStepper.cpp.o: ../src/particleSystem.h
 
+src/CMakeFiles/a3.dir/Utils.cpp.o: ../vecmath/include/Matrix2f.h
+src/CMakeFiles/a3.dir/Utils.cpp.o: ../vecmath/include/Matrix3f.h
+src/CMakeFiles/a3.dir/Utils.cpp.o: ../vecmath/include/Matrix4f.h
+src/CMakeFiles/a3.dir/Utils.cpp.o: ../vecmath/include/Quat4f.h
+src/CMakeFiles/a3.dir/Utils.cpp.o: ../vecmath/include/Vector2f.h
+src/CMakeFiles/a3.dir/Utils.cpp.o: ../vecmath/include/Vector3f.h
+src/CMakeFiles/a3.dir/Utils.cpp.o: ../vecmath/include/Vector4f.h
+src/CMakeFiles/a3.dir/Utils.cpp.o: ../vecmath/include/vecmath.h
+src/CMakeFiles/a3.dir/Utils.cpp.o: ../src/Utils.cpp
+src/CMakeFiles/a3.dir/Utils.cpp.o: ../src/Utils.h
+
+src/CMakeFiles/a3.dir/WaterSystem.cpp.o: ../vecmath/include/Matrix2f.h
+src/CMakeFiles/a3.dir/WaterSystem.cpp.o: ../vecmath/include/Matrix3f.h
+src/CMakeFiles/a3.dir/WaterSystem.cpp.o: ../vecmath/include/Matrix4f.h
+src/CMakeFiles/a3.dir/WaterSystem.cpp.o: ../vecmath/include/Quat4f.h
+src/CMakeFiles/a3.dir/WaterSystem.cpp.o: ../vecmath/include/Vector2f.h
+src/CMakeFiles/a3.dir/WaterSystem.cpp.o: ../vecmath/include/Vector3f.h
+src/CMakeFiles/a3.dir/WaterSystem.cpp.o: ../vecmath/include/Vector4f.h
+src/CMakeFiles/a3.dir/WaterSystem.cpp.o: ../vecmath/include/vecmath.h
+src/CMakeFiles/a3.dir/WaterSystem.cpp.o: ../src/WaterSystem.cpp
+src/CMakeFiles/a3.dir/WaterSystem.cpp.o: ../src/WaterSystem.h
+src/CMakeFiles/a3.dir/WaterSystem.cpp.o: ../src/extra.h
+src/CMakeFiles/a3.dir/WaterSystem.cpp.o: ../src/particleSystem.h
+
 src/CMakeFiles/a3.dir/camera.cpp.o: ../vecmath/include/Matrix2f.h
 src/CMakeFiles/a3.dir/camera.cpp.o: ../vecmath/include/Matrix3f.h
 src/CMakeFiles/a3.dir/camera.cpp.o: ../vecmath/include/Matrix4f.h
@@ -48,6 +72,7 @@ src/CMakeFiles/a3.dir/main.cpp.o: ../vecmath/include/Vector4f.h
 src/CMakeFiles/a3.dir/main.cpp.o: ../vecmath/include/vecmath.h
 src/CMakeFiles/a3.dir/main.cpp.o: ../src/ClothSystem.h
 src/CMakeFiles/a3.dir/main.cpp.o: ../src/TimeStepper.h
+src/CMakeFiles/a3.dir/main.cpp.o: ../src/WaterSystem.h
 src/CMakeFiles/a3.dir/main.cpp.o: ../src/camera.h
 src/CMakeFiles/a3.dir/main.cpp.o: ../src/extra.h
 src/CMakeFiles/a3.dir/main.cpp.o: ../src/main.cpp

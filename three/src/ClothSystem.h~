@@ -26,9 +26,9 @@ public:
 
 	vector<Vector3f> structuralSprings(vector<Vector3f> springState, vector<Vector3f> state, int row, int r, int s);
 
-	vector<Vector3f> shearSprings(vector<Vector3f> springState, vector<Vector3f> state, int row);
+	vector<Vector3f> shearSprings(vector<Vector3f> springState, vector<Vector3f> state, int row, int r, int s);
 	
-	vector<Vector3f> flexSprings(vector<Vector3f> springState, vector<Vector3f> state, int row);
+	vector<Vector3f> flexSprings(vector<Vector3f> springState, vector<Vector3f> state, int row, int r, int s);
 
 //private:
 

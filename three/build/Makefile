@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three
+CMAKE_SOURCE_DIR = /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build
+CMAKE_BINARY_DIR = /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -113,9 +113,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/CMakeFiles /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
