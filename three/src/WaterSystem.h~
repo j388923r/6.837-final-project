@@ -23,6 +23,19 @@ public:
 
 	vector<Vector3f> stateClone;
 
+	
+	vector<Particle> fluid_particles;
+
+
+	vector<Vector3f> pressure_force_vector;
+
+	vector<Vector3f> viscosity_force_vector;
+
+	vector<Vector3f> color_field_gradient;
+
+	vector<Vector3f> color_field_laplacian;
+
+
 protected:
 
 	//vector<Vector3f> springList;

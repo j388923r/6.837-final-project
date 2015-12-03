@@ -37,6 +37,7 @@ src/CMakeFiles/a3.dir/WaterSystem.cpp.o: ../vecmath/include/Vector2f.h
 src/CMakeFiles/a3.dir/WaterSystem.cpp.o: ../vecmath/include/Vector3f.h
 src/CMakeFiles/a3.dir/WaterSystem.cpp.o: ../vecmath/include/Vector4f.h
 src/CMakeFiles/a3.dir/WaterSystem.cpp.o: ../vecmath/include/vecmath.h
+src/CMakeFiles/a3.dir/WaterSystem.cpp.o: ../src/Utils.h
 src/CMakeFiles/a3.dir/WaterSystem.cpp.o: ../src/WaterSystem.cpp
 src/CMakeFiles/a3.dir/WaterSystem.cpp.o: ../src/WaterSystem.h
 src/CMakeFiles/a3.dir/WaterSystem.cpp.o: ../src/extra.h
@@ -64,6 +65,7 @@ src/CMakeFiles/a3.dir/main.cpp.o: ../vecmath/include/Vector4f.h
 src/CMakeFiles/a3.dir/main.cpp.o: ../vecmath/include/vecmath.h
 src/CMakeFiles/a3.dir/main.cpp.o: ../src/ClothSystem.h
 src/CMakeFiles/a3.dir/main.cpp.o: ../src/TimeStepper.h
+src/CMakeFiles/a3.dir/main.cpp.o: ../src/Utils.h
 src/CMakeFiles/a3.dir/main.cpp.o: ../src/WaterSystem.h
 src/CMakeFiles/a3.dir/main.cpp.o: ../src/camera.h
 src/CMakeFiles/a3.dir/main.cpp.o: ../src/extra.h

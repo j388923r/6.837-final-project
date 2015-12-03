@@ -21,9 +21,17 @@ WaterSystem::WaterSystem(int numParticles):ParticleSystem(numParticles)
 		Vector3f firstpos = (i/1.,i/1.,i/1.); 
 		Vector3f firstspeed = (0,0,0);
 
-
+		
 		m_vVecState.push_back(firstpos);// for this system, we care about the position and the velocity
 		m_vVecState.push_back(firstspeed);
+
+		Particle new_particle(1); 
+		new_particle.position = firstpos;
+		new_particle.velocity = firstspeed;
+
+		fluid_particles.push_back(new_particle);
+
+		
 
 	}
 }
@@ -136,7 +144,6 @@ void WaterSystem::draw()
 		//cout << (m_vVecState.size()) << endl;
 		if (m_vVecState.size() > 0){
 			Vector3f pos = m_vVecState[2*i];//  position of particle i. YOUR CODE HERE
-			Vector3f pos2 = m_vVecState[2*i+2];
 			glPushMatrix();
 			glTranslatef(pos[0], pos[1], pos[2] );
 			glutSolidSphere(0.075f,10.0f,10.0f);
