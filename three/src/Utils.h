@@ -4,6 +4,7 @@
 
 #include <math.h>
 #include <cmath>
+#include <vecmath.h>
 
 using namespace std;
 
@@ -33,12 +34,13 @@ class Particle {
 
 public:
 	float mass;
-	float velocity;
+	Vector3f velocity;
 	float density;
-	float pressure_force;
-	float viscocity_force;
+	Vector3f pressure_force;
+	Vector3f viscocity_force;
 	float color_field_gradient;
 	float color_field_laplacian;
+	Vector3f position;
 
 	Particle(float mass) {
 		mass = mass;
@@ -49,6 +51,10 @@ public:
 		if(deltaDensity > 0) {
 			density += deltaDensity;
 		}
+	}
+
+	Vector3f getPosition() {
+		return position;
 	}
 };
 

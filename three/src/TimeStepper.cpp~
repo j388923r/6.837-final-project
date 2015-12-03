@@ -23,13 +23,13 @@ for (unsigned i = 0; i < particleSystem->m_numParticles ; ++i){
 	Vector3f newVec = state[i]+h*f0[i];
 	
 	fin.push_back(newVec);
-	//fin.push_back(state[i]*2);
+	
 		}
 
 
-//particleSystem->setState(fin);
+
 particleSystem->setState(fin);
-//particleSystem->m_vVecState = fin;
+
 }
 
 
@@ -42,16 +42,23 @@ void Trapzoidal::takeStep(ParticleSystem* particleSystem, float stepSize)
 float h = stepSize;
 
 
-vector<Vector3f> state = particleSystem->getState();
+vector<Particle> state = particleSystem->getState();
 vector<Vector3f> f0 = particleSystem->evalF(state);
-vector<Vector3f> state1;
-vector<Vector3f> fin;
+vector<Particle> state1;
+vector<Particle> fin;
 
 for (unsigned i = 0; i < particleSystem->m_numParticles ; ++i){
 
-	Vector3f newVec = state[i]+h*f0[i];
-
-	state1.push_back(newVec);
+	Vector3f newVec = state[i].position+h*f0[i];
+	Particle p1 = Particle(state[i].mass);
+	p1.position = newVec;
+	p1.velocity = state[i].velocity;
+	p1.density = state[i].density;
+	p1.pressure_force = state[i].pressure_force;
+	p1.viscocity_force= state[i].viscocity_force;
+	p1.color_field_gradient = state[i].color_field_gradient;
+	p1.color_field_laplacian = state[i].color_field_laplacian;
+	state1.push_back(p1);
 	}
 
 
@@ -60,29 +67,25 @@ vector<Vector3f> f1 = particleSystem->evalF(state1);
 
 for (unsigned j = 0; j < particleSystem->m_numParticles ; ++j){
 
-	Vector3f newVec1 = state[j]+(h/2.)*(f0[j]+f1[j]);
+	Vector3f newVec1 = state[j].position+(h/2.)*(f0[j]+f1[j]);
+	Particle p2 = Particle(state[j].mass);
+	p2.position = newVec1;
+	p2.velocity = state[j].velocity;
+	p2.density = state[j].density;
+	p2.pressure_force = state[j].pressure_force;
+	p2.viscocity_force= state[j].viscocity_force;
+	p2.color_field_gradient = state[j].color_field_gradient;
+	p2.color_field_laplacian = state[j].color_field_laplacian;
 
-	fin.push_back(newVec1);
+	fin.push_back(p2);
 	}
 
 
-//particleSystem->setState(fin);
+
 particleSystem->setState(fin);
-//particleSystem->m_vVecState = fin;
+
 
 }
 
 
 
-
-
-//vector<Vector3f> state = particleSystem->getState();
-//vector <Vector3f> eval = particleSystem->evalF(state);
-
-
-//vector <Vector3f> f0 = particleSystem->evalF(state);
-//vector <Vector3f> f1 = vectorAdd(vectorScalarMultiply(f0,h),state);
-
-//vector <Vector3f> f0plusf1 = vectorAdd(f0,f1);
-//vector <Vector3f> al = vectorScalarMultiply(f0plusf1,h/2.);
-//vector <Vector3f> fin = vectorAdd(state,al);

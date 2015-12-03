@@ -6,10 +6,7 @@ set(CPP_FILES
     camera.cpp
     main.cpp
     particleSystem.cpp
-    pendulumSystem.cpp
-    simpleSystem.cpp
-    WaterSystem.cpp
-    Utils.h
+    Utils.cpp
     )
 
 set(CPP_HEADERS
@@ -18,10 +15,7 @@ set(CPP_HEADERS
     camera.h
     extra.h
     particleSystem.h
-    pendulumSystem.h
-    simpleSystem.h
-    WaterSystem.cpp
-    Utils.cpp
+    Utils.h
     )
 
 set(LIBS_USED

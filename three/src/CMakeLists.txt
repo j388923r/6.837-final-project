@@ -1,26 +1,18 @@
 set(BIN_NAME a3)
 
 set(CPP_FILES
-    ClothSystem.cpp
     TimeStepper.cpp
     camera.cpp
     main.cpp
     particleSystem.cpp
-    pendulumSystem.cpp
-    simpleSystem.cpp
-    WaterSystem.cpp
     Utils.cpp
     )
 
 set(CPP_HEADERS
-    ClothSystem.h
     TimeStepper.h
     camera.h
     extra.h
     particleSystem.h
-    pendulumSystem.h
-    simpleSystem.h
-    WaterSystem.h
     Utils.h
     )
 

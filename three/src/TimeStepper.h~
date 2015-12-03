@@ -5,6 +5,7 @@
 #include <vector>
 #include "particleSystem.h"
 
+/*
 class TimeStepper
 {
 public:
@@ -30,5 +31,5 @@ class RK4:public TimeStepper
 {
   void takeStep(ParticleSystem* particleSystem, float stepSize);
 };
-
+*/
 #endif

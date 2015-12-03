@@ -156,30 +156,6 @@ a3/fast:
 	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/build
 .PHONY : a3/fast
 
-ClothSystem.o: ClothSystem.cpp.o
-.PHONY : ClothSystem.o
-
-# target to build an object file
-ClothSystem.cpp.o:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/ClothSystem.cpp.o
-.PHONY : ClothSystem.cpp.o
-
-ClothSystem.i: ClothSystem.cpp.i
-.PHONY : ClothSystem.i
-
-# target to preprocess a source file
-ClothSystem.cpp.i:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/ClothSystem.cpp.i
-.PHONY : ClothSystem.cpp.i
-
-ClothSystem.s: ClothSystem.cpp.s
-.PHONY : ClothSystem.s
-
-# target to generate assembly for a file
-ClothSystem.cpp.s:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/ClothSystem.cpp.s
-.PHONY : ClothSystem.cpp.s
-
 TimeStepper.o: TimeStepper.cpp.o
 .PHONY : TimeStepper.o
 
@@ -227,30 +203,6 @@ Utils.s: Utils.cpp.s
 Utils.cpp.s:
 	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/Utils.cpp.s
 .PHONY : Utils.cpp.s
-
-WaterSystem.o: WaterSystem.cpp.o
-.PHONY : WaterSystem.o
-
-# target to build an object file
-WaterSystem.cpp.o:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/WaterSystem.cpp.o
-.PHONY : WaterSystem.cpp.o
-
-WaterSystem.i: WaterSystem.cpp.i
-.PHONY : WaterSystem.i
-
-# target to preprocess a source file
-WaterSystem.cpp.i:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/WaterSystem.cpp.i
-.PHONY : WaterSystem.cpp.i
-
-WaterSystem.s: WaterSystem.cpp.s
-.PHONY : WaterSystem.s
-
-# target to generate assembly for a file
-WaterSystem.cpp.s:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/WaterSystem.cpp.s
-.PHONY : WaterSystem.cpp.s
 
 camera.o: camera.cpp.o
 .PHONY : camera.o
@@ -324,54 +276,6 @@ particleSystem.cpp.s:
 	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/particleSystem.cpp.s
 .PHONY : particleSystem.cpp.s
 
-pendulumSystem.o: pendulumSystem.cpp.o
-.PHONY : pendulumSystem.o
-
-# target to build an object file
-pendulumSystem.cpp.o:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/pendulumSystem.cpp.o
-.PHONY : pendulumSystem.cpp.o
-
-pendulumSystem.i: pendulumSystem.cpp.i
-.PHONY : pendulumSystem.i
-
-# target to preprocess a source file
-pendulumSystem.cpp.i:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/pendulumSystem.cpp.i
-.PHONY : pendulumSystem.cpp.i
-
-pendulumSystem.s: pendulumSystem.cpp.s
-.PHONY : pendulumSystem.s
-
-# target to generate assembly for a file
-pendulumSystem.cpp.s:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/pendulumSystem.cpp.s
-.PHONY : pendulumSystem.cpp.s
-
-simpleSystem.o: simpleSystem.cpp.o
-.PHONY : simpleSystem.o
-
-# target to build an object file
-simpleSystem.cpp.o:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/simpleSystem.cpp.o
-.PHONY : simpleSystem.cpp.o
-
-simpleSystem.i: simpleSystem.cpp.i
-.PHONY : simpleSystem.i
-
-# target to preprocess a source file
-simpleSystem.cpp.i:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/simpleSystem.cpp.i
-.PHONY : simpleSystem.cpp.i
-
-simpleSystem.s: simpleSystem.cpp.s
-.PHONY : simpleSystem.s
-
-# target to generate assembly for a file
-simpleSystem.cpp.s:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/simpleSystem.cpp.s
-.PHONY : simpleSystem.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -385,18 +289,12 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... ClothSystem.o"
-	@echo "... ClothSystem.i"
-	@echo "... ClothSystem.s"
 	@echo "... TimeStepper.o"
 	@echo "... TimeStepper.i"
 	@echo "... TimeStepper.s"
 	@echo "... Utils.o"
 	@echo "... Utils.i"
 	@echo "... Utils.s"
-	@echo "... WaterSystem.o"
-	@echo "... WaterSystem.i"
-	@echo "... WaterSystem.s"
 	@echo "... camera.o"
 	@echo "... camera.i"
 	@echo "... camera.s"
@@ -406,12 +304,6 @@ help:
 	@echo "... particleSystem.o"
 	@echo "... particleSystem.i"
 	@echo "... particleSystem.s"
-	@echo "... pendulumSystem.o"
-	@echo "... pendulumSystem.i"
-	@echo "... pendulumSystem.s"
-	@echo "... simpleSystem.o"
-	@echo "... simpleSystem.i"
-	@echo "... simpleSystem.s"
 .PHONY : help
 
 

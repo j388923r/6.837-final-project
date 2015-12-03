@@ -1,0 +1,8 @@
+*.o
+*.cmake
+*.internal
+*.a
+*.make
+*.log
+*.txt
+*.includecache

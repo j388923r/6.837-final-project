@@ -24,6 +24,7 @@ namespace
 {
 
     ParticleSystem *system;
+    // WaterSystem *waterSystem;
     TimeStepper * timeStepper;
    
     vector<ParticleSystem> *systems; 
@@ -40,8 +41,8 @@ namespace
     //ParticleSystem *system1 = new ClothSystem(8);
    
     
-    system = new WaterSystem(8);
-    timeStepper = new RK4;		
+    system = new ParticleSystem(8);
+    timeStepper = new Trapzoidal;		
   }
 
   // Take a step forward for the particle shower
@@ -118,12 +119,12 @@ namespace
         }
 	case 'b':
 	{
-	system =  new PendulumSystem(4);
+	// system =  new PendulumSystem(4);
 	timeStepper = new RK4;
 	}
 	case 'q':
 	{
-	system = new SimpleSystem(4);
+	// system = new SimpleSystem(4);
 	//system = new SimpleSystem(4);
 	//timeStepper = new RK4;
 	
@@ -284,6 +285,7 @@ namespace
 
     void timerFunc(int t)
     {
+	cout << "System" << system -> getState()[2].position[1] << endl;	
         stepSystem();
 
         glutPostRedisplay();

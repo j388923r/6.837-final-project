@@ -3,31 +3,47 @@
 
 #include <vector>
 #include <vecmath.h>
+#include "extra.h"
+#include <iostream> 
+#include <ostream>
+#include "Utils.h"
 
 using namespace std;
 
 class ParticleSystem
 {
 public:
-
-	ParticleSystem(int numParticles=0);
+	ParticleSystem(int numParticles);
 
 	int m_numParticles;
 	
-	// for a given state, evaluate derivative f(X,t)
-	virtual vector<Vector3f> evalF(vector<Vector3f> state) = 0;
+	vector<Vector3f> evalF(vector<Particle> state);
+	
+	void draw();
+	
+	vector<Vector3f> springList;
+	
+	vector<Vector3f> springCoords;
+
+	vector<Vector3f> spring (float k, float r, int ind1,int ind2, vector<Vector3f> state, vector<Vector3f> existingSprings);
+
+	vector<Particle> stateClone;
+
+	
+	vector<Particle> fluid_particles;
+
+
+	//vector<Vector3f> evalF(vector<Vector3f> state);
 	
 	// getter method for the system's state
-	vector<Vector3f> getState(){ return m_vVecState; };
+	vector<Particle> getState(){ return m_vVecState; };
 	
 	// setter method for the system's state
-	void setState(const vector<Vector3f>  & newState) { m_vVecState = newState; };
-	
-	virtual void draw() = 0;
-	
+	void setState(const vector<Particle>  & newState) { m_vVecState = newState; };
+
 protected:
 
-	vector<Vector3f> m_vVecState;
+	vector<Particle> m_vVecState;
 	
 };
 
