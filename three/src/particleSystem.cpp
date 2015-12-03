@@ -16,8 +16,8 @@ ParticleSystem::ParticleSystem(int numParticles)
 	// fill in code for initializing the state based on the number of particles
 	for (int i = 0; i < m_numParticles; i++) {
 		
-		Vector3f firstpos = (i/1.,i/1.,i/1.); 
-		Vector3f firstspeed = (0,0,0);
+		Vector3f firstpos = (i,i,i); 
+		Vector3f firstspeed = (.5,.5,.5);
 
 		
 		//m_vVecState.push_back(firstpos);// for this system, we care about the position and the velocity
@@ -121,7 +121,7 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle> state)
 	for (unsigned i = 0; i < state.size();++i){
 		
 		Vector3f total = (0,0,0);
-		total = total+gravitywater(.2);
+		total = total+gravitywater(.02);
 	
 		
 			
@@ -147,7 +147,7 @@ vector<Vector3f> ParticleSystem::evalF(vector<Vector3f> state)
 void ParticleSystem::draw()
 {
 	for (int i = 0; i < m_vVecState.size(); i++) {
-		//cout << (m_vVecState.size()) << endl;
+		cout << (m_vVecState.size()) << endl;
 		if (m_vVecState.size() > 0){
 			//Vector3f pos = m_vVecState[2*i];//  position of particle i. YOUR CODE HERE
 			Vector3f pos = m_vVecState[i].position;
