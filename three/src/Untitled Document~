@@ -1,0 +1,6 @@
+To compile this code, use the same as the typical Athena complier instructions:
+
+% mkdir build
+% cd build
+% cmake ..
+% make install
