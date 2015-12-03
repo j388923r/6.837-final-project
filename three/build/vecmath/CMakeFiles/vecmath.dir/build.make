@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three
+CMAKE_SOURCE_DIR = /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build
+CMAKE_BINARY_DIR = /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build
 
 # Include any dependencies generated for this target.
 include vecmath/CMakeFiles/vecmath.dir/depend.make
@@ -54,17 +54,17 @@ include vecmath/CMakeFiles/vecmath.dir/flags.make
 
 vecmath/CMakeFiles/vecmath.dir/src/Matrix2f.cpp.o: vecmath/CMakeFiles/vecmath.dir/flags.make
 vecmath/CMakeFiles/vecmath.dir/src/Matrix2f.cpp.o: ../vecmath/src/Matrix2f.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object vecmath/CMakeFiles/vecmath.dir/src/Matrix2f.cpp.o"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/vecmath.dir/src/Matrix2f.cpp.o -c /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/vecmath/src/Matrix2f.cpp
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/vecmath.dir/src/Matrix2f.cpp.o -c /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath/src/Matrix2f.cpp
 
 vecmath/CMakeFiles/vecmath.dir/src/Matrix2f.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vecmath.dir/src/Matrix2f.cpp.i"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/vecmath/src/Matrix2f.cpp > CMakeFiles/vecmath.dir/src/Matrix2f.cpp.i
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath/src/Matrix2f.cpp > CMakeFiles/vecmath.dir/src/Matrix2f.cpp.i
 
 vecmath/CMakeFiles/vecmath.dir/src/Matrix2f.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vecmath.dir/src/Matrix2f.cpp.s"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/vecmath/src/Matrix2f.cpp -o CMakeFiles/vecmath.dir/src/Matrix2f.cpp.s
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath/src/Matrix2f.cpp -o CMakeFiles/vecmath.dir/src/Matrix2f.cpp.s
 
 vecmath/CMakeFiles/vecmath.dir/src/Matrix2f.cpp.o.requires:
 .PHONY : vecmath/CMakeFiles/vecmath.dir/src/Matrix2f.cpp.o.requires
@@ -77,17 +77,17 @@ vecmath/CMakeFiles/vecmath.dir/src/Matrix2f.cpp.o.provides.build: vecmath/CMakeF
 
 vecmath/CMakeFiles/vecmath.dir/src/Matrix3f.cpp.o: vecmath/CMakeFiles/vecmath.dir/flags.make
 vecmath/CMakeFiles/vecmath.dir/src/Matrix3f.cpp.o: ../vecmath/src/Matrix3f.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object vecmath/CMakeFiles/vecmath.dir/src/Matrix3f.cpp.o"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/vecmath.dir/src/Matrix3f.cpp.o -c /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/vecmath/src/Matrix3f.cpp
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/vecmath.dir/src/Matrix3f.cpp.o -c /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath/src/Matrix3f.cpp
 
 vecmath/CMakeFiles/vecmath.dir/src/Matrix3f.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vecmath.dir/src/Matrix3f.cpp.i"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/vecmath/src/Matrix3f.cpp > CMakeFiles/vecmath.dir/src/Matrix3f.cpp.i
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath/src/Matrix3f.cpp > CMakeFiles/vecmath.dir/src/Matrix3f.cpp.i
 
 vecmath/CMakeFiles/vecmath.dir/src/Matrix3f.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vecmath.dir/src/Matrix3f.cpp.s"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/vecmath/src/Matrix3f.cpp -o CMakeFiles/vecmath.dir/src/Matrix3f.cpp.s
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath/src/Matrix3f.cpp -o CMakeFiles/vecmath.dir/src/Matrix3f.cpp.s
 
 vecmath/CMakeFiles/vecmath.dir/src/Matrix3f.cpp.o.requires:
 .PHONY : vecmath/CMakeFiles/vecmath.dir/src/Matrix3f.cpp.o.requires
@@ -100,17 +100,17 @@ vecmath/CMakeFiles/vecmath.dir/src/Matrix3f.cpp.o.provides.build: vecmath/CMakeF
 
 vecmath/CMakeFiles/vecmath.dir/src/Matrix4f.cpp.o: vecmath/CMakeFiles/vecmath.dir/flags.make
 vecmath/CMakeFiles/vecmath.dir/src/Matrix4f.cpp.o: ../vecmath/src/Matrix4f.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object vecmath/CMakeFiles/vecmath.dir/src/Matrix4f.cpp.o"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/vecmath.dir/src/Matrix4f.cpp.o -c /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/vecmath/src/Matrix4f.cpp
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/vecmath.dir/src/Matrix4f.cpp.o -c /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath/src/Matrix4f.cpp
 
 vecmath/CMakeFiles/vecmath.dir/src/Matrix4f.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vecmath.dir/src/Matrix4f.cpp.i"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/vecmath/src/Matrix4f.cpp > CMakeFiles/vecmath.dir/src/Matrix4f.cpp.i
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath/src/Matrix4f.cpp > CMakeFiles/vecmath.dir/src/Matrix4f.cpp.i
 
 vecmath/CMakeFiles/vecmath.dir/src/Matrix4f.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vecmath.dir/src/Matrix4f.cpp.s"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/vecmath/src/Matrix4f.cpp -o CMakeFiles/vecmath.dir/src/Matrix4f.cpp.s
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath/src/Matrix4f.cpp -o CMakeFiles/vecmath.dir/src/Matrix4f.cpp.s
 
 vecmath/CMakeFiles/vecmath.dir/src/Matrix4f.cpp.o.requires:
 .PHONY : vecmath/CMakeFiles/vecmath.dir/src/Matrix4f.cpp.o.requires
@@ -123,17 +123,17 @@ vecmath/CMakeFiles/vecmath.dir/src/Matrix4f.cpp.o.provides.build: vecmath/CMakeF
 
 vecmath/CMakeFiles/vecmath.dir/src/Quat4f.cpp.o: vecmath/CMakeFiles/vecmath.dir/flags.make
 vecmath/CMakeFiles/vecmath.dir/src/Quat4f.cpp.o: ../vecmath/src/Quat4f.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object vecmath/CMakeFiles/vecmath.dir/src/Quat4f.cpp.o"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/vecmath.dir/src/Quat4f.cpp.o -c /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/vecmath/src/Quat4f.cpp
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/vecmath.dir/src/Quat4f.cpp.o -c /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath/src/Quat4f.cpp
 
 vecmath/CMakeFiles/vecmath.dir/src/Quat4f.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vecmath.dir/src/Quat4f.cpp.i"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/vecmath/src/Quat4f.cpp > CMakeFiles/vecmath.dir/src/Quat4f.cpp.i
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath/src/Quat4f.cpp > CMakeFiles/vecmath.dir/src/Quat4f.cpp.i
 
 vecmath/CMakeFiles/vecmath.dir/src/Quat4f.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vecmath.dir/src/Quat4f.cpp.s"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/vecmath/src/Quat4f.cpp -o CMakeFiles/vecmath.dir/src/Quat4f.cpp.s
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath/src/Quat4f.cpp -o CMakeFiles/vecmath.dir/src/Quat4f.cpp.s
 
 vecmath/CMakeFiles/vecmath.dir/src/Quat4f.cpp.o.requires:
 .PHONY : vecmath/CMakeFiles/vecmath.dir/src/Quat4f.cpp.o.requires
@@ -146,17 +146,17 @@ vecmath/CMakeFiles/vecmath.dir/src/Quat4f.cpp.o.provides.build: vecmath/CMakeFil
 
 vecmath/CMakeFiles/vecmath.dir/src/Vector2f.cpp.o: vecmath/CMakeFiles/vecmath.dir/flags.make
 vecmath/CMakeFiles/vecmath.dir/src/Vector2f.cpp.o: ../vecmath/src/Vector2f.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object vecmath/CMakeFiles/vecmath.dir/src/Vector2f.cpp.o"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/vecmath.dir/src/Vector2f.cpp.o -c /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/vecmath/src/Vector2f.cpp
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/vecmath.dir/src/Vector2f.cpp.o -c /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath/src/Vector2f.cpp
 
 vecmath/CMakeFiles/vecmath.dir/src/Vector2f.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vecmath.dir/src/Vector2f.cpp.i"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/vecmath/src/Vector2f.cpp > CMakeFiles/vecmath.dir/src/Vector2f.cpp.i
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath/src/Vector2f.cpp > CMakeFiles/vecmath.dir/src/Vector2f.cpp.i
 
 vecmath/CMakeFiles/vecmath.dir/src/Vector2f.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vecmath.dir/src/Vector2f.cpp.s"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/vecmath/src/Vector2f.cpp -o CMakeFiles/vecmath.dir/src/Vector2f.cpp.s
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath/src/Vector2f.cpp -o CMakeFiles/vecmath.dir/src/Vector2f.cpp.s
 
 vecmath/CMakeFiles/vecmath.dir/src/Vector2f.cpp.o.requires:
 .PHONY : vecmath/CMakeFiles/vecmath.dir/src/Vector2f.cpp.o.requires
@@ -169,17 +169,17 @@ vecmath/CMakeFiles/vecmath.dir/src/Vector2f.cpp.o.provides.build: vecmath/CMakeF
 
 vecmath/CMakeFiles/vecmath.dir/src/Vector3f.cpp.o: vecmath/CMakeFiles/vecmath.dir/flags.make
 vecmath/CMakeFiles/vecmath.dir/src/Vector3f.cpp.o: ../vecmath/src/Vector3f.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object vecmath/CMakeFiles/vecmath.dir/src/Vector3f.cpp.o"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/vecmath.dir/src/Vector3f.cpp.o -c /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/vecmath/src/Vector3f.cpp
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/vecmath.dir/src/Vector3f.cpp.o -c /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath/src/Vector3f.cpp
 
 vecmath/CMakeFiles/vecmath.dir/src/Vector3f.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vecmath.dir/src/Vector3f.cpp.i"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/vecmath/src/Vector3f.cpp > CMakeFiles/vecmath.dir/src/Vector3f.cpp.i
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath/src/Vector3f.cpp > CMakeFiles/vecmath.dir/src/Vector3f.cpp.i
 
 vecmath/CMakeFiles/vecmath.dir/src/Vector3f.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vecmath.dir/src/Vector3f.cpp.s"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/vecmath/src/Vector3f.cpp -o CMakeFiles/vecmath.dir/src/Vector3f.cpp.s
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath/src/Vector3f.cpp -o CMakeFiles/vecmath.dir/src/Vector3f.cpp.s
 
 vecmath/CMakeFiles/vecmath.dir/src/Vector3f.cpp.o.requires:
 .PHONY : vecmath/CMakeFiles/vecmath.dir/src/Vector3f.cpp.o.requires
@@ -192,17 +192,17 @@ vecmath/CMakeFiles/vecmath.dir/src/Vector3f.cpp.o.provides.build: vecmath/CMakeF
 
 vecmath/CMakeFiles/vecmath.dir/src/Vector4f.cpp.o: vecmath/CMakeFiles/vecmath.dir/flags.make
 vecmath/CMakeFiles/vecmath.dir/src/Vector4f.cpp.o: ../vecmath/src/Vector4f.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object vecmath/CMakeFiles/vecmath.dir/src/Vector4f.cpp.o"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/vecmath.dir/src/Vector4f.cpp.o -c /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/vecmath/src/Vector4f.cpp
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/vecmath.dir/src/Vector4f.cpp.o -c /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath/src/Vector4f.cpp
 
 vecmath/CMakeFiles/vecmath.dir/src/Vector4f.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/vecmath.dir/src/Vector4f.cpp.i"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/vecmath/src/Vector4f.cpp > CMakeFiles/vecmath.dir/src/Vector4f.cpp.i
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath/src/Vector4f.cpp > CMakeFiles/vecmath.dir/src/Vector4f.cpp.i
 
 vecmath/CMakeFiles/vecmath.dir/src/Vector4f.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/vecmath.dir/src/Vector4f.cpp.s"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/vecmath/src/Vector4f.cpp -o CMakeFiles/vecmath.dir/src/Vector4f.cpp.s
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath/src/Vector4f.cpp -o CMakeFiles/vecmath.dir/src/Vector4f.cpp.s
 
 vecmath/CMakeFiles/vecmath.dir/src/Vector4f.cpp.o.requires:
 .PHONY : vecmath/CMakeFiles/vecmath.dir/src/Vector4f.cpp.o.requires
@@ -236,8 +236,8 @@ vecmath/libvecmath.a: vecmath/CMakeFiles/vecmath.dir/src/Vector4f.cpp.o
 vecmath/libvecmath.a: vecmath/CMakeFiles/vecmath.dir/build.make
 vecmath/libvecmath.a: vecmath/CMakeFiles/vecmath.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX static library libvecmath.a"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && $(CMAKE_COMMAND) -P CMakeFiles/vecmath.dir/cmake_clean_target.cmake
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/vecmath.dir/link.txt --verbose=$(VERBOSE)
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && $(CMAKE_COMMAND) -P CMakeFiles/vecmath.dir/cmake_clean_target.cmake
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/vecmath.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 vecmath/CMakeFiles/vecmath.dir/build: vecmath/libvecmath.a
@@ -253,10 +253,10 @@ vecmath/CMakeFiles/vecmath.dir/requires: vecmath/CMakeFiles/vecmath.dir/src/Vect
 .PHONY : vecmath/CMakeFiles/vecmath.dir/requires
 
 vecmath/CMakeFiles/vecmath.dir/clean:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath && $(CMAKE_COMMAND) -P CMakeFiles/vecmath.dir/cmake_clean.cmake
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath && $(CMAKE_COMMAND) -P CMakeFiles/vecmath.dir/cmake_clean.cmake
 .PHONY : vecmath/CMakeFiles/vecmath.dir/clean
 
 vecmath/CMakeFiles/vecmath.dir/depend:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/vecmath /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath/CMakeFiles/vecmath.dir/DependInfo.cmake --color=$(COLOR)
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath/CMakeFiles/vecmath.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : vecmath/CMakeFiles/vecmath.dir/depend
 

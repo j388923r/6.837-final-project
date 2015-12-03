@@ -14,7 +14,7 @@
 #include "simpleSystem.h"
 #include "pendulumSystem.h"
 #include "ClothSystem.h"
-
+#include "WaterSystem.h"
 using namespace std;
 
 
@@ -39,25 +39,8 @@ namespace
     srand( time( NULL ) );
     //ParticleSystem *system1 = new ClothSystem(8);
    
-    cout << argv[1] << endl;
-    if (strcmp(argv[1],"a1")==0 ){
-    	
-	system = new SimpleSystem(3);
-	
-    }
-
-    if (strcmp(argv[1],"a2")==0 ){
-    	
-	system = new PendulumSystem(5);
-	
-    }
-
-    if (strcmp(argv[1],"a3")==0 ){
-    	
-	system = new ClothSystem(5);
-	
-    }
-    //systems.push_back(system);
+    
+    system = new WaterSystem(8);
     timeStepper = new RK4;		
   }
 

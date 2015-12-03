@@ -1,8 +1,8 @@
-# Install script for directory: /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three
+# Install script for directory: /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  SET(CMAKE_INSTALL_PREFIX "/afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/inst")
+  SET(CMAKE_INSTALL_PREFIX "/afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/inst")
 ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
 STRING(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,8 +34,8 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("/afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath/cmake_install.cmake")
-  INCLUDE("/afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/src/cmake_install.cmake")
+  INCLUDE("/afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath/cmake_install.cmake")
+  INCLUDE("/afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/src/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 
@@ -45,7 +45,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)

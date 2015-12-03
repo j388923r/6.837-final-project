@@ -42,10 +42,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three
+CMAKE_SOURCE_DIR = /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build
+CMAKE_BINARY_DIR = /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -113,14 +113,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(CMAKE_COMMAND) -E cmake_progress_start /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/CMakeFiles /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/vecmath/CMakeFiles/progress.marks
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f CMakeFiles/Makefile2 vecmath/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build/CMakeFiles 0
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(CMAKE_COMMAND) -E cmake_progress_start /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/CMakeFiles /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/vecmath/CMakeFiles/progress.marks
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f CMakeFiles/Makefile2 vecmath/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f CMakeFiles/Makefile2 vecmath/clean
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f CMakeFiles/Makefile2 vecmath/clean
 .PHONY : clean
 
 # The main clean target
@@ -129,22 +129,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f CMakeFiles/Makefile2 vecmath/preinstall
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f CMakeFiles/Makefile2 vecmath/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f CMakeFiles/Makefile2 vecmath/preinstall
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f CMakeFiles/Makefile2 vecmath/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 vecmath/CMakeFiles/vecmath.dir/rule:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f CMakeFiles/Makefile2 vecmath/CMakeFiles/vecmath.dir/rule
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f CMakeFiles/Makefile2 vecmath/CMakeFiles/vecmath.dir/rule
 .PHONY : vecmath/CMakeFiles/vecmath.dir/rule
 
 # Convenience name for target.
@@ -153,7 +153,7 @@ vecmath: vecmath/CMakeFiles/vecmath.dir/rule
 
 # fast build rule for target.
 vecmath/fast:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/build
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/build
 .PHONY : vecmath/fast
 
 src/Matrix2f.o: src/Matrix2f.cpp.o
@@ -161,7 +161,7 @@ src/Matrix2f.o: src/Matrix2f.cpp.o
 
 # target to build an object file
 src/Matrix2f.cpp.o:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Matrix2f.cpp.o
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Matrix2f.cpp.o
 .PHONY : src/Matrix2f.cpp.o
 
 src/Matrix2f.i: src/Matrix2f.cpp.i
@@ -169,7 +169,7 @@ src/Matrix2f.i: src/Matrix2f.cpp.i
 
 # target to preprocess a source file
 src/Matrix2f.cpp.i:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Matrix2f.cpp.i
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Matrix2f.cpp.i
 .PHONY : src/Matrix2f.cpp.i
 
 src/Matrix2f.s: src/Matrix2f.cpp.s
@@ -177,7 +177,7 @@ src/Matrix2f.s: src/Matrix2f.cpp.s
 
 # target to generate assembly for a file
 src/Matrix2f.cpp.s:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Matrix2f.cpp.s
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Matrix2f.cpp.s
 .PHONY : src/Matrix2f.cpp.s
 
 src/Matrix3f.o: src/Matrix3f.cpp.o
@@ -185,7 +185,7 @@ src/Matrix3f.o: src/Matrix3f.cpp.o
 
 # target to build an object file
 src/Matrix3f.cpp.o:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Matrix3f.cpp.o
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Matrix3f.cpp.o
 .PHONY : src/Matrix3f.cpp.o
 
 src/Matrix3f.i: src/Matrix3f.cpp.i
@@ -193,7 +193,7 @@ src/Matrix3f.i: src/Matrix3f.cpp.i
 
 # target to preprocess a source file
 src/Matrix3f.cpp.i:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Matrix3f.cpp.i
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Matrix3f.cpp.i
 .PHONY : src/Matrix3f.cpp.i
 
 src/Matrix3f.s: src/Matrix3f.cpp.s
@@ -201,7 +201,7 @@ src/Matrix3f.s: src/Matrix3f.cpp.s
 
 # target to generate assembly for a file
 src/Matrix3f.cpp.s:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Matrix3f.cpp.s
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Matrix3f.cpp.s
 .PHONY : src/Matrix3f.cpp.s
 
 src/Matrix4f.o: src/Matrix4f.cpp.o
@@ -209,7 +209,7 @@ src/Matrix4f.o: src/Matrix4f.cpp.o
 
 # target to build an object file
 src/Matrix4f.cpp.o:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Matrix4f.cpp.o
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Matrix4f.cpp.o
 .PHONY : src/Matrix4f.cpp.o
 
 src/Matrix4f.i: src/Matrix4f.cpp.i
@@ -217,7 +217,7 @@ src/Matrix4f.i: src/Matrix4f.cpp.i
 
 # target to preprocess a source file
 src/Matrix4f.cpp.i:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Matrix4f.cpp.i
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Matrix4f.cpp.i
 .PHONY : src/Matrix4f.cpp.i
 
 src/Matrix4f.s: src/Matrix4f.cpp.s
@@ -225,7 +225,7 @@ src/Matrix4f.s: src/Matrix4f.cpp.s
 
 # target to generate assembly for a file
 src/Matrix4f.cpp.s:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Matrix4f.cpp.s
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Matrix4f.cpp.s
 .PHONY : src/Matrix4f.cpp.s
 
 src/Quat4f.o: src/Quat4f.cpp.o
@@ -233,7 +233,7 @@ src/Quat4f.o: src/Quat4f.cpp.o
 
 # target to build an object file
 src/Quat4f.cpp.o:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Quat4f.cpp.o
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Quat4f.cpp.o
 .PHONY : src/Quat4f.cpp.o
 
 src/Quat4f.i: src/Quat4f.cpp.i
@@ -241,7 +241,7 @@ src/Quat4f.i: src/Quat4f.cpp.i
 
 # target to preprocess a source file
 src/Quat4f.cpp.i:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Quat4f.cpp.i
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Quat4f.cpp.i
 .PHONY : src/Quat4f.cpp.i
 
 src/Quat4f.s: src/Quat4f.cpp.s
@@ -249,7 +249,7 @@ src/Quat4f.s: src/Quat4f.cpp.s
 
 # target to generate assembly for a file
 src/Quat4f.cpp.s:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Quat4f.cpp.s
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Quat4f.cpp.s
 .PHONY : src/Quat4f.cpp.s
 
 src/Vector2f.o: src/Vector2f.cpp.o
@@ -257,7 +257,7 @@ src/Vector2f.o: src/Vector2f.cpp.o
 
 # target to build an object file
 src/Vector2f.cpp.o:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Vector2f.cpp.o
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Vector2f.cpp.o
 .PHONY : src/Vector2f.cpp.o
 
 src/Vector2f.i: src/Vector2f.cpp.i
@@ -265,7 +265,7 @@ src/Vector2f.i: src/Vector2f.cpp.i
 
 # target to preprocess a source file
 src/Vector2f.cpp.i:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Vector2f.cpp.i
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Vector2f.cpp.i
 .PHONY : src/Vector2f.cpp.i
 
 src/Vector2f.s: src/Vector2f.cpp.s
@@ -273,7 +273,7 @@ src/Vector2f.s: src/Vector2f.cpp.s
 
 # target to generate assembly for a file
 src/Vector2f.cpp.s:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Vector2f.cpp.s
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Vector2f.cpp.s
 .PHONY : src/Vector2f.cpp.s
 
 src/Vector3f.o: src/Vector3f.cpp.o
@@ -281,7 +281,7 @@ src/Vector3f.o: src/Vector3f.cpp.o
 
 # target to build an object file
 src/Vector3f.cpp.o:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Vector3f.cpp.o
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Vector3f.cpp.o
 .PHONY : src/Vector3f.cpp.o
 
 src/Vector3f.i: src/Vector3f.cpp.i
@@ -289,7 +289,7 @@ src/Vector3f.i: src/Vector3f.cpp.i
 
 # target to preprocess a source file
 src/Vector3f.cpp.i:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Vector3f.cpp.i
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Vector3f.cpp.i
 .PHONY : src/Vector3f.cpp.i
 
 src/Vector3f.s: src/Vector3f.cpp.s
@@ -297,7 +297,7 @@ src/Vector3f.s: src/Vector3f.cpp.s
 
 # target to generate assembly for a file
 src/Vector3f.cpp.s:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Vector3f.cpp.s
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Vector3f.cpp.s
 .PHONY : src/Vector3f.cpp.s
 
 src/Vector4f.o: src/Vector4f.cpp.o
@@ -305,7 +305,7 @@ src/Vector4f.o: src/Vector4f.cpp.o
 
 # target to build an object file
 src/Vector4f.cpp.o:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Vector4f.cpp.o
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Vector4f.cpp.o
 .PHONY : src/Vector4f.cpp.o
 
 src/Vector4f.i: src/Vector4f.cpp.i
@@ -313,7 +313,7 @@ src/Vector4f.i: src/Vector4f.cpp.i
 
 # target to preprocess a source file
 src/Vector4f.cpp.i:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Vector4f.cpp.i
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Vector4f.cpp.i
 .PHONY : src/Vector4f.cpp.i
 
 src/Vector4f.s: src/Vector4f.cpp.s
@@ -321,7 +321,7 @@ src/Vector4f.s: src/Vector4f.cpp.s
 
 # target to generate assembly for a file
 src/Vector4f.cpp.s:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Vector4f.cpp.s
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/src/Vector4f.cpp.s
 .PHONY : src/Vector4f.cpp.s
 
 # Help Target
@@ -369,6 +369,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/2015_Fall/6.837/three/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
