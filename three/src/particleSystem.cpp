@@ -28,7 +28,7 @@ ParticleSystem::ParticleSystem(int numParticles)
 		new_particle.velocity = firstspeed;
 
 		//cout << "New Particle: " << new_particle.position[0] << endl;
-		fluid_particles.push_back(new_particle);
+		//fluid_particles.push_back(new_particle);
 		m_vVecState.push_back(new_particle);
 
 		
@@ -118,23 +118,18 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle> state)
 
 	springList = springs;*/
 	stateClone = state;
-	for (unsigned i = 0; i < state.size() * 2;++i){
-		if (true){
+	for (unsigned i = 0; i < state.size();++i){
 		
-			f.push_back(Vector3f(0,0,0));
-			f.push_back(Vector3f(0,0,0));
-			}
-		else{
-			Vector3f total = (0,0,0);
-			total = total+gravitywater(.02);
+		Vector3f total = (0,0,0);
+		total = total+gravitywater(.2);
+	
 		
-			total = total + dragwater(.1,state[i].velocity);
 			
-			total = total + springList[i];
 
-			f.push_back(state[i].velocity);
-			f.push_back(total);		
-				}	
+		f.push_back(state[i].velocity);
+		//cout << "Velocity: " << state[i].velocity[0] << " " << state[i].velocity[1] << " "<< state[i].velocity[2] << endl;
+		f.push_back(total);		
+				//}	
 	 	     }
 	
 	return f;
@@ -151,11 +146,11 @@ vector<Vector3f> ParticleSystem::evalF(vector<Vector3f> state)
 // render the system (ie draw the particles)
 void ParticleSystem::draw()
 {
-	for (int i = 0; i < m_numParticles; i++) {
+	for (int i = 0; i < m_vVecState.size(); i++) {
 		//cout << (m_vVecState.size()) << endl;
 		if (m_vVecState.size() > 0){
 			//Vector3f pos = m_vVecState[2*i];//  position of particle i. YOUR CODE HERE
-			Vector3f pos = fluid_particles[i].position;
+			Vector3f pos = m_vVecState[i].position;
 			glPushMatrix();
 			glTranslatef(pos[0], pos[1], pos[2] );
 			glutSolidSphere(0.075f,10.0f,10.0f);

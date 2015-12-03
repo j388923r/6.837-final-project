@@ -41,7 +41,7 @@ namespace
     //ParticleSystem *system1 = new ClothSystem(8);
    
     
-    system = new ParticleSystem(8);
+    system = new ParticleSystem(2);
     timeStepper = new Trapzoidal;		
   }
 
@@ -284,8 +284,7 @@ namespace
     }
 
     void timerFunc(int t)
-    {
-	cout << "System" << system -> getState()[2].position[1] << endl;	
+    {	
         stepSystem();
 
         glutPostRedisplay();

@@ -41,7 +41,7 @@ namespace
     //ParticleSystem *system1 = new ClothSystem(8);
    
     
-    system = new ParticleSystem(8);
+    system = new ParticleSystem(5);
     timeStepper = new Trapzoidal;		
   }
 
