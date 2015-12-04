@@ -6,7 +6,7 @@
 #include <cmath>
 #include <vecmath.h>
 #include <stdio.h>     
-
+#include <iostream> 
 
 using namespace std;
 
@@ -45,10 +45,10 @@ public:
 	Vector3f position;
 	
 
-	Particle(float mass, Vector3f pos) {
+	Particle(float mass) {
 		mass = mass;
-		density = 0;\
-		position = pos;
+		density = 0;
+		// position = pos;
 	}
 	
 	void addToDensity(float deltaDensity) {
@@ -63,6 +63,10 @@ public:
 
 	Vector3f move(Vector3f delta) {
 		position = position + delta;
+	}
+
+	string getGridLoc() {
+		return to_string((int)(position[0])) + to_string((int)floor(position[1])) + to_string((int)floor(position[2]));
 	}
 };
 
