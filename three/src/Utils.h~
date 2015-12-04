@@ -40,14 +40,14 @@ public:
 	float density;
 	Vector3f pressure_force;
 	Vector3f viscocity_force;
-	float color_field_gradient = 1 ;
-	float color_field_laplacian = 1;
+	float color_field_gradient = 0;
+	float color_field_laplacian = 0;
 	Vector3f position;
-	float surface_tension_force;
+	float surface_tension_force = 0;
 	
 
-	Particle(float mass) {
-		mass = mass;
+	Particle(float m) {
+		mass = m;
 		density = 1;
 		// position = pos;
 	}
@@ -68,6 +68,12 @@ public:
 
 	string getGridLoc() {
 		return to_string((int)(position[0])) + to_string((int)floor(position[1])) + to_string((int)floor(position[2]));
+	}
+
+	void clearForces() {
+		pressure_force = Vector3f(0, 0, 0);
+		viscocity_force = Vector3f(0, 0, 0);
+		color_field_gradient = color_field_laplacian = surface_tension_force = density = 0;
 	}
 };
 

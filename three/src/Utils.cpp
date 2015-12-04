@@ -46,7 +46,7 @@ float Utils::WspikyGradient(float r, float h)
 	if (r > h) {
 		return 0.0;
 	}
-	float leadingValue = -r * 45 / (M_PI * pow(h, 6) * r);
+	float leadingValue = -45 / (M_PI * pow(h, 6) * r);
 	float radialValue = pow((h - r), 2);
 	return leadingValue * radialValue;
 }

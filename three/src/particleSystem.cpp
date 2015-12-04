@@ -19,15 +19,15 @@ ParticleSystem::ParticleSystem(int numParticles)
 	for (int i = 0; i < m_numParticles; i++) {
 		
 		Vector3f firstpos = Vector3f(i,i,i); 
-		Vector3f firstspeed = Vector3f(.5,.5,.5);
+		Vector3f firstspeed = Vector3f(0,0,0);
 
 		
 		//m_vVecState.push_back(firstpos);// for this system, we care about the position and the velocity
 		//m_vVecState.push_back(firstspeed);
 
-		Particle new_particle(1); 
-		new_particle.position = firstpos;
-		new_particle.velocity = firstspeed;
+		Particle * new_particle = new Particle(1); 
+		new_particle->position = firstpos;
+		new_particle->velocity = firstspeed;
 
 		//cout << "New Particle: " << new_particle.position[0] << endl;
 		//fluid_particles.push_back(new_particle);
@@ -48,7 +48,7 @@ Vector3f gravitywater(float m)
 }
 
 
-Vector3f dragwater(float k, Particle p)
+Vector3f dragwater(float k, Particle &p)
 {
 	
 	return Vector3f(-k*p.velocity[0],-k*p.velocity[1],-k*p.velocity[2]);
@@ -109,18 +109,19 @@ vector<Vector3f> ParticleSystem::spring (float k, float r, int ind1,int ind2, ve
 
 
 
-vector <Particle> getNeighbors(float h, vector<Particle> state, Particle p)
+vector <Particle *> getNeighbors(float h, vector<Particle *> state, Particle * p)
 {
 
-	vector <Particle> neighbors;
-	Vector3f grid_location = Vector3f(p.position[0],p.position[1],p.position[2]);
+	vector <Particle *> neighbors;
+cout << state.size() << endl;
+	//Vector3f grid_location = Vector3f(p.position[0],p.position[1],p.position[2]);
 	
-	//for (unsigned i = 0; i < state.size();++i){
+	for (unsigned i = 0; i < state.size();++i){
 	
 		
+		//state[i]->position.print();
 
-
-	//}
+	}
 	return state; 	
 
 }
@@ -129,7 +130,7 @@ vector <Particle> getNeighbors(float h, vector<Particle> state, Particle p)
 
 // TODO: implement evalF
 // for a given state, evaluate f(X,t)
-vector<Vector3f> ParticleSystem::evalF(vector<Particle> state)
+vector<Vector3f> ParticleSystem::evalF(vector<Particle *> state)
 {
 	vector<Vector3f> f;
 
@@ -143,7 +144,7 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle> state)
 	stateClone = state;
 
 
-	float h = .01;
+	float h = 2;
 	/*for (unsigned i = 0; i < state.size();++i){
 		
 		Vector3f total = (0,0,0);
@@ -152,9 +153,9 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle> state)
 		
 			
 
-		f.push_back(state[i].velocity);
+		f.push_back(state[i]->velocity);
 		
-		//cout << "Velocity: " << state[i].velocity[0] << " " << state[i].velocity[1] << " "<< state[i].velocity[2] << endl;
+		//cout << "Velocity: " << state[i]->velocity[0] << " " << state[i]->velocity[1] << " "<< state[i]->velocity[2] << endl;
 		f.push_back(total);		
 				//}	
 	}*/
@@ -163,9 +164,9 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle> state)
 	/*
 	for (unsigned i = 0; i < state.size();++i){
 		for (unsigned j = 0; j < getNeighbors(i).size();++j){
-			Vector3f r = state[i].position - getNeighbors(i)[j].position;
+			Vector3f r = state[i]->position - getNeighbors(i)[j].position;
 			if (h <= r.abs()){
-				state[i].density += state[j].mass * Utils::Wpoly6Laplacian(r, h);
+				state[i]->density += state[j]->mass * Utils::Wpoly6Laplacian(r, h);
 			}
 		}
 	}*/
@@ -177,33 +178,39 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle> state)
 	//Vector3f gravity_force = (0, -9.8,0);
 
 	for (unsigned i = 0; i < state.size();++i){
+		state[i]->clearForces();
 		for (unsigned j = 0; j < getNeighbors(h,state,state[i]).size();++j){
-			Vector3f r = state[i].position - getNeighbors(h,state,state[i])[j].position;
+			Vector3f r = state[i]->position - getNeighbors(h,state,state[i])[j]->position;
 				float distance = r.abs();
-				if (h > distance){
+				if (h > distance && state[i] != getNeighbors(h,state,state[i])[j]){
 
 					//cout << " H is less of course." << endl;
-					float density_p = state[i].density;
-					float density_n = state[j].density;
+					float density_p = state[i]->density;
+					float density_n = state[j]->density;
 
 					float pressure_p = k*(density_p - rest_density);
 					float pressure_n = k*(density_n - rest_density);
 
-					//cout << "Type of R: " << typeid(r).name() << " value of R: " << r.abs() << endl;
-					float spike = Utils::WspikyGradient(r.abs(),h);
-					state[i].pressure_force += state[j].mass *(pressure_p + pressure_n)/(2*density_n)* spike;
-								
-					//state[i].pressure_force.print();
-
-					//cout << state[j].mass << " " << pressure_p + pressure_n << " " << spike << end;				
 					
-					state[i].viscocity_force += eta*state[j].mass*(state[j].velocity-state[i].velocity)/density_n * Utils::WviscocityLaplacian(r.abs(),h);
+					Vector3f spike = r*Utils::WspikyGradient(r.abs(),h);
+					//state[i]->position.print();
+					//cout << j << " " << state[i] -> position << getNeighbors(h,state,state[i])[j]->position << endl;
+					//getNeighbors(h,state,state[i])[j]->position.print();
+					cout << state[j]->mass << " " << pressure_p << " " << pressure_n << " " << density_n << " " <<  Utils::WspikyGradient(r.abs(),h) << endl;
 
-					//state[i].viscocity_force.print();
+					state[i]->pressure_force += state[j]->mass *(pressure_p + pressure_n)/(2*density_n)* spike;
+								
+					//state[i]->pressure_force.print();
 
-					state[i].color_field_gradient += state[j].mass/density_n* Utils::Wpoly6Gradient(r.abs(), h);
+					//cout << state[j]->mass << " " << pressure_p + pressure_n << " " << spike << end;				
+					
+					state[i]->viscocity_force += eta*state[j]->mass*(state[j]->velocity-state[i]->velocity)/density_n * Utils::WviscocityLaplacian(r.abs(),h);
 
-					state[i].color_field_laplacian += state[j].mass/density_n* Utils::WviscocityLaplacian(r.abs(), h);
+					state[i]->viscocity_force.print();
+
+					state[i]->color_field_gradient += state[j]->mass/density_n* Utils::Wpoly6Gradient(r.abs(), h);
+
+					state[i]->color_field_laplacian += state[j]->mass/density_n* Utils::WviscocityLaplacian(r.abs(), h);
 
 					 
 
@@ -211,21 +218,22 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle> state)
 				}		
 		}
 		
-		float gradient_length = state[i].color_field_gradient;
+		float gradient_length = state[i]->color_field_gradient;
 		if (gradient_length >= .2){
-			state[i].surface_tension_force = -.00518*state[i].color_field_gradient*state[i].color_field_laplacian/gradient_length;
+			state[i]->surface_tension_force = -.00518*state[i]->color_field_gradient*state[i]->color_field_laplacian/gradient_length;
 			
 		} else{
-			state[i].surface_tension_force = 0;
+			state[i]->surface_tension_force = 0;
 		}
-
-		Vector3f gravity_force = Vector3f(0, -9.8, 0);
+		//gravity_force.print();
+		//state
+		f.push_back(state[i]->velocity);
+		//cout << state[i]->pressure_force[1] << "  " << state[i]->viscocity_force[2] << endl;
+		//state[i]->pressure_force.print();
 		//gravity_force.print();
 		
-		f.push_back(state[i].velocity);
-		cout << state[i].pressure_force[1] << "  " << state[i].viscocity_force[2] << endl;
-		f.push_back(state[i].viscocity_force + gravity_force * state[i].mass); //+ state[i].surface_tension_force+state[i].pressure_force);  
-		//f.push_back(state[i].pressure_force + state[i].viscocity_force+ gravity_force * state[i].mass + state[i].surface_tension_force);  		
+		f.push_back(Vector3f(0, -.98 * state[i] -> mass, 0)+state[i]->pressure_force); //+ state[i]->surface_tension_force+state[i]->pressure_force);  
+		//f.push_back(state[i]->pressure_force + state[i]->viscocity_force+ gravity_force * state[i]->mass + state[i]->surface_tension_force);  		
 				
 		
 	}
@@ -248,7 +256,7 @@ void ParticleSystem::draw()
 	for (int i = 0; i < m_vVecState.size(); i++) {
 		//cout << (m_vVecState.size()) << endl;
 		if (m_vVecState.size() > 0){
-			Vector3f pos = m_vVecState[i].position;
+			Vector3f pos = m_vVecState[i]->position;
 			//pos.print();
 			glPushMatrix();
 			glTranslatef(pos[0], pos[1], pos[2] );
