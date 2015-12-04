@@ -53,6 +53,8 @@ cmath
 -
 vecmath.h
 -
+stdio.h
+-
 
 /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/src/extra.h
 windows.h
@@ -83,4 +85,6 @@ ostream
 -
 Utils.h
 /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/src/Utils.h
+map
+-
 

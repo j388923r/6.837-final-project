@@ -104,6 +104,26 @@ vector<Vector3f> ParticleSystem::spring (float k, float r, int ind1,int ind2, ve
 	return existingSprings;
 }
 
+
+
+
+vector <Particle> getNeighbors(float h, vector<Particle> state, Particle p)
+{
+
+	vector <Particle> neighbors;
+	Vector3f grid_location = Vector3f(p.position[0],p.position[1],p.position[2]);
+	
+	for (unsigned i = 0; i < state.size();++i){
+	
+		//if (
+
+
+	} 	
+
+}
+
+
+
 // TODO: implement evalF
 // for a given state, evaluate f(X,t)
 vector<Vector3f> ParticleSystem::evalF(vector<Particle> state)
@@ -118,20 +138,24 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle> state)
 
 	springList = springs;*/
 	stateClone = state;
+
+
+	float smoothing_length;
 	for (unsigned i = 0; i < state.size();++i){
 		
 		Vector3f total = (0,0,0);
-		total = total+gravitywater(.02);
+		total = total+gravitywater(.06);
 	
 		
 			
 
 		f.push_back(state[i].velocity);
+		
 		//cout << "Velocity: " << state[i].velocity[0] << " " << state[i].velocity[1] << " "<< state[i].velocity[2] << endl;
 		f.push_back(total);		
 				//}	
 	 	     }
-	
+	cout << f.size() << endl;
 	return f;
 }
 
@@ -147,9 +171,8 @@ vector<Vector3f> ParticleSystem::evalF(vector<Vector3f> state)
 void ParticleSystem::draw()
 {
 	for (int i = 0; i < m_vVecState.size(); i++) {
-		cout << (m_vVecState.size()) << endl;
+		//cout << (m_vVecState.size()) << endl;
 		if (m_vVecState.size() > 0){
-			//Vector3f pos = m_vVecState[2*i];//  position of particle i. YOUR CODE HERE
 			Vector3f pos = m_vVecState[i].position;
 			glPushMatrix();
 			glTranslatef(pos[0], pos[1], pos[2] );
