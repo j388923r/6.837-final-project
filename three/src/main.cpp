@@ -339,7 +339,7 @@ int main( int argc, char* argv[] )
     glutDisplayFunc( drawScene );
 
     // Trigger timerFunc every 20 msec
-    glutTimerFunc(20, timerFunc, 20);
+    glutTimerFunc(100, timerFunc, 100);
 
         
     // Start the main loop.  glutMainLoop never returns.

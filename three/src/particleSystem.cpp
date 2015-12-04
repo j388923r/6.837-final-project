@@ -7,7 +7,7 @@ using namespace std;
 
 ParticleSystem::ParticleSystem(int numParticles)
 {
-	m_numParticles = numParticles;
+	m_numParticles = numParticles * numParticles * numParticles;
 	
 
 	//Vector3f fixedPoint = (0,0,0); 
@@ -16,25 +16,25 @@ ParticleSystem::ParticleSystem(int numParticles)
 	//m_vVecState.push_back(noMotion);
 	
 	// fill in code for initializing the state based on the number of particles
-	for (int i = 0; i < m_numParticles; i++) {
-		
-		Vector3f firstpos = (i,i,i); 
-		Vector3f firstspeed = (.5,.5,.5);
+	for (int i = 0; i < numParticles; ++i) {
+		for (int j = 0; j < numParticles; ++j) {
+			for (int k = 0; k < numParticles; ++k) {
+					Vector3f firstpos = Vector3f(i*1./1,j*1./1,k*1./1); 
+					Vector3f firstspeed = Vector3f(0.,0.,0.);
 
-		
-		//m_vVecState.push_back(firstpos);// for this system, we care about the position and the velocity
-		//m_vVecState.push_back(firstspeed);
+	
+					//m_vVecState.push_back(firstpos);// for this system, we care about the position and the velocity
+					//m_vVecState.push_back(firstspeed);
 
-		Particle new_particle(1); 
-		new_particle.position = firstpos;
-		new_particle.velocity = firstspeed;
+					Particle new_particle(1); 
+					new_particle.position = firstpos;
+					new_particle.velocity = firstspeed;
 
-		//cout << "New Particle: " << new_particle.position[0] << endl;
-		//fluid_particles.push_back(new_particle);
-		m_vVecState.push_back(new_particle);
-
-		
-
+					//cout << "New Particle: " << new_particle.position[0] << endl;
+					//fluid_particles.push_back(new_particle);
+					m_vVecState.push_back(new_particle);
+			}
+		}
 	}
 }
 
@@ -109,19 +109,28 @@ vector<Vector3f> ParticleSystem::spring (float k, float r, int ind1,int ind2, ve
 
 
 
-vector <Particle> getNeighbors(float h, vector<Particle> state, Particle p)
+vector <Particle> getNeighbors(ParticleSystem * particleSystem, Particle p)
 {
 
 	vector <Particle> neighbors;
-	Vector3f grid_location = Vector3f(p.position[0],p.position[1],p.position[2]);
+	short a = (short)p.position[0];
+	short b = (short)p.position[1];
+	short c = (short)p.position[2];
+	for ( short i = -1; i < 2; ++i) {
+		for ( short j = -1; j < 2; ++j) {
+			for ( short k = -1; k < 2; ++k) {
+				stringstream glStream;
+				glStream << a + i << b + j << c + k;
+				map<string, vector<Particle>>::iterator gridLocNeighbors = particleSystem->neighborMap.find(glStream.str());
+				if (gridLocNeighbors != particleSystem->neighborMap.end()) {
+					neighbors.insert(neighbors.end(), gridLocNeighbors->second.begin(), gridLocNeighbors->second.end());
+				} 
+			}
+		}
+	}
 	
-	//for (unsigned i = 0; i < state.size();++i){
 	
-		
-
-
-	//}
-	return state; 	
+	return neighbors;
 
 }
 
@@ -133,6 +142,7 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle> state)
 {
 	vector<Vector3f> f;
 
+	cout << "calling evalF" << endl;
 	// YOUR CODE HERE
 	/*vector<Vector3f> springs(state.size()/2.);
 	springs = spring(.7,.1,0,1,state,springs);
@@ -143,7 +153,7 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle> state)
 	stateClone = state;
 
 
-	float h = .01;
+	float h = 1.74;
 	/*for (unsigned i = 0; i < state.size();++i){
 		
 		Vector3f total = (0,0,0);
@@ -177,10 +187,12 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle> state)
 	//Vector3f gravity_force = (0, -9.8,0);
 
 	for (unsigned i = 0; i < state.size();++i){
-		for (unsigned j = 0; j < getNeighbors(h,state,state[i]).size();++j){
-			Vector3f r = state[i].position - getNeighbors(h,state,state[i])[j].position;
+		vector<Particle> neighbors = getNeighbors(this,state[i]);
+		cout << "neighbors" << neighbors.size() << endl;	
+		for (unsigned j = 0; j < neighbors.size();++j){
+			Vector3f r = state[i].position - neighbors[j].position;
 				float distance = r.abs();
-				if (h <= distance){
+				if (h > distance){
 
 					
 					float density_p = state[i].density;
@@ -208,6 +220,8 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle> state)
 		Vector3f gravity_force = Vector3f(0, -9.8,0);
 		//gravity_force.print();
 		
+		//f.push_back(Vector3f(0,0,0));
+		//f.push_back(Vector3f(0,0,0));  		
 		f.push_back(state[i].velocity);
 		f.push_back(state[i].pressure_force + state[i].viscocity_force+ gravity_force * state[i].mass);  		
 		

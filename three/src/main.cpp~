@@ -41,7 +41,7 @@ namespace
     //ParticleSystem *system1 = new ClothSystem(8);
    
     
-    system = new ParticleSystem(2);
+    system = new ParticleSystem(5);
     timeStepper = new Trapzoidal;		
   }
 
@@ -339,7 +339,7 @@ int main( int argc, char* argv[] )
     glutDisplayFunc( drawScene );
 
     // Trigger timerFunc every 20 msec
-    glutTimerFunc(20, timerFunc, 20);
+    glutTimerFunc(200, timerFunc, 200);
 
         
     // Start the main loop.  glutMainLoop never returns.
