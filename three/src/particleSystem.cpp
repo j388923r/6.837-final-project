@@ -7,7 +7,7 @@ using namespace std;
 
 ParticleSystem::ParticleSystem(int numParticles)
 {
-	m_numParticles = numParticles * numParticles * numParticles;
+	m_numParticles = 8 * numParticles * numParticles * numParticles;
 	
 
 	//Vector3f fixedPoint = (0,0,0); 
@@ -17,10 +17,10 @@ ParticleSystem::ParticleSystem(int numParticles)
 	
 	// fill in code for initializing the state based on the number of particles
 
-	for (int i = 0; i < numParticles; ++i) {
-		for (int j = 0; j < numParticles; ++j) {
-			for (int k = 0; k < numParticles; ++k) {
-					Vector3f firstpos = Vector3f(i*1./1,j*1./1,k*1./1); 
+	for (int i = 0; i < numParticles * 2; ++i) {
+		for (int j = 0; j < numParticles * 2; ++j) {
+			for (int k = 0; k < numParticles * 2; ++k) {
+					Vector3f firstpos = Vector3f(i*1./4,j*1./4,k*1./4); 
 					Vector3f firstspeed = Vector3f(0.,0.,0.);
 	
 					//m_vVecState.push_back(firstpos);// for this system, we care about the position and the velocity
@@ -143,7 +143,6 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle *> state)
 {
 	vector<Vector3f> f;
 
-	cout << "calling evalF" << endl;
 	// YOUR CODE HERE
 	/*vector<Vector3f> springs(state.size()/2.);
 	springs = spring(.7,.1,0,1,state,springs);
@@ -169,8 +168,8 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle *> state)
 
 
 	float rest_density = .2;	
-	float k  = 1.3*pow(10,-24);
-	float eta = 1;
+	float k  = 1.3;//*pow(10,-24);
+	float eta = 2;
 	//Vector3f gravity_force = (0, -9.8,0);
 
 	for (unsigned i = 0; i < state.size();++i){
@@ -197,6 +196,9 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle *> state)
 
 					//cout << state[j]->mass << " " << pressure_p + pressure_n << " " << spike << end;				
 					
+					
+
+					//cout << state[j]->mass << " " << Utils::WviscocityLaplacian(r.abs(),h) << endl;
 					state[i]->viscocity_force += eta*state[j]->mass*(state[j]->velocity-state[i]->velocity)/density_n * Utils::WviscocityLaplacian(r.abs(),h);
 
 					state[i]->color_field_gradient += state[j]->mass/density_n* Utils::Wpoly6Gradient(r.abs(), h);
@@ -216,14 +218,18 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle *> state)
 		} else{
 			state[i]->surface_tension_force = 0;
 		}
+		
+		//state[i] -> pressure_force.print();
+
 		//gravity_force.print();
 		//state
 		f.push_back(state[i]->velocity);
 		//cout << state[i]->pressure_force[1] << "  " << state[i]->viscocity_force[2] << endl;
 		//state[i]->pressure_force.print();
 		//gravity_force.print();
-		f.push_back(Vector3f(0, -.98 * state[i] -> mass, 0)+state[i]->pressure_force); //+ state[i]->surface_tension_force+state[i]->pressure_force);  
-		//f.push_back(state[i]->pressure_force + state[i]->viscocity_force+ gravity_force * state[i]->mass + state[i]->surface_tension_force);
+		
+		f.push_back(Vector3f(0, -.098 * state[i]->mass, 0)+state[i]->viscocity_force+state[i]->pressure_force); //
+		//f.push_back(state[i]->pressure_force + state[i]->viscocity_force+ gravity_force * state[i]->mass + state[i]->surface_tension_force);  
 				
 		
 	}
