@@ -1,5 +1,7 @@
 #include "particleSystem.h"
 #include <algorithm>
+#include <typeinfo>
+#include "Utils.h"
 
 using namespace std;
 
@@ -113,12 +115,13 @@ vector <Particle> getNeighbors(float h, vector<Particle> state, Particle p)
 	vector <Particle> neighbors;
 	Vector3f grid_location = Vector3f(p.position[0],p.position[1],p.position[2]);
 	
-	for (unsigned i = 0; i < state.size();++i){
+	//for (unsigned i = 0; i < state.size();++i){
 	
-		//if (
+		
 
 
-	} 	
+	//}
+	return state; 	
 
 }
 
@@ -140,7 +143,7 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle> state)
 	stateClone = state;
 
 
-	float smoothing_length;
+	float h = .01;
 	for (unsigned i = 0; i < state.size();++i){
 		
 		Vector3f total = (0,0,0);
@@ -154,8 +157,44 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle> state)
 		//cout << "Velocity: " << state[i].velocity[0] << " " << state[i].velocity[1] << " "<< state[i].velocity[2] << endl;
 		f.push_back(total);		
 				//}	
-	 	     }
-	cout << f.size() << endl;
+	}
+
+	//density update
+	/*
+	for (unsigned i = 0; i < state.size();++i){
+		for (unsigned j = 0; j < getNeighbors(i).size();++j){
+			Vector3f r = state[i].position - getNeighbors(i)[j].position;
+			if (h <= r.abs()){
+				state[i].density += state[j].mass * Utils::Wpoly6Laplacian(r, h);
+			}
+		}
+	}*/
+
+
+	float rest_density = .2;	
+	float k  = 1.3*pow(10,-24);
+
+	for (unsigned i = 0; i < state.size();++i){
+		for (unsigned j = 0; j < getNeighbors(h,state,state[i]).size();++j){
+			Vector3f r = state[i].position - getNeighbors(h,state,state[i])[j].position;
+				float distance = r.abs();
+				if (h <= distance){
+
+					
+					float density_p = state[i].density;
+					float density_n = state[j].density;
+
+					float pressure_p = k*(density_p - rest_density);
+					float pressure_n = k*(density_n - rest_density);
+
+					cout << "Type of R: " << typeid(r).name() << " value of R: " << r.abs() << endl;
+					//float spike = Utils::WspikyGradient(r.abs(),h);
+					state[i].pressure_force = state[j].mass *(pressure_p + pressure_n)/(2*density_n);//* spike;
+				}		
+		}
+	}
+
+
 	return f;
 }
 

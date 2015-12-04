@@ -43,7 +43,7 @@ public:
 	float color_field_gradient;
 	float color_field_laplacian;
 	Vector3f position;
-	Vector3f grid = Vector3f(floor(position[0]),floor(position[1]),floor(position[2]));
+	
 
 	Particle(float mass) {
 		mass = mass;
