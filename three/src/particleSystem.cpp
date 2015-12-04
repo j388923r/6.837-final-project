@@ -20,7 +20,7 @@ ParticleSystem::ParticleSystem(int numParticles)
 	for (int i = 0; i < numParticles * 2; ++i) {
 		for (int j = 0; j < numParticles * 2; ++j) {
 			for (int k = 0; k < numParticles * 2; ++k) {
-					Vector3f firstpos = Vector3f(i*1./4,j*1./4,k*1./4); 
+					Vector3f firstpos = Vector3f(i*1./4,j*1./4+3,k*1./4); 
 					Vector3f firstspeed = Vector3f(0.,0.,0.);
 	
 					//m_vVecState.push_back(firstpos);// for this system, we care about the position and the velocity
@@ -249,9 +249,53 @@ vector<Vector3f> ParticleSystem::evalF(vector<Vector3f> state)
 // render the system (ie draw the particles)
 void ParticleSystem::draw()
 {
+	/*for (int i = 0; i < m_vVecState.size(); i++) {
+		//cout << (m_vVecState.size()) << endl;
+		if (m_vVecState.size() > 0){
+			glColor3f(1,1,1);
+			Vector3f pos = m_vVecState[i]->position;
+			//pos.print();
+			glPushMatrix();
+			glTranslatef(pos[0], pos[1], pos[2] );
+			glutSolidSphere(0.075f,10.0f,10.0f);
+			glPopMatrix();
+
+			//glLineWidth(2.5);
+			//glColor3f(1.0, 0.0, 0.0);
+			//glBegin(GL_LINES);
+			//glVertex3f(pos2[0], pos2[2], pos2[2]);
+			//glVertex3f(pos[0], pos[1], pos[2]);
+			//glEnd();
+		}
+	}*/
+	
+	//cout << springCoords.size() << endl;
+	
+	//glColor3f(1,1,1);
+	//glutSolidSphere(1,10,10);
+
+
+	if (true){
+		glColor3f(1.0, 1.0, 1.0);
+		Vector3f locBall = Vector3f(1.0, 0, 0.0);
+		float radBall = 1.0;
+		float epsilon = 0.1;
+		glPushMatrix();
+		glTranslatef(locBall.x(), locBall.y(), locBall.z());
+		glutSolidSphere(radBall, 10.0, 10.0);
+		glPopMatrix();
+		glDisable(GL_COLOR_MATERIAL);
+		for (int i = 0; i < m_vVecState.size(); i++) {
+		    if ((m_vVecState[i]->position - locBall).abs() <= (radBall + epsilon)){
+			m_vVecState[i]->position = (locBall + (radBall + epsilon) * (m_vVecState[i]->position - locBall).normalized());			
+		    }
+		}
+	}
+	
 	for (int i = 0; i < m_vVecState.size(); i++) {
 		//cout << (m_vVecState.size()) << endl;
 		if (m_vVecState.size() > 0){
+			glColor3f(1,1,1);
 			Vector3f pos = m_vVecState[i]->position;
 			//pos.print();
 			glPushMatrix();
@@ -267,22 +311,6 @@ void ParticleSystem::draw()
 			//glEnd();
 		}
 	}
-	
-	//cout << springCoords.size() << endl;
-	/*for (int i=0; i < springCoords.size();i++)
-	{
-		glLineWidth(2.5);
-		glColor3f(1.0, 1.0, 1.0);
-		int ind1 = springCoords[i][0];
-		int ind2 = springCoords[i][1];
-		Vector3f pos1 = m_vVecState[2*ind1];
-		Vector3f pos2 = m_vVecState[2*ind2];
-		glBegin(GL_LINES);
-		glVertex3f(pos2[0], pos2[1], pos2[2]);
-		glVertex3f(pos1[0], pos1[1], pos1[2]);
-		glEnd();
-	}*/
-
 }
 
 
