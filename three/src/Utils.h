@@ -42,9 +42,10 @@ public:
 	float color_field_laplacian;
 	Vector3f position;
 
-	Particle(float mass) {
+	Particle(float mass, Vector3f pos) {
 		mass = mass;
-		density = 0;
+		density = 0;\
+		position = pos;
 	}
 	
 	void addToDensity(float deltaDensity) {
@@ -55,6 +56,10 @@ public:
 
 	Vector3f getPosition() {
 		return position;
+	}
+
+	Vector3f move(Vector3f delta) {
+		position = position + delta;
 	}
 };
 
