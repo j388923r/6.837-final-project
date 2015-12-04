@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three
+CMAKE_SOURCE_DIR = /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build
+CMAKE_BINARY_DIR = /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build
 
 # Include any dependencies generated for this target.
 include src/CMakeFiles/a3.dir/depend.make
@@ -54,17 +54,17 @@ include src/CMakeFiles/a3.dir/flags.make
 
 src/CMakeFiles/a3.dir/TimeStepper.cpp.o: src/CMakeFiles/a3.dir/flags.make
 src/CMakeFiles/a3.dir/TimeStepper.cpp.o: ../src/TimeStepper.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/a3.dir/TimeStepper.cpp.o"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/a3.dir/TimeStepper.cpp.o -c /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/src/TimeStepper.cpp
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/a3.dir/TimeStepper.cpp.o -c /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/TimeStepper.cpp
 
 src/CMakeFiles/a3.dir/TimeStepper.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/a3.dir/TimeStepper.cpp.i"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/src/TimeStepper.cpp > CMakeFiles/a3.dir/TimeStepper.cpp.i
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/TimeStepper.cpp > CMakeFiles/a3.dir/TimeStepper.cpp.i
 
 src/CMakeFiles/a3.dir/TimeStepper.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/a3.dir/TimeStepper.cpp.s"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/src/TimeStepper.cpp -o CMakeFiles/a3.dir/TimeStepper.cpp.s
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/TimeStepper.cpp -o CMakeFiles/a3.dir/TimeStepper.cpp.s
 
 src/CMakeFiles/a3.dir/TimeStepper.cpp.o.requires:
 .PHONY : src/CMakeFiles/a3.dir/TimeStepper.cpp.o.requires
@@ -77,17 +77,17 @@ src/CMakeFiles/a3.dir/TimeStepper.cpp.o.provides.build: src/CMakeFiles/a3.dir/Ti
 
 src/CMakeFiles/a3.dir/camera.cpp.o: src/CMakeFiles/a3.dir/flags.make
 src/CMakeFiles/a3.dir/camera.cpp.o: ../src/camera.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/a3.dir/camera.cpp.o"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/a3.dir/camera.cpp.o -c /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/src/camera.cpp
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/a3.dir/camera.cpp.o -c /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/camera.cpp
 
 src/CMakeFiles/a3.dir/camera.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/a3.dir/camera.cpp.i"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/src/camera.cpp > CMakeFiles/a3.dir/camera.cpp.i
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/camera.cpp > CMakeFiles/a3.dir/camera.cpp.i
 
 src/CMakeFiles/a3.dir/camera.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/a3.dir/camera.cpp.s"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/src/camera.cpp -o CMakeFiles/a3.dir/camera.cpp.s
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/camera.cpp -o CMakeFiles/a3.dir/camera.cpp.s
 
 src/CMakeFiles/a3.dir/camera.cpp.o.requires:
 .PHONY : src/CMakeFiles/a3.dir/camera.cpp.o.requires
@@ -100,17 +100,17 @@ src/CMakeFiles/a3.dir/camera.cpp.o.provides.build: src/CMakeFiles/a3.dir/camera.
 
 src/CMakeFiles/a3.dir/main.cpp.o: src/CMakeFiles/a3.dir/flags.make
 src/CMakeFiles/a3.dir/main.cpp.o: ../src/main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/a3.dir/main.cpp.o"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/a3.dir/main.cpp.o -c /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/src/main.cpp
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/a3.dir/main.cpp.o -c /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/main.cpp
 
 src/CMakeFiles/a3.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/a3.dir/main.cpp.i"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/src/main.cpp > CMakeFiles/a3.dir/main.cpp.i
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/main.cpp > CMakeFiles/a3.dir/main.cpp.i
 
 src/CMakeFiles/a3.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/a3.dir/main.cpp.s"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/src/main.cpp -o CMakeFiles/a3.dir/main.cpp.s
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/main.cpp -o CMakeFiles/a3.dir/main.cpp.s
 
 src/CMakeFiles/a3.dir/main.cpp.o.requires:
 .PHONY : src/CMakeFiles/a3.dir/main.cpp.o.requires
@@ -123,17 +123,17 @@ src/CMakeFiles/a3.dir/main.cpp.o.provides.build: src/CMakeFiles/a3.dir/main.cpp.
 
 src/CMakeFiles/a3.dir/particleSystem.cpp.o: src/CMakeFiles/a3.dir/flags.make
 src/CMakeFiles/a3.dir/particleSystem.cpp.o: ../src/particleSystem.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/a3.dir/particleSystem.cpp.o"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/a3.dir/particleSystem.cpp.o -c /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/src/particleSystem.cpp
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/a3.dir/particleSystem.cpp.o -c /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/particleSystem.cpp
 
 src/CMakeFiles/a3.dir/particleSystem.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/a3.dir/particleSystem.cpp.i"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/src/particleSystem.cpp > CMakeFiles/a3.dir/particleSystem.cpp.i
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/particleSystem.cpp > CMakeFiles/a3.dir/particleSystem.cpp.i
 
 src/CMakeFiles/a3.dir/particleSystem.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/a3.dir/particleSystem.cpp.s"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/src/particleSystem.cpp -o CMakeFiles/a3.dir/particleSystem.cpp.s
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/particleSystem.cpp -o CMakeFiles/a3.dir/particleSystem.cpp.s
 
 src/CMakeFiles/a3.dir/particleSystem.cpp.o.requires:
 .PHONY : src/CMakeFiles/a3.dir/particleSystem.cpp.o.requires
@@ -146,17 +146,17 @@ src/CMakeFiles/a3.dir/particleSystem.cpp.o.provides.build: src/CMakeFiles/a3.dir
 
 src/CMakeFiles/a3.dir/Utils.cpp.o: src/CMakeFiles/a3.dir/flags.make
 src/CMakeFiles/a3.dir/Utils.cpp.o: ../src/Utils.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/a3.dir/Utils.cpp.o"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/a3.dir/Utils.cpp.o -c /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/src/Utils.cpp
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/a3.dir/Utils.cpp.o -c /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/Utils.cpp
 
 src/CMakeFiles/a3.dir/Utils.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/a3.dir/Utils.cpp.i"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/src/Utils.cpp > CMakeFiles/a3.dir/Utils.cpp.i
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/Utils.cpp > CMakeFiles/a3.dir/Utils.cpp.i
 
 src/CMakeFiles/a3.dir/Utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/a3.dir/Utils.cpp.s"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/src/Utils.cpp -o CMakeFiles/a3.dir/Utils.cpp.s
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/Utils.cpp -o CMakeFiles/a3.dir/Utils.cpp.s
 
 src/CMakeFiles/a3.dir/Utils.cpp.o.requires:
 .PHONY : src/CMakeFiles/a3.dir/Utils.cpp.o.requires
@@ -196,7 +196,7 @@ src/a3: /usr/lib/x86_64-linux-gnu/libXmu.so
 src/a3: /usr/lib/x86_64-linux-gnu/libXi.so
 src/a3: src/CMakeFiles/a3.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable a3"
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/a3.dir/link.txt --verbose=$(VERBOSE)
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/a3.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/CMakeFiles/a3.dir/build: src/a3
@@ -210,10 +210,10 @@ src/CMakeFiles/a3.dir/requires: src/CMakeFiles/a3.dir/Utils.cpp.o.requires
 .PHONY : src/CMakeFiles/a3.dir/requires
 
 src/CMakeFiles/a3.dir/clean:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/src && $(CMAKE_COMMAND) -P CMakeFiles/a3.dir/cmake_clean.cmake
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && $(CMAKE_COMMAND) -P CMakeFiles/a3.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/a3.dir/clean
 
 src/CMakeFiles/a3.dir/depend:
-	cd /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/src /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/src /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/build/src/CMakeFiles/a3.dir/DependInfo.cmake --color=$(COLOR)
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src/CMakeFiles/a3.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/CMakeFiles/a3.dir/depend
 
