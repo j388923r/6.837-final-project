@@ -36,7 +36,7 @@ particleSystem->setState(fin);
 
 
 
-///TODO: implement Trapzoidal rule here
+///this is actually an RK4 integrator that we have made
 void Trapzoidal::takeStep(ParticleSystem* particleSystem, float stepSize)
 {
 float h = stepSize;
@@ -125,6 +125,25 @@ vector<Vector3f> f3 = particleSystem->evalF(state3);
 
 		fin.push_back(p2);
 	}
+
+particleSystem->neighborMap = map<string, vector<Particle>>();
+
+// SPEED UP POSSIBLE
+
+for (unsigned j = 0; j < particleSystem->m_numParticles ; ++j){
+	string a = fin[j].getGridLoc();
+	map<string, vector<Particle>>::iterator gridLocNeighbors = particleSystem->neighborMap.find(a);
+	if (gridLocNeighbors != particleSystem->neighborMap.end()) {
+		gridLocNeighbors->second.push_back(fin[j]);
+	} else {
+		vector<Particle> tempvector;
+		tempvector.push_back(fin[j]);
+		cout << a << 1 << endl;
+		particleSystem->neighborMap.insert(pair<string, vector<Particle>>(a, tempvector));
+	}
+}
+
+// particleSystem->neighborMap.find("222") -> second[0].velocity.print();
 
 particleSystem->setState(fin);
 

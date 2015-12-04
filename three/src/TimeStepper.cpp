@@ -126,6 +126,24 @@ vector<Vector3f> f3 = particleSystem->evalF(state3);
 		fin.push_back(p2);
 	}
 
+particleSystem->neighborMap = map<string, vector<Particle>>();
+
+// SPEED UP POSSIBLE
+
+for (unsigned j = 0; j < particleSystem->m_numParticles ; ++j){
+	string a = fin[j].getGridLoc();
+	map<string, vector<Particle>>::iterator gridLocNeighbors = particleSystem->neighborMap.find(a);
+	if (gridLocNeighbors != particleSystem->neighborMap.end()) {
+		gridLocNeighbors->second.push_back(fin[j]);
+	} else {
+		vector<Particle> tempvector;
+		tempvector.push_back(fin[j]);
+		particleSystem->neighborMap.insert(pair<string, vector<Particle>>(a, tempvector));
+	}
+}
+
+// particleSystem->neighborMap.find("222") -> second[0].velocity.print();
+
 particleSystem->setState(fin);
 
 

@@ -55,6 +55,8 @@ vecmath.h
 -
 stdio.h
 -
+iostream
+-
 
 /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/src/extra.h
 windows.h

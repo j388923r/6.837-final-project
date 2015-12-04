@@ -144,7 +144,7 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle> state)
 
 
 	float h = .01;
-	for (unsigned i = 0; i < state.size();++i){
+	/*for (unsigned i = 0; i < state.size();++i){
 		
 		Vector3f total = (0,0,0);
 		total = total+gravitywater(.06);
@@ -157,7 +157,7 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle> state)
 		//cout << "Velocity: " << state[i].velocity[0] << " " << state[i].velocity[1] << " "<< state[i].velocity[2] << endl;
 		f.push_back(total);		
 				//}	
-	}
+	}*/
 
 	//density update
 	/*
@@ -173,6 +173,8 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle> state)
 
 	float rest_density = .2;	
 	float k  = 1.3*pow(10,-24);
+	float eta = 1;
+	//Vector3f gravity_force = (0, -9.8,0);
 
 	for (unsigned i = 0; i < state.size();++i){
 		for (unsigned j = 0; j < getNeighbors(h,state,state[i]).size();++j){
@@ -187,11 +189,28 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle> state)
 					float pressure_p = k*(density_p - rest_density);
 					float pressure_n = k*(density_n - rest_density);
 
-					cout << "Type of R: " << typeid(r).name() << " value of R: " << r.abs() << endl;
-					//float spike = Utils::WspikyGradient(r.abs(),h);
-					state[i].pressure_force = state[j].mass *(pressure_p + pressure_n)/(2*density_n);//* spike;
+					//cout << "Type of R: " << typeid(r).name() << " value of R: " << r.abs() << endl;
+					float spike = Utils::WspikyGradient(r.abs(),h);
+					state[i].pressure_force += state[j].mass *(pressure_p + pressure_n)/(2*density_n)* spike;
+					
+					state[i].viscocity_force += eta*state[j].mass*(state[j].velocity-state[i].velocity)/density_n * Utils::WviscocityLaplacian(r.abs(),h);
+
+					state[i].color_field_gradient += state[j].mass/density_n* Utils::Wpoly6Gradient(r.abs(), h);
+
+					state[i].color_field_laplacian += state[j].mass/density_n* Utils::WviscocityLaplacian(r.abs(), h);
+
+					 
+
+					
 				}		
 		}
+
+		Vector3f gravity_force = Vector3f(0, -9.8,0);
+		//gravity_force.print();
+		
+		f.push_back(state[i].velocity);
+		f.push_back(state[i].pressure_force + state[i].viscocity_force+ gravity_force * state[i].mass);  		
+		
 	}
 
 
@@ -213,6 +232,7 @@ void ParticleSystem::draw()
 		//cout << (m_vVecState.size()) << endl;
 		if (m_vVecState.size() > 0){
 			Vector3f pos = m_vVecState[i].position;
+			//pos.print();
 			glPushMatrix();
 			glTranslatef(pos[0], pos[1], pos[2] );
 			glutSolidSphere(0.075f,10.0f,10.0f);
