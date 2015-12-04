@@ -147,7 +147,7 @@ void PendulumSystem::draw()
 			//glBegin(GL_LINES);
 			//glVertex3f(pos2[0], pos2[2], pos2[2]);
 			//glVertex3f(pos[0], pos[1], pos[2]);
-			//glEnd();
+			glEnd();
 		}
 	}
 	

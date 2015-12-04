@@ -5,6 +5,8 @@
 #include <math.h>
 #include <cmath>
 #include <vecmath.h>
+#include <stdio.h>     
+
 
 using namespace std;
 
@@ -41,6 +43,7 @@ public:
 	float color_field_gradient;
 	float color_field_laplacian;
 	Vector3f position;
+	
 
 	Particle(float mass) {
 		mass = mass;
