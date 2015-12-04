@@ -40,9 +40,10 @@ public:
 	float density;
 	Vector3f pressure_force;
 	Vector3f viscocity_force;
-	float color_field_gradient;
-	float color_field_laplacian;
+	float color_field_gradient = 1 ;
+	float color_field_laplacian = 1;
 	Vector3f position;
+	float surface_tension_force;
 	
 
 	Particle(float mass) {

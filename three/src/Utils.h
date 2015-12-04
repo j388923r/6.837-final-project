@@ -43,6 +43,7 @@ public:
 	float color_field_gradient = 1 ;
 	float color_field_laplacian = 1;
 	Vector3f position;
+	float surface_tension_force;
 	
 
 	Particle(float mass) {
