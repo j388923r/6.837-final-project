@@ -107,11 +107,11 @@ vector<Vector3f> ParticleSystem::spring (float k, float r, int ind1,int ind2, ve
 
 
 
-vector <Particle> ParticleSystem::getNeighbors(float h, vector<Particle> state, Particle p)
+vector <Particle> getNeighbors(float h, vector<Particle> state, Particle p)
 {
 
 	vector <Particle> neighbors;
-	Vector3f grid_location = Vector3f(p.location[0],p.location[1],p.location[2]);
+	Vector3f grid_location = Vector3f(p.position[0],p.position[1],p.position[2]);
 	
 	for (unsigned i = 0; i < state.size();++i){
 	
