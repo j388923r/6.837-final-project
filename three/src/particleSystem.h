@@ -22,6 +22,8 @@ public:
 	vector<Vector3f> evalF(vector<Particle *> state);
 	
 	void draw();
+
+	void draw2();
 	
 	vector<Vector3f> springList;
 	

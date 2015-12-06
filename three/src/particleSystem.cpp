@@ -228,7 +228,7 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle *> state)
 		//state[i]->pressure_force.print();
 		//gravity_force.print();
 		
-		f.push_back(Vector3f(0, -.098 * state[i]->mass, 0)+state[i]->viscocity_force+state[i]->pressure_force); //
+		f.push_back(Vector3f(0, -.098 *  state[i]->mass, 0)+state[i]->viscocity_force+state[i]->pressure_force); //
 		//f.push_back(state[i]->pressure_force + state[i]->viscocity_force+ gravity_force * state[i]->mass + state[i]->surface_tension_force);  
 				
 		
@@ -273,29 +273,39 @@ void ParticleSystem::draw()
 	
 	//glColor3f(1,1,1);
 	//glutSolidSphere(1,10,10);
-
+	GLfloat ballColor[] = {0.6f, 0.7f, 1.0f, 0.5f};
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, ballColor);
 
 	if (true){
-		glColor3f(1.0, 1.0, 1.0);
+		
 		Vector3f locBall = Vector3f(1.0, 0, 0.0);
 		float radBall = 1.0;
 		float epsilon = 0.1;
+		glEnable (GL_BLEND);
+		glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		GLfloat ballColor[] = {0.9f, 0.1f, 1.0f, 0.5f};
+		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, ballColor);
 		glPushMatrix();
 		glTranslatef(locBall.x(), locBall.y(), locBall.z());
 		glutSolidSphere(radBall, 10.0, 10.0);
 		glPopMatrix();
-		glDisable(GL_COLOR_MATERIAL);
+		glColor3f(0.0, 1.0, 0.0);
 		for (int i = 0; i < m_vVecState.size(); i++) {
 		    if ((m_vVecState[i]->position - locBall).abs() <= (radBall + epsilon)){
 			m_vVecState[i]->position = (locBall + (radBall + epsilon) * (m_vVecState[i]->position - locBall).normalized());			
 		    }
 		}
 	}
-	
+}
+
+void ParticleSystem::draw2(){	
 	for (int i = 0; i < m_vVecState.size(); i++) {
 		//cout << (m_vVecState.size()) << endl;
 		if (m_vVecState.size() > 0){
-			glColor3f(1,1,1);
+			//glColor3f(1,1,1);
+			//glBlendFunc (1.0, 0.0);
+			GLfloat ballColor[] = {0.6f, 0.7f, 1.0f, 0.5f};
+			glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, ballColor);
 			Vector3f pos = m_vVecState[i]->position;
 			//pos.print();
 			glPushMatrix();
@@ -303,12 +313,7 @@ void ParticleSystem::draw()
 			glutSolidSphere(0.075f,10.0f,10.0f);
 			glPopMatrix();
 
-			//glLineWidth(2.5);
-			//glColor3f(1.0, 0.0, 0.0);
-			//glBegin(GL_LINES);
-			//glVertex3f(pos2[0], pos2[2], pos2[2]);
-			//glVertex3f(pos[0], pos[1], pos[2]);
-			//glEnd();
+			
 		}
 	}
 }
