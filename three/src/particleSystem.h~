@@ -6,6 +6,7 @@
 #include "extra.h"
 #include <iostream> 
 #include <ostream>
+#include <sstream>
 #include "Utils.h"
 #include <map>
 
@@ -36,13 +37,9 @@ public:
 
 	//vector<Vector3f> evalF(vector<Vector3f> state);
 		
-<<<<<<< HEAD
-	std::map<string, vector<Particle>> neighborMap;		
-=======
 	std::map<string, vector<Particle *>> neighborMap;		
->>>>>>> d3bdf2eef1cdacc1927c4ae1cdec35947996de97
 	// getter method for the system's state
-	vector<Particle> getState(){ return m_vVecState; };
+	vector<Particle *> getState(){ return m_vVecState; };
 	
 	// setter method for the system's state
 	void setState(const vector<Particle *>  & newState) { m_vVecState = newState; };
@@ -51,6 +48,7 @@ protected:
 
 	vector<Particle *> m_vVecState;
 	
+	float stretcher = 4.0f;
 };
 
 #endif

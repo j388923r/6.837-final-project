@@ -1,8 +1,8 @@
-# Install script for directory: /afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/vecmath
+# Install script for directory: /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/vecmath
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  SET(CMAKE_INSTALL_PREFIX "/afs/athena.mit.edu/user/p/h/phillipf/Desktop/6.837-final-project/three/inst")
+  SET(CMAKE_INSTALL_PREFIX "/afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/inst")
 ENDIF(NOT DEFINED CMAKE_INSTALL_PREFIX)
 STRING(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

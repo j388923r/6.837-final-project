@@ -67,7 +67,7 @@ public:
 	}
 
 	string getGridLoc() {
-		return to_string((int)(position[0])) + to_string((int)floor(position[1])) + to_string((int)floor(position[2]));
+		return to_string((short)(position[0] * 16.0f)) + to_string((short)floor(position[1] * 16.0f)) + to_string((short)floor(position[2] * 16.0f));
 	}
 
 	void clearForces() {

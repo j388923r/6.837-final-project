@@ -67,13 +67,14 @@ public:
 	}
 
 	string getGridLoc() {
-		return to_string((int)(position[0])) + to_string((int)floor(position[1])) + to_string((int)floor(position[2]));
+		return to_string((short)(position[0] * 4.0f)) + to_string((short)floor(position[1] * 4.0f)) + to_string((short)floor(position[2] * 4.0f));
 	}
 
 	void clearForces() {
 		pressure_force = Vector3f(0, 0, 0);
 		viscocity_force = Vector3f(0, 0, 0);
-		color_field_gradient = color_field_laplacian = surface_tension_force = density = 0;
+		color_field_gradient = color_field_laplacian = surface_tension_force = 0;
+		density = 1;
 	}
 };
 
