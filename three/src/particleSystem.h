@@ -4,8 +4,7 @@
 #include <vector>
 #include <vecmath.h>
 #include "extra.h"
-#include <iostream> 
-#include <ostream>
+#include <iostream>
 #include <sstream>
 #include "Utils.h"
 #include <map>
@@ -15,9 +14,9 @@ using namespace std;
 class ParticleSystem
 {
 public:
-	ParticleSystem(int numParticles);
+	ParticleSystem(short numParticles);
 
-	int m_numParticles;
+	short m_numParticles;
 	
 	vector<Vector3f> evalF(vector<Particle *> state);
 	

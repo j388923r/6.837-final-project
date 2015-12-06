@@ -49,7 +49,7 @@ vector<Particle *> state2;
 vector<Particle *> state3;
 vector<Particle *> fin;
 
-for (unsigned i = 0; i < particleSystem->m_numParticles ; ++i){
+for (short i = particleSystem->m_numParticles - 1; i >= 0; --i){
 
 	//cout << "State size: " << state.size() << endl;
 	//cout << "Derivative size: " << f0.size() << endl;
@@ -75,7 +75,7 @@ for (unsigned i = 0; i < particleSystem->m_numParticles ; ++i){
 vector<Vector3f> f1 = particleSystem->evalF(state1);
 
 
-	for (unsigned j = 0; j < particleSystem->m_numParticles ; ++j){
+	for (short j = particleSystem->m_numParticles - 1; j >= 0; --j){
 
 		//Vector3f newVec1 = state[j]->position+(h/2.)*(f0[2*j+1]+f1[2*j+1]);
 		Vector3f newVec1 = state[j]->position+(h/2.)*f1[2*j];
@@ -94,7 +94,7 @@ vector<Vector3f> f1 = particleSystem->evalF(state1);
 vector<Vector3f> f2 = particleSystem->evalF(state2);
 
 
-	for (unsigned j = 0; j < particleSystem->m_numParticles ; ++j){
+	for (short j = particleSystem->m_numParticles - 1; j >= 0; --j){
 
 		//Vector3f newVec1 = state[j]->position+(h/2.)*(f0[2*j+1]+f1[2*j+1]);
 		Vector3f newVec1 = state[j]->position+(h)*f2[2*j];
@@ -113,11 +113,11 @@ vector<Vector3f> f2 = particleSystem->evalF(state2);
 vector<Vector3f> f3 = particleSystem->evalF(state3);
 
 
-	for (unsigned j = 0; j < particleSystem->m_numParticles ; ++j){
+	for (short j = particleSystem->m_numParticles; j >= 0; --j){
 
 		Vector3f newVec1 = state[j]->position+(h/6.)*(f0[2*j]+2*f1[2*j]+2*f2[2*j]+f3[2*j]);
 		Particle * p2 = new Particle(state[j]->mass);
-		p2->position = newVec1;
+		p2->setPosition(newVec1);
 		p2->velocity = state[j]->velocity+(h/6.)*(f0[2*j+1]+2*f1[2*j+1]+2*f2[2*j+1]+f3[2*j+1]);;
 		p2->density = state[j]->density;
 		p2->pressure_force = state[j]->pressure_force;
@@ -132,7 +132,7 @@ particleSystem->neighborMap = map<string, vector<Particle *>>();
 
 // SPEED UP POSSIBLE
 
-for (unsigned j = 0; j < particleSystem->m_numParticles ; ++j){
+for (short j = particleSystem->m_numParticles - 1; j >= 0; --j){
 	string a = fin[j]->getGridLoc();
 	map<string, vector<Particle *>>::iterator gridLocNeighbors = particleSystem->neighborMap.find(a);
 	if (gridLocNeighbors != particleSystem->neighborMap.end()) {
@@ -144,7 +144,7 @@ for (unsigned j = 0; j < particleSystem->m_numParticles ; ++j){
 	}
 }
 
-cd << "Speed Test" << endl;
+cout << "Speed Test" << endl;
 
 // particleSystem->neighborMap.find("222") -> second[0].velocity.print();
 

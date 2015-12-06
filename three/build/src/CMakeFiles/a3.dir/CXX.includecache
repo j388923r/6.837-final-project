@@ -47,8 +47,6 @@ Vector4f.h
 ../vecmath/include/Vector4f.h
 
 /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/Utils.h
-math.h
--
 cmath
 -
 vecmath.h
@@ -56,6 +54,8 @@ vecmath.h
 stdio.h
 -
 iostream
+-
+sstream
 -
 
 /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/extra.h
@@ -86,8 +86,6 @@ vecmath.h
 extra.h
 /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/extra.h
 iostream
--
-ostream
 -
 sstream
 -
