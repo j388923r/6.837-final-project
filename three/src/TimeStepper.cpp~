@@ -134,7 +134,6 @@ particleSystem->neighborMap = map<string, vector<Particle *>>();
 
 for (unsigned j = 0; j < particleSystem->m_numParticles ; ++j){
 	string a = fin[j]->getGridLoc();
-	cout << a << endl;
 	map<string, vector<Particle *>>::iterator gridLocNeighbors = particleSystem->neighborMap.find(a);
 	if (gridLocNeighbors != particleSystem->neighborMap.end()) {
 		gridLocNeighbors->second.push_back(fin[j]);
@@ -144,6 +143,8 @@ for (unsigned j = 0; j < particleSystem->m_numParticles ; ++j){
 		particleSystem->neighborMap.insert(pair<string, vector<Particle *>>(a, tempvector));
 	}
 }
+
+cd << "Speed Test" << endl;
 
 // particleSystem->neighborMap.find("222") -> second[0].velocity.print();
 

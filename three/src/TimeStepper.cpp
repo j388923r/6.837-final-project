@@ -144,6 +144,8 @@ for (unsigned j = 0; j < particleSystem->m_numParticles ; ++j){
 	}
 }
 
+cout << "Speed Test" << endl;
+
 // particleSystem->neighborMap.find("222") -> second[0].velocity.print();
 
 particleSystem->setState(fin);
