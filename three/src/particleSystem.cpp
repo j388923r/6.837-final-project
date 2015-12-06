@@ -5,11 +5,13 @@
 
 using namespace std;
 
+float stretcher = 16.0f;
+
 ParticleSystem::ParticleSystem(int numParticles)
 {
 	m_numParticles = 8 * numParticles * numParticles * numParticles;
 	
-
+	cout << numParticles << endl;
 	//Vector3f fixedPoint = (0,0,0); 
 	//Vector3f noMotion = (0,0,0);
 	//m_vVecState.push_back(fixedPoint);// for this system, we care about the position and the velocity
@@ -20,9 +22,9 @@ ParticleSystem::ParticleSystem(int numParticles)
 	for (int i = 0; i < numParticles * 2; ++i) {
 		for (int j = 0; j < numParticles * 2; ++j) {
 			for (int k = 0; k < numParticles * 2; ++k) {
-					Vector3f firstpos = Vector3f(i*1./4,j*1./4+3,k*1./4); 
+					Vector3f firstpos = Vector3f(i/stretcher,j/stretcher+3,k/stretcher-1); 
 					Vector3f firstspeed = Vector3f(0.,0.,0.);
-	
+					//firstpos.print();
 					//m_vVecState.push_back(firstpos);// for this system, we care about the position and the velocity
 					//m_vVecState.push_back(firstspeed);
 
@@ -112,19 +114,19 @@ vector <Particle *> getNeighbors(ParticleSystem * particleSystem, Particle * p)
 {
 
 	vector <Particle *> neighbors;
-	short a = (short)p->position[0];
-	short b = (short)p->position[1];
-	short c = (short)p->position[2];
+	//cout << "Neighbors " << p -> getGridLoc() << endl;
+	short a = (short)(p->position[0]*stretcher);
+	short b = (short)(p->position[1]*stretcher);
+	short c = (short)(p->position[2]*stretcher);
 	for ( short i = -1; i < 2; ++i) {
 		for ( short j = -1; j < 2; ++j) {
 			for ( short k = -1; k < 2; ++k) {
-				if (i != 0 && j != 0 && k != 0) {
-					stringstream glStream;
-					glStream << a + i << b + j << c + k;
-					map<string, vector<Particle *>>::iterator gridLocNeighbors = particleSystem->neighborMap.find(glStream.str());
-					if (gridLocNeighbors != particleSystem->neighborMap.end()) {
-						neighbors.insert(neighbors.end(), gridLocNeighbors->second.begin(), gridLocNeighbors->second.end());
-					}
+				stringstream glStream;
+				glStream << a + i << b + j << c + k;
+				//cout << glStream.str() << endl;
+				map<string, vector<Particle *>>::iterator gridLocNeighbors = particleSystem->neighborMap.find(glStream.str());
+				if (gridLocNeighbors != particleSystem->neighborMap.end()) {
+					neighbors.insert(neighbors.end(), gridLocNeighbors->second.begin(), gridLocNeighbors->second.end());
 				}
 			}
 		}
@@ -142,7 +144,7 @@ vector <Particle *> getNeighbors(ParticleSystem * particleSystem, Particle * p)
 vector<Vector3f> ParticleSystem::evalF(vector<Particle *> state)
 {
 	vector<Vector3f> f;
-
+	//cout << "calling evalF" << endl;
 	// YOUR CODE HERE
 	/*vector<Vector3f> springs(state.size()/2.);
 	springs = spring(.7,.1,0,1,state,springs);
@@ -168,17 +170,19 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle *> state)
 
 
 	float rest_density = .2;	
-	float k  = 1.3;//*pow(10,-24);
+	float k  = 1.3*pow(10, -1);//*pow(10,-24);
 	float eta = 2;
 	//Vector3f gravity_force = (0, -9.8,0);
 
 	for (unsigned i = 0; i < state.size();++i){
 		vector<Particle *> neighbors = getNeighbors(this, state[i]);
+		// cout << neighbors.size() << endl;
 		for (unsigned j = 0; j < neighbors.size();++j){
 			state[i]->clearForces();
 			Vector3f r = state[i]->position - neighbors[j]->position;
 				float distance = r.abs();
-				if (h > distance){
+				// cout << distance << endl;
+				if (h > distance && distance > 0.01){
 
 					//cout << " H is less of course." << endl;
 					float density_p = state[i]->density;
@@ -192,13 +196,16 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle *> state)
 
 					state[i]->pressure_force += state[j]->mass *(pressure_p + pressure_n)/(2*density_n)* spike;
 								
-					//state[i]->pressure_force.print();
+					// state[i]->pressure_force.print();
 
 					//cout << state[j]->mass << " " << pressure_p + pressure_n << " " << spike << end;				
 					
 					
 
 					//cout << state[j]->mass << " " << Utils::WviscocityLaplacian(r.abs(),h) << endl;
+					if(j == 0) {
+						// (eta*state[j]->mass*(state[j]->velocity-state[i]->velocity)/density_n).print();
+					}
 					state[i]->viscocity_force += eta*state[j]->mass*(state[j]->velocity-state[i]->velocity)/density_n * Utils::WviscocityLaplacian(r.abs(),h);
 
 					state[i]->color_field_gradient += state[j]->mass/density_n* Utils::Wpoly6Gradient(r.abs(), h);
@@ -219,16 +226,15 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle *> state)
 			state[i]->surface_tension_force = 0;
 		}
 		
-		//state[i] -> pressure_force.print();
 
-		//gravity_force.print();
+		//state[i]->viscocity_force.print();
 		//state
 		f.push_back(state[i]->velocity);
 		//cout << state[i]->pressure_force[1] << "  " << state[i]->viscocity_force[2] << endl;
 		//state[i]->pressure_force.print();
 		//gravity_force.print();
-		
-		f.push_back(Vector3f(0, -.098 *  state[i]->mass, 0)+state[i]->viscocity_force+state[i]->pressure_force); //
+		//(state[i]->viscocity_force+state[i]->pressure_force).print();
+		f.push_back(Vector3f(0, -.294 * state[i]->mass, 0)+state[i]->viscocity_force+state[i]->pressure_force); //Vector3f(0, -.098 * state[i]->mass, 0)+
 		//f.push_back(state[i]->pressure_force + state[i]->viscocity_force+ gravity_force * state[i]->mass + state[i]->surface_tension_force);  
 				
 		
@@ -277,7 +283,6 @@ void ParticleSystem::draw()
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, ballColor);
 
 	if (true){
-		
 		Vector3f locBall = Vector3f(1.0, 0, 0.0);
 		float radBall = 1.0;
 		float epsilon = 0.1;
@@ -308,6 +313,7 @@ void ParticleSystem::draw2(){
 			GLfloat ballColor[] = {0.6f, 0.7f, 1.0f, 0.5f};
 			glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, ballColor);
 			Vector3f pos = m_vVecState[i]->position;
+			// cout << "Position" << pos[0] << pos[1] << pos[2] << endl;
 			//pos.print();
 			glPushMatrix();
 			glTranslatef(pos[0], pos[1], pos[2] );

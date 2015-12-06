@@ -56,7 +56,7 @@ for (unsigned i = 0; i < particleSystem->m_numParticles ; ++i){
 
 	//Vector3f newVec = state[i].position+h*f0[2*i+1];
 //cout << "f0-" << endl;
-	f0[2*i+1].print();
+	
 	Vector3f newVec = state[i]->position+ h/2.*f0[2*i];                                               
 	//cout << "F0 number 0: " << f0[0][0] <<" " << f0[0][1] <<" " <<  f0[0][2] << endl;
 	//cout << "Gravity: " << f0[1][0] << " "<<  f0[1][1] << " " << f0[1][2] << endl;
@@ -115,21 +115,6 @@ vector<Vector3f> f3 = particleSystem->evalF(state3);
 
 	for (unsigned j = 0; j < particleSystem->m_numParticles ; ++j){
 
-<<<<<<< HEAD
-		// f0[2*j].print();
-		// (2*f1[2*j]).print();
-		// (2*f2[2*j]).print();
-		// f3[2*j].print();
-		Vector3f newVec1 = state[j].position+(h/6.)*(f0[2*j]+2*f1[2*j]+2*f2[2*j]+f3[2*j]);
-		Particle p2 = Particle(state[j].mass);
-		p2.position = newVec1;
-		p2.velocity = state[j].velocity+(h/6.)*(f0[2*j+1]+2*f1[2*j+1]+2*f2[2*j+1]+f3[2*j+1]);;
-		p2.density = state[j].density;
-		p2.pressure_force = state[j].pressure_force;
-		p2.viscocity_force= state[j].viscocity_force;
-		p2.color_field_gradient = state[j].color_field_gradient;
-		p2.color_field_laplacian = state[j].color_field_laplacian;
-=======
 		Vector3f newVec1 = state[j]->position+(h/6.)*(f0[2*j]+2*f1[2*j]+2*f2[2*j]+f3[2*j]);
 		Particle * p2 = new Particle(state[j]->mass);
 		p2->position = newVec1;
@@ -139,7 +124,6 @@ vector<Vector3f> f3 = particleSystem->evalF(state3);
 		p2->viscocity_force= state[j]->viscocity_force;
 		p2->color_field_gradient = state[j]->color_field_gradient;
 		p2->color_field_laplacian = state[j]->color_field_laplacian;
->>>>>>> d3bdf2eef1cdacc1927c4ae1cdec35947996de97
 
 		fin.push_back(p2);
 	}
@@ -149,23 +133,15 @@ particleSystem->neighborMap = map<string, vector<Particle *>>();
 // SPEED UP POSSIBLE
 
 for (unsigned j = 0; j < particleSystem->m_numParticles ; ++j){
-<<<<<<< HEAD
-	string a = (5 * fin[j]).getGridLoc();
-	map<string, vector<Particle>>::iterator gridLocNeighbors = particleSystem->neighborMap.find(a);
-=======
 	string a = fin[j]->getGridLoc();
+	cout << a << endl;
 	map<string, vector<Particle *>>::iterator gridLocNeighbors = particleSystem->neighborMap.find(a);
->>>>>>> d3bdf2eef1cdacc1927c4ae1cdec35947996de97
 	if (gridLocNeighbors != particleSystem->neighborMap.end()) {
 		gridLocNeighbors->second.push_back(fin[j]);
 	} else {
 		vector<Particle *> tempvector;
 		tempvector.push_back(fin[j]);
-<<<<<<< HEAD
-		particleSystem->neighborMap.insert(pair<string, vector<Particle>>(a, tempvector));
-=======
 		particleSystem->neighborMap.insert(pair<string, vector<Particle *>>(a, tempvector));
->>>>>>> d3bdf2eef1cdacc1927c4ae1cdec35947996de97
 	}
 }
 

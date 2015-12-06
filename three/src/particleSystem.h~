@@ -50,6 +50,7 @@ protected:
 
 	vector<Particle *> m_vVecState;
 	
+	float stretcher = 4.0f;
 };
 
 #endif

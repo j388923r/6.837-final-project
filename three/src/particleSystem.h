@@ -49,7 +49,6 @@ public:
 protected:
 
 	vector<Particle *> m_vVecState;
-	
 };
 
 #endif
