@@ -62,15 +62,16 @@ namespace
   {
     
     // Base material colors (they don't change)
-    GLfloat particleColor[] = {0.4f, 0.7f, 1.0f, 1.0f};
+    GLfloat particleColor[] = {0.9f, 0.7f, 1.0f, 0.5f};
+    
     GLfloat floorColor[] = {1.0f, 0.0f, 0.0f, 1.0f};
     
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, particleColor);
+    //glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, particleColor);
     
-    glutSolidSphere(0.1f,10.0f,10.0f);
+    //glutSolidSphere(0.1f,10.0f,10.0f);
     
     system->draw();
-    
+    system->draw2();
     
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, floorColor);
     glPushMatrix();
