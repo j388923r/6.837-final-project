@@ -24,6 +24,10 @@ public:
 	void draw();
 
 	void draw2();
+
+	void draw3();
+	
+	void draw_scatter():
 	
 	vector<Vector3f> springList;
 	
@@ -49,8 +53,6 @@ public:
 protected:
 
 	vector<Particle *> m_vVecState;
-	
-	float stretcher = 4.0f;
 };
 
 #endif
