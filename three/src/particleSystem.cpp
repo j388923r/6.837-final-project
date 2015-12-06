@@ -5,13 +5,12 @@
 
 using namespace std;
 
-float stretcher = 16.0f;
+float stretcher = 10.0f;
 
 ParticleSystem::ParticleSystem(int numParticles)
 {
 	m_numParticles = 8 * numParticles * numParticles * numParticles;
 	
-	cout << numParticles << endl;
 	//Vector3f fixedPoint = (0,0,0); 
 	//Vector3f noMotion = (0,0,0);
 	//m_vVecState.push_back(fixedPoint);// for this system, we care about the position and the velocity
@@ -22,7 +21,7 @@ ParticleSystem::ParticleSystem(int numParticles)
 	for (int i = 0; i < numParticles * 2; ++i) {
 		for (int j = 0; j < numParticles * 2; ++j) {
 			for (int k = 0; k < numParticles * 2; ++k) {
-					Vector3f firstpos = Vector3f(i/stretcher,j/stretcher+3,k/stretcher-1); 
+					Vector3f firstpos = Vector3f(i/stretcher + 0.5f,j/stretcher+3,k/stretcher); 
 					Vector3f firstspeed = Vector3f(0.,0.,0.);
 					//firstpos.print();
 					//m_vVecState.push_back(firstpos);// for this system, we care about the position and the velocity
@@ -170,7 +169,7 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle *> state)
 
 
 	float rest_density = .2;	
-	float k  = 1.3*pow(10, -1);//*pow(10,-24);
+	float k  = 1.3*pow(10, -3);//*pow(10,-24);
 	float eta = 2;
 	//Vector3f gravity_force = (0, -9.8,0);
 
@@ -192,7 +191,7 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle *> state)
 					float pressure_n = k*(density_n - rest_density);
 
 					
-					Vector3f spike = r*Utils::WspikyGradient(r.abs(),h);
+					Vector3f spike = r*Utils::WspikyGradient(distance,h);
 
 					state[i]->pressure_force += state[j]->mass *(pressure_p + pressure_n)/(2*density_n)* spike;
 								
@@ -203,14 +202,11 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle *> state)
 					
 
 					//cout << state[j]->mass << " " << Utils::WviscocityLaplacian(r.abs(),h) << endl;
-					if(j == 0) {
-						// (eta*state[j]->mass*(state[j]->velocity-state[i]->velocity)/density_n).print();
-					}
-					state[i]->viscocity_force += eta*state[j]->mass*(state[j]->velocity-state[i]->velocity)/density_n * Utils::WviscocityLaplacian(r.abs(),h);
+					state[i]->viscocity_force += eta*state[j]->mass*(state[j]->velocity-state[i]->velocity)/density_n * Utils::WviscocityLaplacian(distance,h);
 
-					state[i]->color_field_gradient += state[j]->mass/density_n* Utils::Wpoly6Gradient(r.abs(), h);
+					state[i]->color_field_gradient += state[j]->mass/density_n* Utils::Wpoly6Gradient(distance, h);
 
-					state[i]->color_field_laplacian += state[j]->mass/density_n* Utils::WviscocityLaplacian(r.abs(), h);
+					state[i]->color_field_laplacian += state[j]->mass/density_n* Utils::WviscocityLaplacian(distance, h);
 
 					 
 
