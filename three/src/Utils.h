@@ -43,9 +43,9 @@ public:
 	float color_field_gradient = 0;
 	float color_field_laplacian = 0;
 	Vector3f position;
-	float surface_tension_force = 0;
 	string neighborLocs[27];
 	static const float stretcher;
+	Vector3f surface_tension_force = 0;
 	
 
 	Particle(float m) {
@@ -92,8 +92,8 @@ public:
 	void clearForces() {
 		pressure_force = Vector3f(0, 0, 0);
 		viscocity_force = Vector3f(0, 0, 0);
-		color_field_gradient = color_field_laplacian = surface_tension_force = 0;
-		density = 1;
+		surface_tension_force = Vector3f(0, 0, 0);
+		color_field_gradient = color_field_laplacian =  0;
 	}
 };
 

@@ -113,7 +113,7 @@ vector<Vector3f> f2 = particleSystem->evalF(state2);
 vector<Vector3f> f3 = particleSystem->evalF(state3);
 
 
-	for (short j = particleSystem->m_numParticles; j >= 0; --j){
+	for (short j = particleSystem->m_numParticles - 1; j >= 0; --j){
 
 		Vector3f newVec1 = state[j]->position+(h/6.)*(f0[2*j]+2*f1[2*j]+2*f2[2*j]+f3[2*j]);
 		Particle * p2 = new Particle(state[j]->mass);
@@ -144,7 +144,7 @@ for (short j = particleSystem->m_numParticles - 1; j >= 0; --j){
 	}
 }
 
-cout << "Speed Test" << endl;
+//cout << "Speed Test" << endl;
 
 // particleSystem->neighborMap.find("222") -> second[0].velocity.print();
 

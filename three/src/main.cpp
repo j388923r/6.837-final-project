@@ -71,14 +71,12 @@ namespace
     //glutSolidSphere(0.1f,10.0f,10.0f);
     
     system->draw();
+	system->draw3();
+	system->draw_scatter();
     system->draw2();
+	
     
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, floorColor);
-    glPushMatrix();
-    glTranslatef(0.0f,-5.0f,0.0f);
-    glScaled(50.0f,0.01f,50.0f);
-    glutSolidCube(1);
-    glPopMatrix();
+    
     
   }
         
