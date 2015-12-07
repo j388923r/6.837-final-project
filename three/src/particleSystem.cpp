@@ -117,7 +117,6 @@
 				float distance = r.abs();
 				if (h > distance){
 					state[i]->density += Utils::Wpoly6Laplacian(distance, h);
-					//cout << state[i]->density << endl;
 				}
 			}
 		}
@@ -181,13 +180,10 @@
 			//state
 			f.push_back(state[i]->velocity);
 			//cout << state[i]->pressure_force[1] << "  " << state[i]->viscocity_force[2] << endl;
-			//state[i]->pressure_force.print();
-			//gravity_force.print();
-			//(state[i]->viscocity_force+state[i]->pressure_force).print();
+			// state[i]->pressure_force.print();
+			// (state[i]->viscocity_force+state[i]->pressure_force).print();
 			f.push_back(Vector3f(0, -.294 * state[i]->mass, 0)+state[i]->viscocity_force+state[i]->pressure_force);//+state[i]->surface_tension_force); //Vector3f(0, -.098 * state[i]->mass, 0)+
 			//f.push_back(state[i]->pressure_force + state[i]->viscocity_force+ gravity_force * state[i]->mass + state[i]->surface_tension_force);  
-				
-		
 		}
 
 
@@ -202,30 +198,30 @@
 		return vector<Vector3f>();
 	}*/
 
-	// render the system (ie draw the particles)
-	void ParticleSystem::draw()
-	{
-		/*for (int i = 0; i < m_vVecState.size(); ++i) {
-			//cout << (m_vVecState.size()) << endl;
-			if (m_vVecState.size() > 0){
-				glColor3f(1,1,1);
-				Vector3f pos = m_vVecState[i]->position;
-				//pos.print();
-				glPushMatrix();
-				glTranslatef(pos[0], pos[1], pos[2] );
-				glutSolidSphere(0.075f,10.0f,10.0f);
-				glPopMatrix();
+// render the system (ie draw the particles)
+void ParticleSystem::draw()
+{
+	/*for (int i = 0; i < m_vVecState.size(); ++i) {
+		//cout << (m_vVecState.size()) << endl;
+		if (m_vVecState.size() > 0){
+			glColor3f(1,1,1);
+			Vector3f pos = m_vVecState[i]->position;
+			//pos.print();
+			glPushMatrix();
+			glTranslatef(pos[0], pos[1], pos[2] );
+			glutSolidSphere(0.075f,10.0f,10.0f);
+			glPopMatrix();
 
-				//glLineWidth(2.5);
-				//glColor3f(1.0, 0.0, 0.0);
-				//glBegin(GL_LINES);
-				//glVertex3f(pos2[0], pos2[2], pos2[2]);
-				//glVertex3f(pos[0], pos[1], pos[2]);
-				//glEnd();
-			}
-		}*/
-	
-		//cout << springCoords.size() << endl;
+			//glLineWidth(2.5);
+			//glColor3f(1.0, 0.0, 0.0);
+			//glBegin(GL_LINES);
+			//glVertex3f(pos2[0], pos2[2], pos2[2]);
+			//glVertex3f(pos[0], pos[1], pos[2]);
+			//glEnd();
+		}
+	}*/
+
+	//cout << springCoords.size() << endl;
 	
 	//glColor3f(1,1,1);
 	//glutSolidSphere(1,10,10);
@@ -235,7 +231,7 @@
 	if (true){
 		Vector3f locBall = Vector3f(1.0, 0, 0.0);
 		float radBall = 0.5;
-		float epsilon = 0.1;
+		float epsilon = 0.01;
 		
 		GLfloat ballColor[] = {0.9f, 0.6f, 1.0f, 0.5f};
 		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, ballColor);
@@ -244,7 +240,7 @@
 		glutSolidSphere(radBall, 10.0, 10.0);
 		glPopMatrix();
 		glColor3f(0.0, 1.0, 0.0);
-		for (int i = m_vVecState.size() - 1; i >= 0; --i) {
+		for (unsigned i = 0; i < m_vVecState.size(); ++i) {
 		    if ((m_vVecState[i]->position - locBall).abs() <= (radBall + epsilon)){
 			m_vVecState[i]->position = (locBall + (radBall + epsilon) * (m_vVecState[i]->position - locBall).normalized());			
 		    }
@@ -253,7 +249,7 @@
 }
 
 void ParticleSystem::draw2(){	
-	for (int i = m_vVecState.size() - 1; i >= 0 ; --i) {
+	for (unsigned i = 0; i < m_vVecState.size(); ++i) {
 		//cout << (m_vVecState.size()) << endl;
 		if (m_vVecState.size() > 0){
 			//glColor3f(1,1,1);
@@ -279,7 +275,7 @@ void ParticleSystem::draw3(){
 	GLfloat floorColor[] = {1.0f, 0.0f, 0.0f, 1.0f};
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, floorColor);
     glPushMatrix();
-	float epsilon = 0.1;
+	float epsilon = 0.01;
     glEnable (GL_BLEND);
 	float alpha = 1;
     glBlendFunc (alpha, 1.0-alpha);
@@ -287,7 +283,7 @@ void ParticleSystem::draw3(){
     glScaled(50.0f,0.01f,50.0f);
     glutSolidCube(1);
     glPopMatrix();
-	for (int i = 0; i < m_vVecState.size(); i++) {
+	for (unsigned i = 0; i < m_vVecState.size(); i++) {
 		if (m_vVecState[i]->position.y() <= -5){
 			m_vVecState[i]->position.y() = -5+epsilon;
 		}
@@ -299,8 +295,8 @@ void ParticleSystem::draw_scatter(){
 	float radBall = 0.075;
 	float epsilon = 0.01;
 	Vector3f adjusting_push = (.01,.01,.01);
-	for (int i = 0; i < m_vVecState.size(); i++) {
-		for (int j = 0; j < m_vVecState.size(); j++) {
+	for (unsigned i = 0; i < m_vVecState.size(); i++) {
+		for (unsigned j = 0; j < m_vVecState.size(); j++) {
 			Vector3f r = m_vVecState[i]->position == m_vVecState[j]->position;
 			Vector3f locBall = m_vVecState[j]->position;
 			//if ((m_vVecState[i]->position - locBall).abs() <= (radBall + epsilon)){

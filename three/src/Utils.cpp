@@ -16,6 +16,8 @@ float Utils::Wpoly6Gradient(float r, float h)
 
 float Utils::Wpoly6Laplacian(float r, float h)
 {
+	if ( h > r )
+		return 0;
 	float leadingValue = 945 / (8 * M_PI * pow(h, 9));
 	float h2r2 = (h * h - r * r);
 	float finalValue = r * r - 3 * h2r2 / 4;

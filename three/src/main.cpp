@@ -62,7 +62,7 @@ namespace
   {
     
     // Base material colors (they don't change)
-    GLfloat particleColor[] = {0.9f, 0.7f, 1.0f, 0.5f};
+    GLfloat particleColor[] = {0.1f, 0.4f, 1.0f, 0.5f};
     
     GLfloat floorColor[] = {1.0f, 0.0f, 0.0f, 1.0f};
     
@@ -72,7 +72,7 @@ namespace
     
     system->draw();
 	system->draw3();
-	system->draw_scatter();
+	//system->draw_scatter();
     system->draw2();
 	
     
