@@ -37,6 +37,9 @@ public:
 
 	vector<Particle *> stateClone;
 
+	vector<Particle *> particleEmitter();
+
+	vector<Particle *> emitter;
 	
 	vector<Particle *> fluid_particles;
 
