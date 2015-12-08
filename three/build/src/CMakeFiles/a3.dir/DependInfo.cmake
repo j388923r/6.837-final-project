@@ -4,13 +4,11 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/Image.cpp" "/afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src/CMakeFiles/a3.dir/Image.cpp.o"
   "/afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/TimeStepper.cpp" "/afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src/CMakeFiles/a3.dir/TimeStepper.cpp.o"
   "/afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/Utils.cpp" "/afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src/CMakeFiles/a3.dir/Utils.cpp.o"
   "/afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/camera.cpp" "/afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src/CMakeFiles/a3.dir/camera.cpp.o"
   "/afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/main.cpp" "/afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src/CMakeFiles/a3.dir/main.cpp.o"
   "/afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/particleSystem.cpp" "/afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src/CMakeFiles/a3.dir/particleSystem.cpp.o"
-  "/afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/stb.cpp" "/afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src/CMakeFiles/a3.dir/stb.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

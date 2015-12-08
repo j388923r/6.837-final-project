@@ -77,7 +77,7 @@ vecmath/preinstall:
 vecmath/CMakeFiles/vecmath.dir/all:
 	$(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/depend
 	$(MAKE) -f vecmath/CMakeFiles/vecmath.dir/build.make vecmath/CMakeFiles/vecmath.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles  8 9 10 11 12 13 14
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles  6 7 8 9 10 11 12
 	@echo "Built target vecmath"
 .PHONY : vecmath/CMakeFiles/vecmath.dir/all
 
@@ -127,7 +127,7 @@ src/preinstall:
 src/CMakeFiles/a3.dir/all: vecmath/CMakeFiles/vecmath.dir/all
 	$(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/depend
 	$(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles  1 2 3 4 5 6 7
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles  1 2 3 4 5
 	@echo "Built target a3"
 .PHONY : src/CMakeFiles/a3.dir/all
 
@@ -137,7 +137,7 @@ all: src/CMakeFiles/a3.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/a3.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles 12
 	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/a3.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/a3.dir/rule

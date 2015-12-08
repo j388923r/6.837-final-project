@@ -247,7 +247,7 @@ void ParticleSystem::draw()
 	if (true){
 		Vector3f locBall = Vector3f(1.0, 1.0, 0.0);
 		float radBall = 0.5;
-		float epsilon = 0.01;
+		float epsilon = 0.1;
 		
 		GLfloat ballColor[] = {0.9f, 0.6f, 1.0f, 0.5f};
 		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, ballColor);
@@ -301,7 +301,7 @@ void ParticleSystem::draw3(){
 	GLfloat floorColor[] = {1.0f, 0.0f, 0.0f, 1.0f};
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, floorColor);
     glPushMatrix();
-	float epsilon = 0.01;
+	float epsilon = 0.1;
     glEnable (GL_BLEND);
 	float alpha = 1;
     glBlendFunc (alpha, 1.0-alpha);

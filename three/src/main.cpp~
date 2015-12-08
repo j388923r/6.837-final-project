@@ -71,13 +71,8 @@ namespace
     //glutSolidSphere(0.1f,10.0f,10.0f);
     
     system->draw();
-<<<<<<< HEAD
-	system->draw3();
-	//system->draw_scatter();
-=======
     system->draw3();
     system->particleEmitter();
->>>>>>> cfbe6335b9ea9240ad61a163b1da584923188a30
     system->draw2();
 
     

@@ -3,10 +3,8 @@ set(BIN_NAME a3)
 set(CPP_FILES
     TimeStepper.cpp
     camera.cpp
-	Image.cpp
     main.cpp
     particleSystem.cpp
-	stb.cpp
     Utils.cpp
     )
 
@@ -14,10 +12,7 @@ set(CPP_HEADERS
     TimeStepper.h
     camera.h
     extra.h
-	Image.h
     particleSystem.h
-	stb_image.h
-	stb_image_write.h
     Utils.h
     )
 

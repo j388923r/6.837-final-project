@@ -14,12 +14,8 @@ set(CPP_HEADERS
     TimeStepper.h
     camera.h
     extra.h
-	Group.h
-	Hit.h
 	Image.h
     particleSystem.h
-	Plane.h
-	Ray.h
 	stb_image.h
 	stb_image_write.h
     Utils.h

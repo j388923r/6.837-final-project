@@ -72,7 +72,7 @@ namespace
     
     system->draw();
     system->draw3();
-    system->particleEmitter();
+    //system->particleEmitter();
     system->draw2();
 
     
