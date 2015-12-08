@@ -27,6 +27,8 @@ public:
 
 	void draw3();
 	
+	void drawbox();
+
 	void draw_scatter();
 	
 	vector<Vector3f> springList;
@@ -37,7 +39,7 @@ public:
 
 	vector<Particle *> stateClone;
 
-	vector<Particle *> particleEmitter(vector<Particle *> PL);
+	vector<Particle *> particleEmitter();
 
 	vector<Particle *> emitter;
 	

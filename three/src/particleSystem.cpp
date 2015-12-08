@@ -38,7 +38,7 @@ ParticleSystem::ParticleSystem(int numParticles)
 		}
 	}
 
-	particleEmitter();
+	//particleEmitter();
 }
 
 
@@ -123,7 +123,7 @@ vector<Particle *> ParticleSystem::particleEmitter() {
 		GLfloat ballColor[] = {.0f+c1, .1f+c2, .9f, 1.0f};
 		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, ballColor);
 		glTranslatef(pos[0], pos[1], pos[2] );
-		glutSolidSphere(0.075f,10.0f,10.0f);
+		glutSolidSphere(0.05f,10.0f,10.0f);
 		glPopMatrix();
 	}
 }
@@ -278,7 +278,7 @@ vector<Vector3f> ParticleSystem::evalF(vector<Particle *> state)
 		//gravity_force.print();
 		//(state[i]->viscocity_force+state[i]->pressure_force).print();
 		f.push_back(Vector3f(0, -.294 * state[i]->mass, 0)+state[i]->viscocity_force+state[i]->pressure_force);//+state[i]->surface_tension_force); //Vector3f(0, -.098 * state[i]->mass, 0)+
-		//f.push_back(state[i]->pressure_force + state[i]->viscocity_force+ gravity_force * state[i]->mass + state[i]->surface_tension_force);  
+		 
 				
 		
 	}
@@ -324,10 +324,10 @@ void ParticleSystem::draw()
 	//glutSolidSphere(1,10,10);
 	GLfloat ballColor[] = {0.6f, 0.7f, 1.0f, 0.5f};
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, ballColor);
-
+	glDisable (GL_BLEND);
 	if (true){
 		Vector3f locBall = Vector3f(1.0, 1.0, 0.0);
-		float radBall = 0.5;
+		float radBall = .75;
 		float epsilon = 0.1;
 		
 		GLfloat ballColor[] = {0.9f, 0.6f, 1.0f, 0.5f};
@@ -352,15 +352,18 @@ void ParticleSystem::draw2(){
 	
 	//glVertex3f(0,0,0);
 	//glutSolidSphere(0.1f,10.0f,10.0f);
-
+	
+	//glDisable (GL_BLEND);
+	glEnable (GL_BLEND);
+	glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	
 	for (int i = 0; i < m_vVecState.size(); i++) {
 		//cout << (m_vVecState.size()) << endl;
 		if (m_vVecState.size() > 0){
 			//glColor3f(1,1,1);
 			//glBlendFunc (1.0, 0.0);
-			glEnable (GL_BLEND);
-			glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		
+			
 			GLfloat ballColor[] = {0.1f, 0.4f, 1.0f, 0.5f};
 			glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, ballColor);
 			Vector3f pos = m_vVecState[i]->position;
@@ -371,10 +374,11 @@ void ParticleSystem::draw2(){
 			glTranslatef(pos[0], pos[1], pos[2] );
 			glutSolidSphere(0.075f,10.0f,10.0f);
 			glPopMatrix();
-
-			
+					
 		}
 	}
+	//drawbox(0,0,0);
+	
 }
 
 void ParticleSystem::draw3(){
@@ -392,15 +396,91 @@ void ParticleSystem::draw3(){
 	for (int i = 0; i < m_vVecState.size(); i++) {
 		if (m_vVecState[i]->position.y() <= -5){
 			m_vVecState[i]->position.y() = -5+epsilon;
-			m_vVecState[i]->velocity = Vector3f(-.2*m_vVecState[i]->velocity[0], -0.2*m_vVecState[i]->velocity[1], -.2*m_vVecState[i]->velocity[2]);
+			m_vVecState[i]->velocity = Vector3f(-.1*m_vVecState[i]->velocity[0], -0.1*m_vVecState[i]->velocity[1], -.1*m_vVecState[i]->velocity[2]);
 		}
 	}
 	
 }
 
+void ParticleSystem::drawbox(float x, float y, float z){
+	
+    GLfloat floorColor[] = {0.5f, 0.5f, .5f, 0.5f};
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, floorColor);
+    glPushMatrix();
+    float epsilon = 0.01;
+    //glEnable (GL_BLEND);
+    //float alpha = .9;
+    //glBlendFunc (alpha, 1.0-alpha);
+    glTranslatef(0.0f+x,.5f+y,.5f+z);
+    glScaled(0.01f,1.0f,1.0f);
+    glutSolidCube(1);
+    glPopMatrix();
+	
+    glPushMatrix();
+    glTranslatef(.5f+x,.5f+y,.5f+z);
+    glScaled(0.01f,1.0f,1.0f);
+    glutSolidCube(1);
+    glPopMatrix();
 
+    glPushMatrix();
+    glTranslatef(.25f+x,0.0f+y,.5f+z);
+    glScaled(.51f,.01f,1.0f);
+    glutSolidCube(1);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(.25f+x,.5f+y,0.0f+z);
+    glScaled(.51f,1.0f,.01f);
+    glutSolidCube(1);
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(.25f+x,.5f+y,1.0f+z);
+    glScaled(.51f,1.01f,.01f);
+    glutSolidCube(1);
+    glPopMatrix();
+
+	for (int i = 0; i < m_vVecState.size(); i++){
+		Vector3f location = m_vVecState[i]->position.x();
+		if (m_vVecState[i]->position.y() < .0f+y && .5f+x< m_vVecState[i]->position.x()<1.0f+x && z<= m_vVecState[i]->position.z()<=1.0f+z){
+			//cout << "haha" << endl;
+			m_vVecState[i]->position.y() = y;
+			if ( .5f +x > m_vVecState[i]->position.x()){
+				m_vVecState[i]->position.x() = .5+x;
+			}
+			if ( 1.0f +x < m_vVecState[i]->position.x()){
+				m_vVecState[i]->position.x() = 1.+x;
+			}
+	
+			if (m_vVecState[i]->position.z() < z){
+				m_vVecState[i]->position.z() = z;
+			}
+			if (m_vVecState[i]->position.z() > z){
+				m_vVecState[i]->position.z() = 1.0f+z;
+			}
+			//m_vVecState[i]->position.x() = location.x();
+			//m_vVecState[i]->position.z() = location.z();
+			m_vVecState[i]->velocity = Vector3f(0,0,0);
+		}		
+	}
+
+}
 void ParticleSystem::draw_scatter(){
-	//float radBall = 0.0;
 	
-	
+	for (int i = 0; i < m_vVecState.size(); i++) {
+		///vector<Particle *> neighbors = getNeighbors(this, state[i]);
+		// cout << neighbors.size() << endl;
+		for (unsigned j = 0; j < m_vVecState.size();++j){
+		    Vector3f locBall = m_vVecState[j]->position;
+			float radBall = .05;
+			float epsilon = 0.1;
+			if (m_vVecState[i] != m_vVecState[j]){
+		    	if ((m_vVecState[i]->position - locBall).abs() <= (radBall + epsilon)){
+
+					m_vVecState[i]->position = (locBall + (radBall + epsilon) * (m_vVecState[i]->position - locBall).normalized());
+			
+				}
+		    }
+		}
+	}
 }

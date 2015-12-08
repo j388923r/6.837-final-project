@@ -70,12 +70,13 @@ namespace
     
     //glutSolidSphere(0.1f,10.0f,10.0f);
     
+	system->draw_scatter();
     system->draw();
     system->draw3();
-    system->particleEmitter();
-    system->draw2();
-
     
+    //system->particleEmitter();
+    system->draw2();
+    glDisable (GL_BLEND);
     
     
   }
