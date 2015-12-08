@@ -14,9 +14,9 @@ using namespace std;
 class ParticleSystem
 {
 public:
-	ParticleSystem(short numParticles);
+	ParticleSystem(int numParticles);
 
-	short m_numParticles;
+	int m_numParticles;
 	
 	vector<Vector3f> evalF(vector<Particle *> state);
 	

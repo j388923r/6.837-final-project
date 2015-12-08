@@ -5,7 +5,7 @@
 
 	using namespace std;
 
-	ParticleSystem::ParticleSystem(short numParticles)
+	ParticleSystem::ParticleSystem(int numParticles)
 	{
 		m_numParticles = 8 * numParticles * numParticles * numParticles;
 	
@@ -121,35 +121,35 @@
 		stateClone = state;
 
 
-		float h = 1.74;
+		float h = 1.7;
 
 		//density update
 		
-		for (short i = state.size() - 1; i >= 0; --i){
+		for (unsigned i = 0; i < state.size(); ++i){
+			state[i]->clearForces();
 			vector<Particle *> neighbors = getNeighbors(this, state[i]);
-			for (short j = neighbors.size() - 1; j >= 0; --j){
+			for (unsigned j = 0; j < neighbors.size(); ++j){
 				Vector3f r = state[i]->position - neighbors[j]->position;
 				float distance = r.abs();
 				if (h > distance){
-					state[i]->density += Utils::Wpoly6Laplacian(distance, h);
+					state[i]->density += Utils::Wpoly6(distance, h);
 				}
 			}
 		}
 
 		float rest_density = 0.2;	
-		float k  = 1.3*pow(10, -3);//*pow(10,-24);
+		float k  = 1.3*pow(10, -24);//*pow(10,-24);
 		float eta = 2;
 		//Vector3f gravity_force = (0, -9.8,0);
 	
 	//particleEmitter();
 
-		for (short i = state.size() - 1; i >= 0; --i){
-			state[i]->clearForces();
+		for (unsigned i = 0; i < state.size(); ++i){
 			vector<Particle *> neighbors = getNeighbors(this, state[i]);
 			// cout << neighbors.size() << endl;
 			float density_p = state[i]->density;
 			float pressure_p = k*(density_p - rest_density);
-			for (short j = neighbors.size() - 1; j >= 0; --j){
+			for (unsigned j = 0; j < neighbors.size(); ++j){
 				Vector3f r = state[i]->position - neighbors[j]->position;
 					float distance = r.abs();
 					// cout << distance << endl;
@@ -256,14 +256,14 @@ void ParticleSystem::draw()
 		glutSolidSphere(radBall, 10.0, 10.0);
 		glPopMatrix();
 		glColor3f(0.0, 1.0, 0.0);
-		for (unsigned i = 0; i < m_vVecState.size(); ++i) {
+		/*for (unsigned i = 0; i < m_vVecState.size(); ++i) {
 		    if ((m_vVecState[i]->position - locBall).abs() <= (radBall + epsilon)){
 
 			m_vVecState[i]->position = (locBall + (radBall + epsilon) * (m_vVecState[i]->position - locBall).normalized());
 			
 		
 		    }
-		}
+		}*/
 	}
 }
 
@@ -312,7 +312,7 @@ void ParticleSystem::draw3(){
 	for (unsigned i = 0; i < m_vVecState.size(); i++) {
 		if (m_vVecState[i]->position.y() <= -5){
 			m_vVecState[i]->position.y() = -5+epsilon;
-			m_vVecState[i]->velocity = Vector3f(-.2*m_vVecState[i]->velocity[0], -0.2*m_vVecState[i]->velocity[1], -.2*m_vVecState[i]->velocity[2]);
+			//m_vVecState[i]->velocity = Vector3f(-.01*m_vVecState[i]->velocity[0], -0.01*m_vVecState[i]->velocity[1], -.01*m_vVecState[i]->velocity[2]);
 		}
 	}
 	

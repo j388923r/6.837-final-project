@@ -93,7 +93,7 @@ public:
 		pressure_force = Vector3f(0, 0, 0);
 		viscocity_force = Vector3f(0, 0, 0);
 		surface_tension_force = Vector3f(0, 0, 0);
-		color_field_gradient = color_field_laplacian =  0;
+		color_field_gradient = color_field_laplacian =  density =0;
 	}
 };
 
