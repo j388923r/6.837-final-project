@@ -98,9 +98,32 @@ src/CMakeFiles/a3.dir/camera.cpp.o.provides: src/CMakeFiles/a3.dir/camera.cpp.o.
 
 src/CMakeFiles/a3.dir/camera.cpp.o.provides.build: src/CMakeFiles/a3.dir/camera.cpp.o
 
+src/CMakeFiles/a3.dir/Image.cpp.o: src/CMakeFiles/a3.dir/flags.make
+src/CMakeFiles/a3.dir/Image.cpp.o: ../src/Image.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/a3.dir/Image.cpp.o"
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/a3.dir/Image.cpp.o -c /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/Image.cpp
+
+src/CMakeFiles/a3.dir/Image.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/a3.dir/Image.cpp.i"
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/Image.cpp > CMakeFiles/a3.dir/Image.cpp.i
+
+src/CMakeFiles/a3.dir/Image.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/a3.dir/Image.cpp.s"
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/Image.cpp -o CMakeFiles/a3.dir/Image.cpp.s
+
+src/CMakeFiles/a3.dir/Image.cpp.o.requires:
+.PHONY : src/CMakeFiles/a3.dir/Image.cpp.o.requires
+
+src/CMakeFiles/a3.dir/Image.cpp.o.provides: src/CMakeFiles/a3.dir/Image.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/Image.cpp.o.provides.build
+.PHONY : src/CMakeFiles/a3.dir/Image.cpp.o.provides
+
+src/CMakeFiles/a3.dir/Image.cpp.o.provides.build: src/CMakeFiles/a3.dir/Image.cpp.o
+
 src/CMakeFiles/a3.dir/main.cpp.o: src/CMakeFiles/a3.dir/flags.make
 src/CMakeFiles/a3.dir/main.cpp.o: ../src/main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/a3.dir/main.cpp.o"
 	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/a3.dir/main.cpp.o -c /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/main.cpp
 
@@ -123,7 +146,7 @@ src/CMakeFiles/a3.dir/main.cpp.o.provides.build: src/CMakeFiles/a3.dir/main.cpp.
 
 src/CMakeFiles/a3.dir/particleSystem.cpp.o: src/CMakeFiles/a3.dir/flags.make
 src/CMakeFiles/a3.dir/particleSystem.cpp.o: ../src/particleSystem.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/a3.dir/particleSystem.cpp.o"
 	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/a3.dir/particleSystem.cpp.o -c /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/particleSystem.cpp
 
@@ -144,9 +167,32 @@ src/CMakeFiles/a3.dir/particleSystem.cpp.o.provides: src/CMakeFiles/a3.dir/parti
 
 src/CMakeFiles/a3.dir/particleSystem.cpp.o.provides.build: src/CMakeFiles/a3.dir/particleSystem.cpp.o
 
+src/CMakeFiles/a3.dir/stb.cpp.o: src/CMakeFiles/a3.dir/flags.make
+src/CMakeFiles/a3.dir/stb.cpp.o: ../src/stb.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/a3.dir/stb.cpp.o"
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/a3.dir/stb.cpp.o -c /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/stb.cpp
+
+src/CMakeFiles/a3.dir/stb.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/a3.dir/stb.cpp.i"
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/stb.cpp > CMakeFiles/a3.dir/stb.cpp.i
+
+src/CMakeFiles/a3.dir/stb.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/a3.dir/stb.cpp.s"
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/stb.cpp -o CMakeFiles/a3.dir/stb.cpp.s
+
+src/CMakeFiles/a3.dir/stb.cpp.o.requires:
+.PHONY : src/CMakeFiles/a3.dir/stb.cpp.o.requires
+
+src/CMakeFiles/a3.dir/stb.cpp.o.provides: src/CMakeFiles/a3.dir/stb.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/stb.cpp.o.provides.build
+.PHONY : src/CMakeFiles/a3.dir/stb.cpp.o.provides
+
+src/CMakeFiles/a3.dir/stb.cpp.o.provides.build: src/CMakeFiles/a3.dir/stb.cpp.o
+
 src/CMakeFiles/a3.dir/Utils.cpp.o: src/CMakeFiles/a3.dir/flags.make
 src/CMakeFiles/a3.dir/Utils.cpp.o: ../src/Utils.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/a3.dir/Utils.cpp.o"
 	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/a3.dir/Utils.cpp.o -c /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/src/Utils.cpp
 
@@ -171,8 +217,10 @@ src/CMakeFiles/a3.dir/Utils.cpp.o.provides.build: src/CMakeFiles/a3.dir/Utils.cp
 a3_OBJECTS = \
 "CMakeFiles/a3.dir/TimeStepper.cpp.o" \
 "CMakeFiles/a3.dir/camera.cpp.o" \
+"CMakeFiles/a3.dir/Image.cpp.o" \
 "CMakeFiles/a3.dir/main.cpp.o" \
 "CMakeFiles/a3.dir/particleSystem.cpp.o" \
+"CMakeFiles/a3.dir/stb.cpp.o" \
 "CMakeFiles/a3.dir/Utils.cpp.o"
 
 # External object files for target a3
@@ -180,8 +228,10 @@ a3_EXTERNAL_OBJECTS =
 
 src/a3: src/CMakeFiles/a3.dir/TimeStepper.cpp.o
 src/a3: src/CMakeFiles/a3.dir/camera.cpp.o
+src/a3: src/CMakeFiles/a3.dir/Image.cpp.o
 src/a3: src/CMakeFiles/a3.dir/main.cpp.o
 src/a3: src/CMakeFiles/a3.dir/particleSystem.cpp.o
+src/a3: src/CMakeFiles/a3.dir/stb.cpp.o
 src/a3: src/CMakeFiles/a3.dir/Utils.cpp.o
 src/a3: src/CMakeFiles/a3.dir/build.make
 src/a3: vecmath/libvecmath.a
@@ -204,8 +254,10 @@ src/CMakeFiles/a3.dir/build: src/a3
 
 src/CMakeFiles/a3.dir/requires: src/CMakeFiles/a3.dir/TimeStepper.cpp.o.requires
 src/CMakeFiles/a3.dir/requires: src/CMakeFiles/a3.dir/camera.cpp.o.requires
+src/CMakeFiles/a3.dir/requires: src/CMakeFiles/a3.dir/Image.cpp.o.requires
 src/CMakeFiles/a3.dir/requires: src/CMakeFiles/a3.dir/main.cpp.o.requires
 src/CMakeFiles/a3.dir/requires: src/CMakeFiles/a3.dir/particleSystem.cpp.o.requires
+src/CMakeFiles/a3.dir/requires: src/CMakeFiles/a3.dir/stb.cpp.o.requires
 src/CMakeFiles/a3.dir/requires: src/CMakeFiles/a3.dir/Utils.cpp.o.requires
 .PHONY : src/CMakeFiles/a3.dir/requires
 

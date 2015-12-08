@@ -36,6 +36,9 @@ public:
 
 	vector<Particle *> stateClone;
 
+	vector<Particle *> particleEmitter();
+
+	vector<Particle *> emitter;
 	
 	vector<Particle *> fluid_particles;
 
@@ -48,6 +51,8 @@ public:
 	
 	// setter method for the system's state
 	void setState(const vector<Particle *>  & newState) { m_vVecState = newState; };
+
+	float randomNumbers[13];
 
 protected:
 

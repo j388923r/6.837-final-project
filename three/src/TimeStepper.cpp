@@ -82,12 +82,12 @@ for (unsigned i = 0; i < particleSystem->m_numParticles; ++i){
 	//Vector3f newVec = state[i].position+h*f0[2*i+1];
 //cout << "f0-" << endl;
 	
-	Vector3f newVec = state[i]->position+ h/2.*f0[2*i];                                               
+	Vector3f newVec = state[i]->position+ h/2.*f0[i<<1];                                               
 	//cout << "F0 number 0: " << f0[0][0] <<" " << f0[0][1] <<" " <<  f0[0][2] << endl;
 	//cout << "Gravity: " << f0[1][0] << " "<<  f0[1][1] << " " << f0[1][2] << endl;
 	Particle * p1 = new Particle(state[i]->mass);
 	p1->position = newVec;
-	p1->velocity = state[i]->velocity+h/2.*f0[2*i+1];    
+	p1->velocity = state[i]->velocity+h/2.*f0[i<<1+1];    
 	p1->density = state[i]->density;
 	p1->pressure_force = state[i]->pressure_force;
 	p1->viscocity_force= state[i]->viscocity_force;

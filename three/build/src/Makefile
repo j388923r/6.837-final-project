@@ -156,6 +156,30 @@ a3/fast:
 	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/build
 .PHONY : a3/fast
 
+Image.o: Image.cpp.o
+.PHONY : Image.o
+
+# target to build an object file
+Image.cpp.o:
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/Image.cpp.o
+.PHONY : Image.cpp.o
+
+Image.i: Image.cpp.i
+.PHONY : Image.i
+
+# target to preprocess a source file
+Image.cpp.i:
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/Image.cpp.i
+.PHONY : Image.cpp.i
+
+Image.s: Image.cpp.s
+.PHONY : Image.s
+
+# target to generate assembly for a file
+Image.cpp.s:
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/Image.cpp.s
+.PHONY : Image.cpp.s
+
 TimeStepper.o: TimeStepper.cpp.o
 .PHONY : TimeStepper.o
 
@@ -276,6 +300,30 @@ particleSystem.cpp.s:
 	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/particleSystem.cpp.s
 .PHONY : particleSystem.cpp.s
 
+stb.o: stb.cpp.o
+.PHONY : stb.o
+
+# target to build an object file
+stb.cpp.o:
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/stb.cpp.o
+.PHONY : stb.cpp.o
+
+stb.i: stb.cpp.i
+.PHONY : stb.i
+
+# target to preprocess a source file
+stb.cpp.i:
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/stb.cpp.i
+.PHONY : stb.cpp.i
+
+stb.s: stb.cpp.s
+.PHONY : stb.s
+
+# target to generate assembly for a file
+stb.cpp.s:
+	cd /afs/athena.mit.edu/user/other/j388923r/Desktop/6.837-final-project/three/build && $(MAKE) -f src/CMakeFiles/a3.dir/build.make src/CMakeFiles/a3.dir/stb.cpp.s
+.PHONY : stb.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -289,6 +337,9 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... Image.o"
+	@echo "... Image.i"
+	@echo "... Image.s"
 	@echo "... TimeStepper.o"
 	@echo "... TimeStepper.i"
 	@echo "... TimeStepper.s"
@@ -304,6 +355,9 @@ help:
 	@echo "... particleSystem.o"
 	@echo "... particleSystem.i"
 	@echo "... particleSystem.s"
+	@echo "... stb.o"
+	@echo "... stb.i"
+	@echo "... stb.s"
 .PHONY : help
 
 

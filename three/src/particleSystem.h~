@@ -14,7 +14,7 @@ using namespace std;
 class ParticleSystem
 {
 public:
-	ParticleSystem(int numParticles);
+	ParticleSystem(short numParticles);
 
 	short m_numParticles;
 	
@@ -26,7 +26,7 @@ public:
 
 	void draw3();
 	
-	void draw_scatter():
+	void draw_scatter();
 	
 	vector<Vector3f> springList;
 	
@@ -36,6 +36,9 @@ public:
 
 	vector<Particle *> stateClone;
 
+	vector<Particle *> particleEmitter();
+
+	vector<Particle *> emitter;
 	
 	vector<Particle *> fluid_particles;
 
@@ -48,6 +51,8 @@ public:
 	
 	// setter method for the system's state
 	void setState(const vector<Particle *>  & newState) { m_vVecState = newState; };
+
+	float randomNumbers[13];
 
 protected:
 

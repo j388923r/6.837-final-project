@@ -35,40 +35,55 @@
 				}
 			}
 		}
+
+		//particleEmitter();
+
+		
 	}
 
+	vector<Particle *> ParticleSystem::particleEmitter() {
 
-	Vector3f gravitywater(float m)
-	{
+	vector<Particle *> PL;
+	float spread = .3;
+	float colorSpread = .1;
+	int k = 10;
+	Vector3f color = (0,0,1);
 
-		float g = 9.8;
-
-		return Vector3f(0,-1*m*g,0);
+	for(unsigned i =0;i< k; i++){
+		float r1 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+		float r2 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+		float r3 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+		Particle * p = new Particle(1);
+		p->position = Vector3f(0,0,0);
+		p->velocity = Vector3f(0,2,0) + spread*Vector3f(r1,r2,r3);	
+		emitter.push_back(p);
 	}
 
-
-	Vector3f dragwater(float k, Particle &p)
-	{
+	float epsilon = 0.001;
+	float dt = .08;
+	//cout << emitter.size() << endl;
 	
-		return Vector3f(-k*p.velocity[0],-k*p.velocity[1],-k*p.velocity[2]);
+	for (int i = 0; i < emitter.size(); i++) {
+		
+		Particle* p = emitter[i];
+		p->position += p->velocity*dt;
+		p->velocity -= Vector3f(0,.98,0)*dt;
+		glVertex(p->position);
+		Vector3f pos = p->position;
 
+		
+		//p->position.print();
+		glPushMatrix();
+		//GLfloat ballColor[] = {0.1f, 0.6f, 1.0f, 0.5f};//light blue
+		float c1 = (static_cast <float> (rand()) / static_cast <float> (RAND_MAX))*.1;
+		float c2 = (static_cast <float> (rand()) / static_cast <float> (RAND_MAX))*.3;
+		GLfloat ballColor[] = {.0f+c1, .1f+c2, .9f, 1.0f};
+		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, ballColor);
+		glTranslatef(pos[0], pos[1], pos[2] );
+		glutSolidSphere(0.075f,10.0f,10.0f);
+		glPopMatrix();
 	}
-
-	Vector3f dragwater(float k, Vector3f vel)
-	{
-	
-		return Vector3f(-k*vel[0],-k*vel[1],-k*vel[2]);
-
-	}
-
-	Vector3f particlePoswater(int ind, vector<Vector3f> state)
-	{
-
-
-		return state[2*ind];
-
-
-	}
+}
 
 
 	Vector3f particleVelwater(int ind, vector<Vector3f> state)
@@ -121,11 +136,12 @@
 			}
 		}
 
-
 		float rest_density = 0.2;	
 		float k  = 1.3*pow(10, -3);//*pow(10,-24);
 		float eta = 2;
 		//Vector3f gravity_force = (0, -9.8,0);
+	
+	//particleEmitter();
 
 		for (short i = state.size() - 1; i >= 0; --i){
 			state[i]->clearForces();
@@ -229,7 +245,7 @@ void ParticleSystem::draw()
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, ballColor);
 
 	if (true){
-		Vector3f locBall = Vector3f(1.0, 0, 0.0);
+		Vector3f locBall = Vector3f(1.0, 1.0, 0.0);
 		float radBall = 0.5;
 		float epsilon = 0.01;
 		
@@ -242,13 +258,22 @@ void ParticleSystem::draw()
 		glColor3f(0.0, 1.0, 0.0);
 		for (unsigned i = 0; i < m_vVecState.size(); ++i) {
 		    if ((m_vVecState[i]->position - locBall).abs() <= (radBall + epsilon)){
-			m_vVecState[i]->position = (locBall + (radBall + epsilon) * (m_vVecState[i]->position - locBall).normalized());			
+
+			m_vVecState[i]->position = (locBall + (radBall + epsilon) * (m_vVecState[i]->position - locBall).normalized());
+			
+		
 		    }
 		}
 	}
 }
 
 void ParticleSystem::draw2(){	
+
+	
+	//glVertex3f(0,0,0);
+	//glutSolidSphere(0.1f,10.0f,10.0f);
+
+	
 	for (unsigned i = 0; i < m_vVecState.size(); ++i) {
 		//cout << (m_vVecState.size()) << endl;
 		if (m_vVecState.size() > 0){
@@ -262,6 +287,7 @@ void ParticleSystem::draw2(){
 			// cout << "Position" << pos[0] << pos[1] << pos[2] << endl;
 			//pos.print();
 			glPushMatrix();
+			
 			glTranslatef(pos[0], pos[1], pos[2] );
 			glutSolidSphere(0.075f,10.0f,10.0f);
 			glPopMatrix();
@@ -286,26 +312,13 @@ void ParticleSystem::draw3(){
 	for (unsigned i = 0; i < m_vVecState.size(); i++) {
 		if (m_vVecState[i]->position.y() <= -5){
 			m_vVecState[i]->position.y() = -5+epsilon;
+			m_vVecState[i]->velocity = Vector3f(-.2*m_vVecState[i]->velocity[0], -0.2*m_vVecState[i]->velocity[1], -.2*m_vVecState[i]->velocity[2]);
 		}
 	}
+	
 }
 
 
 void ParticleSystem::draw_scatter(){
-	float radBall = 0.075;
-	float epsilon = 0.01;
-	Vector3f adjusting_push = (.01,.01,.01);
-	for (unsigned i = 0; i < m_vVecState.size(); i++) {
-		for (unsigned j = 0; j < m_vVecState.size(); j++) {
-			Vector3f r = m_vVecState[i]->position == m_vVecState[j]->position;
-			Vector3f locBall = m_vVecState[j]->position;
-			//if ((m_vVecState[i]->position - locBall).abs() <= (radBall + epsilon)){
-			//m_vVecState[i]->position = (locBall + (radBall + epsilon) * (m_vVecState[i]->position - locBall).normalized());			
-		    //}
-			//if (r.abs() <= .075){
-			//	m_vVecState[i]->velocity +=	adjusting_push;
-			//	m_vVecState[j]->velocity -= adjusting_push;	
-			//}
-		}
-	}
+	//float radBall = 0.0;
 }

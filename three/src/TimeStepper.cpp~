@@ -36,11 +36,11 @@ float h = stepSize;
     vector<Vector3f> f1 = particleSystem -> evalF(midstate);
 
 	for (unsigned j = 0; j < state.size(); ++j) {
-		Vector3f newVec = state[j]->position+ h/2.*(f0[2*j] + f1[2*j]);                                               
+		Vector3f newVec1 = state[j]->position+ h/2.*(f0[2*j] + f1[2*j]);                                               
 		//cout << "F0 number 0: " << f0[0][0] <<" " << f0[0][1] <<" " <<  f0[0][2] << endl;
 		//cout << "Gravity: " << f0[1][0] << " "<<  f0[1][1] << " " << f0[1][2] << endl;
 		Particle * p2 = new Particle(state[j]->mass);
-		p2->position = newVec;
+		p2->position = newVec1;
 		p2->velocity = state[j]->velocity+h/2.*(f0[2*j+1] + f1[2*j+1]);    
 		p2->density = state[j]->density;
 		p2->pressure_force = state[j]->pressure_force;
