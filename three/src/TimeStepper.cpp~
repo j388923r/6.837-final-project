@@ -86,7 +86,7 @@ particleSystem->neighborMap = map<string, vector<Particle *>>();
 // SPEED UP POSSIBLE
 
 for (unsigned j = 0; j < particleSystem->m_numParticles; ++j){
-	string a = fin[j]->getGridLoc();
+	string a = state3[j]->getGridLoc();
 	map<string, vector<Particle *>>::iterator gridLocNeighbors = particleSystem->neighborMap.find(a);
 	if (gridLocNeighbors != particleSystem->neighborMap.end()) {
 		gridLocNeighbors->second.push_back(state3[j]);

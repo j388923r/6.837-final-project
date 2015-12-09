@@ -99,6 +99,12 @@
 	{
 
 		vector <Particle *> neighbors;
+
+		map<string, vector<Particle *>>::iterator gridLocNeighbors = particleSystem->neighborList.find(p -> getGridLoc());
+		if (gridLocNeighbors != particleSystem->neighborList.end()) {
+			return gridLocNeighbors->second;
+		}
+
 		for ( short i = 26; i >= 0; --i) {
 			map<string, vector<Particle *>>::iterator gridLocNeighbors = particleSystem->neighborMap.find(p -> neighborLocs[i] );
 			if (gridLocNeighbors != particleSystem->neighborMap.end()) {
@@ -106,7 +112,7 @@
 			}
 		}
 	
-	
+		particleSystem->neighborMap.insert(pair<string, vector<Particle *>>(p -> getGridLoc(), neighbors));
 		return neighbors;
 
 	}
@@ -259,15 +265,28 @@ void ParticleSystem::draw()
 		glutSolidSphere(radBall, 10.0, 10.0);
 		glPopMatrix();
 		glColor3f(0.0, 1.0, 0.0);
-		/*for (unsigned i = 0; i < m_vVecState.size(); ++i) {
+		for (unsigned i = 0; i < m_vVecState.size(); ++i) {
 		    if ((m_vVecState[i]->position - locBall).abs() <= (radBall + epsilon)){
 
 			m_vVecState[i]->position = (locBall + (radBall + epsilon) * (m_vVecState[i]->position - locBall).normalized());
 			
 		
 		    }
-		}*/
+		}
 	}
+
+	GLfloat vertices[] = {.5, 3, -.5,  .5, 4, .5,  .5, 4, -.5,  .5, 3, -.5,  .5, 3, .5,  .5, 4, .5 };
+
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glVertexPointer(3, GL_FLOAT, 0, vertices);
+
+
+	// draw a cube
+	glDrawArrays(GL_TRIANGLES, 0, 6);
+
+	// deactivate vertex arrays after drawing
+	glDisableClientState(GL_VERTEX_ARRAY);
+
 }
 
 void ParticleSystem::draw2(){	

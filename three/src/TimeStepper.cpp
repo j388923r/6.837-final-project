@@ -81,6 +81,7 @@ vector<Vector3f> f2 = particleSystem->evalF(state2);
 		state3.push_back(p2);
 	}
 
+particleSystem->neighborList = map<string, vector<Particle *>>();
 particleSystem->neighborMap = map<string, vector<Particle *>>();
 
 // SPEED UP POSSIBLE
