@@ -42,7 +42,7 @@ namespace
    
     
     system = new ParticleSystem(5);
-    timeStepper = new ForwardEuler;		
+    timeStepper = new Trapzoidal;		
   }
 
   // Take a step forward for the particle shower
@@ -70,12 +70,13 @@ namespace
     
     //glutSolidSphere(0.1f,10.0f,10.0f);
     
+	system->draw_scatter();
     system->draw();
     system->draw3();
+    
     //system->particleEmitter();
     system->draw2();
-
-    
+    glDisable (GL_BLEND);
     
     
   }

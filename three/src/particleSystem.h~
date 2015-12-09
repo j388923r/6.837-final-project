@@ -26,6 +26,8 @@ public:
 
 	void draw3();
 	
+	void drawbox();
+
 	void draw_scatter();
 	
 	vector<Vector3f> springList;
