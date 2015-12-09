@@ -70,7 +70,7 @@ namespace
     
     glutSolidSphere(0.1f,10.0f,10.0f);
     
-    //system->draw_scatter();
+    system->draw_scatter();
     system->draw();
     system->draw3();
     

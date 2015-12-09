@@ -88,7 +88,7 @@ vector<Particle *> ParticleSystem::particleEmitter() {
 
 	vector<Particle *> PL;
 	float spread = .3;
-	float colorSpread = .1;
+	float colorSpread = .2;
 	int k = 10;
 	Vector3f color = (0,0,1);
 
@@ -98,7 +98,7 @@ vector<Particle *> ParticleSystem::particleEmitter() {
 		float r3 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
 		Particle * p = new Particle(1);
 		p->position = Vector3f(0,0,0);
-		p->velocity = Vector3f(0,2,0) + spread*Vector3f(r1,r2,r3);	
+		p->velocity = Vector3f(-1,2,-1) + spread*Vector3f(r1,r2,r3);	
 		emitter.push_back(p);
 	}
 
@@ -407,61 +407,78 @@ void ParticleSystem::drawbox(float x, float y, float z){
     GLfloat floorColor[] = {0.5f, 0.5f, .5f, 0.5f};
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, floorColor);
     glPushMatrix();
-    float epsilon = 0.03;
+    float epsilon = .1;
     //glEnable (GL_BLEND);
     //float alpha = .9;
     //glBlendFunc (alpha, 1.0-alpha);
-    glTranslatef(0.0f+x,.5f+y,.5f+z);
+    glTranslatef(2.5f+x,.5f+y,.5f+z);
     glScaled(0.01f,1.0f,1.0f);
     glutSolidCube(1);
     glPopMatrix();
 	
     glPushMatrix();
-    glTranslatef(.5f+x,.5f+y,.5f+z);
+    GLfloat wallColor0[] = {1.f, 0.f, .0f, 1.f};
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, wallColor0);
+    glTranslatef(-2.5f+x,.5f+y,.5f+z);
     glScaled(0.01f,1.0f,1.0f);
     glutSolidCube(1);
     glPopMatrix();
 
     glPushMatrix();
+    GLfloat wallColor1[] = {0.5f, 1.0f, .0f, 1.f};
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, wallColor1);
     glTranslatef(.25f+x,0.0f+y,.5f+z);
-    glScaled(.51f,.01f,1.0f);
+    glScaled(5.51f,.01f,4.0f);
     glutSolidCube(1);
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(.25f+x,.5f+y,0.0f+z);
-    glScaled(.51f,1.0f,.01f);
+    GLfloat wallColor2[] = {1.f, 1.0f, 1.0f, 1.f};
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, wallColor2);
+    glTranslatef(.25f+x,0.5f+y,.0f+z);
+    glScaled(5.51f,1.0f,.01f);
     glutSolidCube(1);
     glPopMatrix();
 
     glPushMatrix();
+    GLfloat wallColor3[] = {0.f, 1.0f, 1.0f, 1.f};
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, wallColor3);
     glTranslatef(.25f+x,.5f+y,1.0f+z);
-    glScaled(.51f,1.01f,.01f);
+    glScaled(5.51f,1.01f,.01f);
     glutSolidCube(1);
     glPopMatrix();
 
 	for (int i = 0; i < m_vVecState.size(); i++){
 		Vector3f location = m_vVecState[i]->position.x();
-		if (m_vVecState[i]->position.y() < .0f+y && .5f+x< m_vVecState[i]->position.x()<1.0f+x && z<= m_vVecState[i]->position.z()<=1.0f+z){
-			//cout << "haha" << endl;
+		if (m_vVecState[i]->position.y() < .0f+y && -2.0f+x< m_vVecState[i]->position.x()< 2.0f+x && -2.5f + z + epsilon<= m_vVecState[i]->position.z()<= 2.5f+z-epsilon){
+			//cout << "I am in the right spot..." << endl;
 			m_vVecState[i]->position.y() = y+epsilon; 
-
-			if ( .5f +x > m_vVecState[i]->position.x()){
+			m_vVecState[i]->velocity = Vector3f(0,0,0);
+			/*if ( .5f +x > m_vVecState[i]->position.x()){
 				m_vVecState[i]->position.x() = .5+x+epsilon;
 			}
 			else if ( 1.0f +x < m_vVecState[i]->position.x()){
 				m_vVecState[i]->position.x() = 1.+x-epsilon;
 			}
-	
+			else {
+				m_vVecState[i]->position.x() = location.x();	
+			} 
+
+
 			if (m_vVecState[i]->position.z() < z){
 				m_vVecState[i]->position.z() = z+epsilon;
 			}
 			else if (m_vVecState[i]->position.z() > 1.0f+z){
 				m_vVecState[i]->position.z() = 1.0f+z-epsilon;
 			}
+			else{
+				m_vVecState[i]->position.z() = location.z();
+			}
+			*/
+
 			//m_vVecState[i]->position.x() = location.x();
 			//m_vVecState[i]->position.z() = location.z();
-			m_vVecState[i]->velocity = Vector3f(0,0,0);
+			//m_vVecState[i]->velocity = Vector3f(0,0,0);
 		}		
 	}
 
@@ -473,8 +490,8 @@ void ParticleSystem::draw_scatter(){
 		// cout << neighbors.size() << endl;
 		for (unsigned j = 0; j < m_vVecState.size();++j){
 		    Vector3f locBall = m_vVecState[j]->position;
-			float radBall = .05;
-			float epsilon = 0.1;
+			float radBall = .05f;
+			float epsilon = 0.1f;
 			if (m_vVecState[i] != m_vVecState[j]){
 		    	if ((m_vVecState[i]->position - locBall).abs() <= (radBall + epsilon)){
 
