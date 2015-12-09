@@ -68,13 +68,13 @@ namespace
     
     //glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, particleColor);
     
-    //glutSolidSphere(0.1f,10.0f,10.0f);
+    glutSolidSphere(0.1f,10.0f,10.0f);
     
-	system->draw_scatter();
+    //system->draw_scatter();
     system->draw();
     system->draw3();
     
-    //system->particleEmitter();
+    system->particleEmitter();
     system->draw2();
     glDisable (GL_BLEND);
     

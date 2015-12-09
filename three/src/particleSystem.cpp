@@ -377,7 +377,7 @@ void ParticleSystem::draw2(){
 					
 		}
 	}
-	//drawbox(0,0,0);
+	drawbox(0,-2,0);
 	
 }
 
@@ -407,7 +407,7 @@ void ParticleSystem::drawbox(float x, float y, float z){
     GLfloat floorColor[] = {0.5f, 0.5f, .5f, 0.5f};
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, floorColor);
     glPushMatrix();
-    float epsilon = 0.01;
+    float epsilon = 0.03;
     //glEnable (GL_BLEND);
     //float alpha = .9;
     //glBlendFunc (alpha, 1.0-alpha);
@@ -444,19 +444,20 @@ void ParticleSystem::drawbox(float x, float y, float z){
 		Vector3f location = m_vVecState[i]->position.x();
 		if (m_vVecState[i]->position.y() < .0f+y && .5f+x< m_vVecState[i]->position.x()<1.0f+x && z<= m_vVecState[i]->position.z()<=1.0f+z){
 			//cout << "haha" << endl;
-			m_vVecState[i]->position.y() = y;
+			m_vVecState[i]->position.y() = y+epsilon; 
+
 			if ( .5f +x > m_vVecState[i]->position.x()){
-				m_vVecState[i]->position.x() = .5+x;
+				m_vVecState[i]->position.x() = .5+x+epsilon;
 			}
-			if ( 1.0f +x < m_vVecState[i]->position.x()){
-				m_vVecState[i]->position.x() = 1.+x;
+			else if ( 1.0f +x < m_vVecState[i]->position.x()){
+				m_vVecState[i]->position.x() = 1.+x-epsilon;
 			}
 	
 			if (m_vVecState[i]->position.z() < z){
-				m_vVecState[i]->position.z() = z;
+				m_vVecState[i]->position.z() = z+epsilon;
 			}
-			if (m_vVecState[i]->position.z() > z){
-				m_vVecState[i]->position.z() = 1.0f+z;
+			else if (m_vVecState[i]->position.z() > 1.0f+z){
+				m_vVecState[i]->position.z() = 1.0f+z-epsilon;
 			}
 			//m_vVecState[i]->position.x() = location.x();
 			//m_vVecState[i]->position.z() = location.z();
