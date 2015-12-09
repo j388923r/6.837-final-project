@@ -47,7 +47,7 @@ public:
 
 	//vector<Vector3f> evalF(vector<Vector3f> state);
 	
-	std::map<string, vector<Particle *>> neighborList;
+	std::map<string, bool> inside;
 	std::map<string, vector<Particle *>> neighborMap;		
 	// getter method for the system's state
 	vector<Particle *> getState(){ return m_vVecState; };

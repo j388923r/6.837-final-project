@@ -19,7 +19,7 @@
 		for (int i = 0; i < numParticles * 2; ++i) {
 			for (int j = 0; j < numParticles * 2; ++j) {
 				for (int k = 0; k < numParticles * 2; ++k) {
-						Vector3f firstpos = Vector3f(i/Particle::stretcher + 0.5f,j/Particle::stretcher+3,k/Particle::stretcher - 0.5f); 
+						Vector3f firstpos = Vector3f(i/Particle::stretcher + 0.5f,j/Particle::stretcher + 3.0f,k/Particle::stretcher - 0.5f); 
 						Vector3f firstspeed = Vector3f(0.,0.,0.);
 						//firstpos.print();
 						//m_vVecState.push_back(firstpos);// for this system, we care about the position and the velocity
@@ -100,21 +100,21 @@
 
 		vector <Particle *> neighbors;
 
-		map<string, vector<Particle *>>::iterator gridLocNeighbors = particleSystem->neighborList.find(p -> getGridLoc());
+		/*map<string, vector<Particle *>>::iterator gridLocNeighbors = particleSystem->neighborList.find(p -> getGridLoc());
 		if (gridLocNeighbors != particleSystem->neighborList.end()) {
 			return gridLocNeighbors->second;
-		}
+		}*/
 
-		for ( short i = 26; i >= 0; --i) {
+		for ( unsigned i = 0; i < 27; ++i) {
 			map<string, vector<Particle *>>::iterator gridLocNeighbors = particleSystem->neighborMap.find(p -> neighborLocs[i] );
 			if (gridLocNeighbors != particleSystem->neighborMap.end()) {
 				neighbors.insert(neighbors.end(), gridLocNeighbors->second.begin(), gridLocNeighbors->second.end());
 			}
 		}
 	
-		particleSystem->neighborMap.insert(pair<string, vector<Particle *>>(p -> getGridLoc(), neighbors));
+		//particleSystem->inside.insert(pair<string, bool>(p -> getGridLoc(), neighbors.size() != 0));
 		return neighbors;
-
+		//return vector <Particle *>();	
 	}
 
 
@@ -137,14 +137,16 @@
 			for (unsigned j = 0; j < neighbors.size(); ++j){
 				Vector3f r = state[i]->position - neighbors[j]->position;
 				float distance = r.abs();
+				//cout << distance << endl;
 				if (h > distance){
 					state[i]->density += Utils::Wpoly6(distance, h);
+					// cout << state[i]->density << endl;
 				}
 			}
 		}
 
 		float rest_density = 0.2;	
-		float k  = 1.3*pow(10, -24);//*pow(10,-24);
+		float k  = 1.3*pow(10, -3);//*pow(10,-24);
 		float eta = 2;
 		//Vector3f gravity_force = (0, -9.8,0);
 	
@@ -168,8 +170,9 @@
 
 					
 						Vector3f spike = r*Utils::WspikyGradient(distance,h);
-
-						state[i]->pressure_force += (pressure_p + pressure_n)/(2*density_n)* spike;
+						if (abs(density_n) > 0.00000001) {
+							state[i]->pressure_force += state[j]-> mass * (pressure_p + pressure_n)/(2*density_n)* spike;
+						}
 								
 						//state[i]->pressure_force.print();
 
@@ -196,17 +199,20 @@
 			} else{
 				state[i]->surface_tension_force = Vector3f(0,0,0);
 			}*/
-		
 
 			//state[i]->viscocity_force.print();
 			//state
 			f.push_back(state[i]->velocity);
+			if(state[i] -> position.y() < -4.8f) {	
+				// cout << "hit the floor" << endl;
+				state[i] -> viscocity_force = state[i] -> viscocity_force + Vector3f(0, -25 * state[i]->velocity.y()+state[i]->mass, 0);
+			}
 			//cout << state[i]->pressure_force[1] << "  " << state[i]->viscocity_force[2] << endl;
 			//state[i]->pressure_force.print();
 			//gravity_force.print();
 			//(state[i]->viscocity_force+state[i]->pressure_force).print();
-			f.push_back(Vector3f(0, -.294 * state[i]->mass, 0)+state[i]->viscocity_force+state[i]->pressure_force);//+state[i]->surface_tension_force); //Vector3f(0, -.098 * state[i]->mass, 0)+
-		 
+			f.push_back(Vector3f(0, -.294 * state[i]->mass, 0)+state[i]->viscocity_force-state[i]->pressure_force);//+state[i]->surface_tension_force); //Vector3f(0, -.098 * state[i]->mass, 0)++ collision_force
+		 	// + collision_force
 				
 		
 	}
@@ -268,7 +274,7 @@ void ParticleSystem::draw()
 		for (unsigned i = 0; i < m_vVecState.size(); ++i) {
 		    if ((m_vVecState[i]->position - locBall).abs() <= (radBall + epsilon)){
 
-			m_vVecState[i]->position = (locBall + (radBall + epsilon) * (m_vVecState[i]->position - locBall).normalized());
+			//m_vVecState[i]->position = (locBall + (radBall + epsilon) * (m_vVecState[i]->position - locBall).normalized());
 			
 		
 		    }
@@ -309,7 +315,7 @@ void ParticleSystem::draw2(){
 			GLfloat ballColor[] = {0.1f, 0.4f, 1.0f, 0.5f};
 			glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, ballColor);
 			Vector3f pos = m_vVecState[i]->position;
-			// cout << "Position" << pos[0] << pos[1] << pos[2] << endl;
+			//cout << "Position" << pos[0] << pos[1] << pos[2] << endl;
 			//pos.print();
 			glPushMatrix();
 			
@@ -318,7 +324,7 @@ void ParticleSystem::draw2(){
 			glPopMatrix();
 		}
 	}
-	//drawbox(0,0,0);
+	//drawbox(0,-2,0);
 	
 }
 
@@ -334,12 +340,6 @@ void ParticleSystem::draw3(){
     glScaled(50.0f,0.01f,50.0f);
     glutSolidCube(1);
     glPopMatrix();
-	for (unsigned i = 0; i < m_vVecState.size(); i++) {
-		if (m_vVecState[i]->position.y() <= -5){
-			m_vVecState[i]->position.y() = -5+epsilon;
-			m_vVecState[i]->velocity = Vector3f(-.1*m_vVecState[i]->velocity[0], -0.1*m_vVecState[i]->velocity[1], -.1*m_vVecState[i]->velocity[2]);
-		}
-	}
 	
 }
 
@@ -348,7 +348,7 @@ void ParticleSystem::drawbox(float x, float y, float z){
     GLfloat floorColor[] = {0.5f, 0.5f, .5f, 0.5f};
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, floorColor);
     glPushMatrix();
-    float epsilon = 0.01;
+    float epsilon = 0.03;
     //glEnable (GL_BLEND);
     //float alpha = .9;
     //glBlendFunc (alpha, 1.0-alpha);
@@ -385,19 +385,20 @@ void ParticleSystem::drawbox(float x, float y, float z){
 		Vector3f location = m_vVecState[i]->position.x();
 		if (m_vVecState[i]->position.y() < .0f+y && .5f+x< m_vVecState[i]->position.x()<1.0f+x && z<= m_vVecState[i]->position.z()<=1.0f+z){
 			//cout << "haha" << endl;
-			m_vVecState[i]->position.y() = y;
+			m_vVecState[i]->position.y() = y+epsilon; 
+
 			if ( .5f +x > m_vVecState[i]->position.x()){
-				m_vVecState[i]->position.x() = .5+x;
+				m_vVecState[i]->position.x() = .5+x+epsilon;
 			}
-			if ( 1.0f +x < m_vVecState[i]->position.x()){
-				m_vVecState[i]->position.x() = 1.+x;
+			else if ( 1.0f +x < m_vVecState[i]->position.x()){
+				m_vVecState[i]->position.x() = 1.+x-epsilon;
 			}
 	
 			if (m_vVecState[i]->position.z() < z){
-				m_vVecState[i]->position.z() = z;
+				m_vVecState[i]->position.z() = z+epsilon;
 			}
-			if (m_vVecState[i]->position.z() > z){
-				m_vVecState[i]->position.z() = 1.0f+z;
+			else if (m_vVecState[i]->position.z() > 1.0f+z){
+				m_vVecState[i]->position.z() = 1.0f+z-epsilon;
 			}
 			//m_vVecState[i]->position.x() = location.x();
 			//m_vVecState[i]->position.z() = location.z();

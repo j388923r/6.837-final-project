@@ -46,6 +46,7 @@ public:
 	string neighborLocs[27];
 	static const float stretcher;
 	Vector3f surface_tension_force = 0;
+	Vector3f collision_force;
 	
 
 	Particle(float m) {
@@ -62,16 +63,11 @@ public:
 
 	void setPosition(Vector3f pos) {
 		position = pos;
-		short a = (short)(pos[0]*stretcher);
-		short b = (short)(pos[1]*stretcher);
-		short c = (short)(pos[2]*stretcher);
-		short count = 0;
-		for ( short i = -1; i < 2; ++i) {
-			for ( short j = -1; j < 2; ++j) {
-				for ( short k = -1; k < 2; ++k) {
-					stringstream glStream;
-					glStream << a + i << b + j << c + k;
-					neighborLocs[count++] = glStream.str();
+		int count = 0;
+		for ( int i = -1; i < 2; ++i) {
+			for ( int j = -1; j < 2; ++j) {
+				for ( int k = -1; k < 2; ++k) {
+					neighborLocs[count++] = to_string((int)(pos[0] * stretcher + i)) + to_string((int)floor(pos[1] * stretcher + j)) + to_string((int)floor(pos[2] * stretcher + k));
 				}
 			}
 		}
@@ -93,7 +89,8 @@ public:
 		pressure_force = Vector3f(0, 0, 0);
 		viscocity_force = Vector3f(0, 0, 0);
 		surface_tension_force = Vector3f(0, 0, 0);
-		color_field_gradient = color_field_laplacian =  0;
+		collision = Vector3f(0, 0, 0);
+		color_field_gradient = color_field_laplacian = density =0;
 	}
 };
 
