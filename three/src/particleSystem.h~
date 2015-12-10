@@ -27,7 +27,7 @@ public:
 
 	void draw3();
 	
-	void drawbox();
+	void drawbox(float x, float y, float z);
 
 	void draw_scatter();
 	

@@ -89,7 +89,7 @@ vector<Particle *> ParticleSystem::particleEmitter() {
 	vector<Particle *> PL;
 	float spread = .3;
 	float colorSpread = .2;
-	int k = 10;
+	int k = 5;
 	Vector3f color = (0,0,1);
 
 	for(unsigned i =0;i< k; i++){
@@ -98,7 +98,7 @@ vector<Particle *> ParticleSystem::particleEmitter() {
 		float r3 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
 		Particle * p = new Particle(1);
 		p->position = Vector3f(0,0,0);
-		p->velocity = Vector3f(-1,2,-1) + spread*Vector3f(r1,r2,r3);	
+		p->velocity = Vector3f(-1,1,-1) + spread*Vector3f(r1,r2,r3);	
 		emitter.push_back(p);
 	}
 
@@ -120,36 +120,14 @@ vector<Particle *> ParticleSystem::particleEmitter() {
 		//GLfloat ballColor[] = {0.1f, 0.6f, 1.0f, 0.5f};//light blue
 		float c1 = (static_cast <float> (rand()) / static_cast <float> (RAND_MAX))*.1;
 		float c2 = (static_cast <float> (rand()) / static_cast <float> (RAND_MAX))*.3;
-		GLfloat ballColor[] = {.0f+c1, .1f+c2, .9f, 1.0f};
+		GLfloat ballColor[] = {.0f+c1, .1f+c2, .7f, 1.0f};
 		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, ballColor);
 		glTranslatef(pos[0], pos[1], pos[2] );
-		glutSolidSphere(0.05f,10.0f,10.0f);
+		glutSolidSphere(0.075f,10.0f,10.0f);
 		glPopMatrix();
 	}
 }
 
-vector<Vector3f> ParticleSystem::spring (float k, float r, int ind1,int ind2, vector<Vector3f> state, vector<Vector3f> existingSprings)
-
-{
-	//vector<Vector3f> springs;
-	Vector3f xi = particlePoswater(ind1,state);
-	Vector3f xj = particlePoswater(ind2,state);
-
-	Vector3f d = xi-xj;
-	Vector3f fi = -k*(d.abs()-r)*d/d.abs();
-	Vector3f fj = k*(d.abs()-r)*d/d.abs();
-
-	existingSprings[ind1] += fi;
-	existingSprings[ind2] += fj;	
-
-	if (std::find(springCoords.begin(), springCoords.end(), Vector3f(ind1,ind2,0)) == springCoords.end()){
-
-		springCoords.push_back(Vector3f(ind1,ind2,0));
-	}
-
-
-	return existingSprings;
-}
 
 
 
@@ -334,9 +312,9 @@ void ParticleSystem::draw()
 		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, ballColor);
 		glPushMatrix();
 		glTranslatef(locBall.x(), locBall.y(), locBall.z());
-		glutSolidSphere(radBall, 10.0, 10.0);
+		//glutSolidSphere(radBall, 10.0, 10.0);
 		glPopMatrix();
-		glColor3f(0.0, 1.0, 0.0);
+		//glColor3f(0.0, 1.0, 0.0);
 		for (int i = 0; i < m_vVecState.size(); i++) {
 		    if ((m_vVecState[i]->position - locBall).abs() <= (radBall + epsilon)){
 
@@ -377,7 +355,7 @@ void ParticleSystem::draw2(){
 					
 		}
 	}
-	drawbox(0,-2,0);
+	drawbox(-2,-2,-2);
 	
 }
 
@@ -404,6 +382,7 @@ void ParticleSystem::draw3(){
 
 void ParticleSystem::drawbox(float x, float y, float z){
 	
+    float radBall = .075;
     GLfloat floorColor[] = {0.5f, 0.5f, .5f, 0.5f};
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, floorColor);
     glPushMatrix();
@@ -413,7 +392,7 @@ void ParticleSystem::drawbox(float x, float y, float z){
     //glBlendFunc (alpha, 1.0-alpha);
     glTranslatef(2.5f+x,.5f+y,.5f+z);
     glScaled(0.01f,1.0f,1.0f);
-    glutSolidCube(1);
+    //glutSolidCube(1);
     glPopMatrix();
 	
     glPushMatrix();
@@ -421,23 +400,26 @@ void ParticleSystem::drawbox(float x, float y, float z){
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, wallColor0);
     glTranslatef(-2.5f+x,.5f+y,.5f+z);
     glScaled(0.01f,1.0f,1.0f);
-    glutSolidCube(1);
+   // glutSolidCube(1);
     glPopMatrix();
 
     glPushMatrix();
     GLfloat wallColor1[] = {0.5f, 1.0f, .0f, 1.f};
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, wallColor1);
-    glTranslatef(.25f+x,0.0f+y,.5f+z);
-    glScaled(5.51f,.01f,4.0f);
+    glTranslatef(.0f+x,0.0f+y,.0f+z);
+    glScaled(1.f,.01f,1.f);
     glutSolidCube(1);
     glPopMatrix();
+
+    Vector3f dimensions = Vector3f (1,0,1);
+    Vector3f floorNormal = (0,1,0);
 
     glPushMatrix();
     GLfloat wallColor2[] = {1.f, 1.0f, 1.0f, 1.f};
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, wallColor2);
     glTranslatef(.25f+x,0.5f+y,.0f+z);
     glScaled(5.51f,1.0f,.01f);
-    glutSolidCube(1);
+    //glutSolidCube(1);
     glPopMatrix();
 
     glPushMatrix();
@@ -445,42 +427,86 @@ void ParticleSystem::drawbox(float x, float y, float z){
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, wallColor3);
     glTranslatef(.25f+x,.5f+y,1.0f+z);
     glScaled(5.51f,1.01f,.01f);
-    glutSolidCube(1);
+    //glutSolidCube(1);
     glPopMatrix();
 
-	for (int i = 0; i < m_vVecState.size(); i++){
+	/*for (int i = 0; i < m_vVecState.size(); i++){
 		Vector3f location = m_vVecState[i]->position.x();
-		if (m_vVecState[i]->position.y() < .0f+y && -2.0f+x< m_vVecState[i]->position.x()< 2.0f+x && -2.5f + z + epsilon<= m_vVecState[i]->position.z()<= 2.5f+z-epsilon){
+		if (m_vVecState[i]->position.y() < y && .5f + x> m_vVecState[i]->position.x() > x-.5f && .5f + z> m_vVecState[i]->position.z() > z -.5f){// && -2.0f+x< m_vVecState[i]->position.x()< 2.0f+x && -2.5f + z + epsilon<= m_vVecState[i]->position.z()<= 2.5f+z-epsilon){
 			//cout << "I am in the right spot..." << endl;
 			m_vVecState[i]->position.y() = y+epsilon; 
 			m_vVecState[i]->velocity = Vector3f(0,0,0);
-			/*if ( .5f +x > m_vVecState[i]->position.x()){
-				m_vVecState[i]->position.x() = .5+x+epsilon;
+	
+			
+			if ( x - .125f > m_vVecState[i]->position.x()){
+				m_vVecState[i]->position.x() = x-.125f - epsilon;
 			}
-			else if ( 1.0f +x < m_vVecState[i]->position.x()){
-				m_vVecState[i]->position.x() = 1.+x-epsilon;
+			else if ( .235f +x < m_vVecState[i]->position.x()){
+				m_vVecState[i]->position.x() = 235.+x-epsilon;
 			}
-			else {
-				m_vVecState[i]->position.x() = location.x();	
-			} 
+			//else {
+			//	m_vVecState[i]->position.x() = location.x();	
+			//} 
 
-
-			if (m_vVecState[i]->position.z() < z){
-				m_vVecState[i]->position.z() = z+epsilon;
+		
+			if ( z - .125f > m_vVecState[i]->position.z()){
+				m_vVecState[i]->position.z() = z-.125f - epsilon;
 			}
-			else if (m_vVecState[i]->position.z() > 1.0f+z){
-				m_vVecState[i]->position.z() = 1.0f+z-epsilon;
+			else if ( .235f +z < m_vVecState[i]->position.z()){
+				m_vVecState[i]->position.z() = 235.+z-epsilon;
 			}
 			else{
 				m_vVecState[i]->position.z() = location.z();
 			}
-			*/
+			
 
 			//m_vVecState[i]->position.x() = location.x();
 			//m_vVecState[i]->position.z() = location.z();
 			//m_vVecState[i]->velocity = Vector3f(0,0,0);
-		}		
+		}
+	      		
+	}*/
+
+	for (int i = 0; i < emitter.size(); i++){
+		Vector3f location = emitter[i]->position.x();
+		if (0.f + y > emitter[i]->position.y() && 1.f + x> emitter[i]->position.x() > 0.f + x && 1.0f + z > emitter[i]->position.z() > z -0.f){
+			//cout << "I am in the right spot..." << endl;
+			emitter[i]->position.y() = radBall+y+epsilon; 
+			emitter[i]->velocity = Vector3f(0,0,0);
+	
+			
+			/*if ( x - .125f > emitter[i]->position.x()){
+				emitter[i]->position.x() = x-.125f - epsilon;
+			}
+			else if ( .235f +x < emitter[i]->position.x()){
+				emitter[i]->position.x() = 235.+x-epsilon;
+			}
+			//else {
+			//	emitter[i]->position.x() = location.x();	
+			//} 
+
+		
+			if ( z - .125f > emitter[i]->position.z()){
+				emitter[i]->position.z() = z-.125f - epsilon;
+			}
+			else if ( .235f +z < emitter[i]->position.z()){
+				emitter[i]->position.z() = 235.+z-epsilon;
+			}
+
+
+			//else{
+			//	m_vVecState[i]->position.z() = location.z();
+			//}
+			
+
+			//m_vVecState[i]->position.x() = location.x();
+			//m_vVecState[i]->position.z() = location.z();
+			//m_vVecState[i]->velocity = Vector3f(0,0,0);
+		*/
+		}
+	      		
 	}
+
 
 }
 void ParticleSystem::draw_scatter(){
@@ -490,15 +516,41 @@ void ParticleSystem::draw_scatter(){
 		// cout << neighbors.size() << endl;
 		for (unsigned j = 0; j < m_vVecState.size();++j){
 		    Vector3f locBall = m_vVecState[j]->position;
-			float radBall = .05f;
+			float radBall = .075f;
 			float epsilon = 0.1f;
 			if (m_vVecState[i] != m_vVecState[j]){
-		    	if ((m_vVecState[i]->position - locBall).abs() <= (radBall + epsilon)){
+		    		if ((m_vVecState[i]->position - locBall).abs() <= (radBall + epsilon)){
 
 					m_vVecState[i]->position = (locBall + (radBall + epsilon) * (m_vVecState[i]->position - locBall).normalized());
 			
 				}
-		    }
+		        }
+		}
+	}
+
+	for (int i = 0; i < emitter.size(); i++) {
+		///vector<Particle *> neighbors = getNeighbors(this, state[i]);
+		// cout << neighbors.size() << endl;
+		for (unsigned j = 0; j < emitter.size();++j){
+		    Vector3f locBall = emitter[j]->position;
+			float radBall = .075f;
+			float epsilon = 0.1f;
+			if (emitter[i] != emitter[j]){
+		    		if ((emitter[i]->position - locBall).abs() <= (radBall + epsilon)){
+
+					emitter[i]->position = (locBall + (radBall + epsilon) * (emitter[i]->position - locBall).normalized());
+			
+				}
+		        }
 		}
 	}
 }
+
+
+void ParticleSystem::shading(){
+
+	
+
+}
+
+

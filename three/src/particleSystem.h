@@ -46,6 +46,7 @@ public:
 	vector<Particle *> fluid_particles;
 
 
+	void <Particle *> shading;
 	//vector<Vector3f> evalF(vector<Vector3f> state);
 		
 	std::map<string, vector<Particle *>> neighborMap;		
