@@ -28,21 +28,19 @@ for (unsigned i = 0; i < particleSystem->m_numParticles; ++i){
 	//Vector3f newVec = state[i].position+h*f0[2*i+1];
 //cout << "f0-" << endl;
 	
-	Vector3f newVec = state[i]->position+ h/2.*f0[i<<1];                                               
+	Vector3f newVec = state[i]->position+ h/2.*f0[i*2];                                               
 	//cout << "F0 number 0: " << f0[0][0] <<" " << f0[0][1] <<" " <<  f0[0][2] << endl;
 	//cout << "Gravity: " << f0[1][0] << " "<<  f0[1][1] << " " << f0[1][2] << endl;
 	Particle * p1 = new Particle(state[i]->mass);
 	p1->setPosition(newVec);
-	p1->velocity = state[i]->velocity+h/2.*f0[i<<1+1];    
+	p1->velocity = state[i]->velocity+h/2.*f0[i*2+1];    
 	p1->density = state[i]->density;
 	p1->pressure_force = state[i]->pressure_force;
 	p1->viscocity_force= state[i]->viscocity_force;
-	p1->color_field_gradient = state[i]->color_field_gradient;
-	p1->color_field_laplacian = state[i]->color_field_laplacian;
 	state1.push_back(p1);
 	}
 
-
+particleSystem->inside = map<string, bool>();
 vector<Vector3f> f1 = particleSystem->evalF(state1);
 
 
@@ -56,13 +54,11 @@ vector<Vector3f> f1 = particleSystem->evalF(state1);
 		p2->density = state[j]->density;
 		p2->pressure_force = state[j]->pressure_force;
 		p2->viscocity_force= state[j]->viscocity_force;
-		p2->color_field_gradient = state[j]->color_field_gradient;
-		p2->color_field_laplacian = state[j]->color_field_laplacian;
 
 		state2.push_back(p2);
 	}
 
-particleSystem->inside = map<string, bool>();
+particleSystem->neighborList = map<string, vector<Particle *>>();
 particleSystem->neighborMap = map<string, vector<Particle *>>();
 
 // SPEED UP POSSIBLE
@@ -166,6 +162,7 @@ vector<Vector3f> f2 = particleSystem->evalF(state2);
 		state3.push_back(p2);
 	}	
 
+particleSystem->inside = map<string, bool>();
 vector<Vector3f> f3 = particleSystem->evalF(state3);
 
 
@@ -184,7 +181,7 @@ vector<Vector3f> f3 = particleSystem->evalF(state3);
 		fin.push_back(p2);
 	}
 
-particleSystem->inside = map<string, bool>();
+particleSystem->neighborList = map<string, vector<Particle *>>();
 particleSystem->neighborMap = map<string, vector<Particle *>>();
 
 // SPEED UP POSSIBLE

@@ -45,7 +45,7 @@
 
 	vector<Particle *> PL;
 	float spread = .3;
-	float colorSpread = .1;
+	float colorSpread = .2;
 	int k = 10;
 	Vector3f color = (0,0,1);
 
@@ -55,7 +55,7 @@
 		float r3 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
 		Particle * p = new Particle(1);
 		p->position = Vector3f(0,0,0);
-		p->velocity = Vector3f(0,2,0) + spread*Vector3f(r1,r2,r3);	
+		p->velocity = Vector3f(-1,2,-1) + spread*Vector3f(r1,r2,r3);	
 		emitter.push_back(p);
 	}
 
@@ -112,7 +112,8 @@
 			}
 		}
 	
-		//particleSystem->inside.insert(pair<string, bool>(p -> getGridLoc(), neighbors.size() != 0));
+		//particleSystem->neighborList.insert(pair<string, vector<Particle *>>(p->getGridLoc(), neighbors));
+		particleSystem->inside.insert(pair<string, bool>(p -> getGridLoc(), neighbors.size() != 0));
 		return neighbors;
 		//return vector <Particle *>();	
 	}
@@ -146,7 +147,7 @@
 		}
 
 		float rest_density = 0.2;	
-		float k  = 1.3*pow(10, -3);//*pow(10,-24);
+		float k  = 2.6*pow(10, -3);//*pow(10,-24);
 		float eta = 2;
 		//Vector3f gravity_force = (0, -9.8,0);
 	
@@ -202,7 +203,6 @@
 
 			//state[i]->viscocity_force.print();
 			//state
-			f.push_back(state[i]->velocity);
 			if(state[i] -> position.y() < -4.8f) {	
 				// cout << "hit the floor" << endl;
 				state[i] -> viscocity_force = state[i] -> viscocity_force + Vector3f(0, -25 * state[i]->velocity.y()+state[i]->mass, 0);
@@ -211,8 +211,10 @@
 			//state[i]->pressure_force.print();
 			//gravity_force.print();
 			//(state[i]->viscocity_force+state[i]->pressure_force).print();
+			f.push_back(state[i]->velocity);
 			f.push_back(Vector3f(0, -.294 * state[i]->mass, 0)+state[i]->viscocity_force-state[i]->pressure_force);//+state[i]->surface_tension_force); //Vector3f(0, -.098 * state[i]->mass, 0)++ collision_force
-		 	// + collision_force
+			//f.push_back(Vector3f(0, 0, 0));
+			//f.push_back(Vector3f(0, 0, 0));
 				
 		
 	}
@@ -220,14 +222,6 @@
 
 		return f;
 	}
-
-	/*// TODO: implement evalF
-	// for a given state, evaluate f(X,t)
-	vector<Vector3f> ParticleSystem::evalF(vector<Vector3f> state)
-	{
-		cout << "Cloth" << endl;
-		return vector<Vector3f>();
-	}*/
 
 // render the system (ie draw the particles)
 void ParticleSystem::draw()
@@ -274,25 +268,12 @@ void ParticleSystem::draw()
 		for (unsigned i = 0; i < m_vVecState.size(); ++i) {
 		    if ((m_vVecState[i]->position - locBall).abs() <= (radBall + epsilon)){
 
-			//m_vVecState[i]->position = (locBall + (radBall + epsilon) * (m_vVecState[i]->position - locBall).normalized());
+			m_vVecState[i]->position = (locBall + (radBall + epsilon) * (m_vVecState[i]->position - locBall).normalized());
 			
 		
 		    }
 		}
 	}
-
-	GLfloat vertices[] = {.5, 3, -.5,  .5, 4, .5,  .5, 4, -.5,  .5, 3, -.5,  .5, 3, .5,  .5, 4, .5 };
-
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glVertexPointer(3, GL_FLOAT, 0, vertices);
-
-
-	// draw a cube
-	glDrawArrays(GL_TRIANGLES, 0, 6);
-
-	// deactivate vertex arrays after drawing
-	glDisableClientState(GL_VERTEX_ARRAY);
-
 }
 
 void ParticleSystem::draw2(){	
@@ -307,24 +288,288 @@ void ParticleSystem::draw2(){
 	
 	for (unsigned i = 0; i < m_vVecState.size(); ++i) {
 		//cout << (m_vVecState.size()) << endl;
-		if (m_vVecState.size() > 0){
-			//glColor3f(1,1,1);
-			//glBlendFunc (1.0, 0.0);
+		//glColor3f(1,1,1);
+		//glBlendFunc (1.0, 0.0);
+	
 		
+		GLfloat ballColor[] = {0.1f, 0.4f, 1.0f, 0.5f};
+		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, ballColor);
+		Vector3f pos = m_vVecState[i]->position;
+		Vector3f posR = Vector3f(round(pos[0] * Particle::stretcher) / Particle::stretcher, round(pos[1] * Particle::stretcher) / Particle::stretcher, round(pos[2] * Particle::stretcher) / Particle::stretcher);
+		//cout << "Position" << pos[0] << pos[1] << pos[2] << endl;
+		//pos.print();
+		/*glPushMatrix();
+		
+		glTranslatef(pos[0], pos[1], pos[2] );
+		glutSolidSphere(0.075f,10.0f,10.0f);
+		glPopMatrix();*/
+
+		map<string, bool>::iterator hasNeighbors = inside.find(m_vVecState[i] -> getGridLoc());
+		if(hasNeighbors->second) {
+			unsigned edgeIndex1 = 1;
+			for ( unsigned a = 1; a < 8; ++a) {
+				edgeIndex1 = edgeIndex1 << 1;
+				map<string, bool>::iterator isInside = inside.find(m_vVecState[i] -> MCLocs[a]);
+				if (isInside->second) {
+					edgeIndex1 += 1;
+				}
+			}
+
+			//cout << "1:" << edgeIndex1 << endl;
+
+			glEnableClientState(GL_VERTEX_ARRAY);
+
+			for (unsigned a = 0; a < 16; a+=3) {
+				if(triTable[edgeIndex1][a] == -1) {
+					break;
+				} else {
+					unsigned triOneIndex1 = triTable[edgeIndex1][a];
+					unsigned triTwoIndex1 = triTable[edgeIndex1][a+1];
+					unsigned triThreeIndex1 = triTable[edgeIndex1][a+2];
+					GLfloat vertices[] = { posR[0] + marchingDelta[triOneIndex1][0], posR[1] + marchingDelta[triOneIndex1][1], posR[2] + marchingDelta[triOneIndex1][2],
+										  posR[0] + marchingDelta[triTwoIndex1][0], posR[1] + marchingDelta[triTwoIndex1][1], posR[2] + marchingDelta[triTwoIndex1][2], 
+										 posR[0] + marchingDelta[triThreeIndex1][0], posR[1] + marchingDelta[triThreeIndex1][1], posR[2] + marchingDelta[triThreeIndex1][2], 
+										 posR[0] + marchingDelta[triThreeIndex1][0], posR[1] + marchingDelta[triThreeIndex1][1], posR[2] + marchingDelta[triThreeIndex1][2], 
+										 posR[0] + marchingDelta[triTwoIndex1][0], posR[1] + marchingDelta[triTwoIndex1][1], posR[2] + marchingDelta[triTwoIndex1][2], 
+										 posR[0] + marchingDelta[triOneIndex1][0], posR[1] + marchingDelta[triOneIndex1][1], posR[2] + marchingDelta[triOneIndex1][2]};
+
+					glVertexPointer(3, GL_FLOAT, 0, vertices);
+
+					// draw a cube
+					glDrawArrays(GL_TRIANGLES, 0, 6);
+				}
+			}
 			
-			GLfloat ballColor[] = {0.1f, 0.4f, 1.0f, 0.5f};
-			glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, ballColor);
-			Vector3f pos = m_vVecState[i]->position;
-			//cout << "Position" << pos[0] << pos[1] << pos[2] << endl;
-			//pos.print();
-			glPushMatrix();
-			
-			glTranslatef(pos[0], pos[1], pos[2] );
-			glutSolidSphere(0.075f,10.0f,10.0f);
-			glPopMatrix();
+			unsigned edgeIndex2 = 0;
+			for ( unsigned a = 8; a < 16; ++a) {
+				edgeIndex2 = edgeIndex2 << 1;
+				map<string, bool>::iterator isInside = inside.find(m_vVecState[i] -> MCLocs[a]);
+				if (isInside->second) {
+					edgeIndex2 += 1;
+				}
+			}
+
+			// cout << "2:" << edgeIndex2 << endl;
+
+			for (unsigned a = 0; a < 16; a+=3) {
+				if(triTable[edgeIndex2][a] == -1) {
+					break;
+				} else {
+					unsigned triOneIndex2 = triTable[edgeIndex2][a];
+					unsigned triTwoIndex2 = triTable[edgeIndex2][a+1];
+					unsigned triThreeIndex2 = triTable[edgeIndex2][a+2];
+					GLfloat vertices[] = { posR[0] + marchingDelta[triOneIndex2][0], posR[1] + marchingDelta[triOneIndex2][1], posR[2] + marchingDelta[triOneIndex2][2],
+										  posR[0] + marchingDelta[triTwoIndex2][0], posR[1] + marchingDelta[triTwoIndex2][1], posR[2] + marchingDelta[triTwoIndex2][2], 
+										 posR[0] + marchingDelta[triThreeIndex2][0], posR[1] + marchingDelta[triThreeIndex2][1], posR[2] + marchingDelta[triThreeIndex2][2], 
+										 posR[0] + marchingDelta[triThreeIndex2][0], posR[1] + marchingDelta[triThreeIndex2][1], posR[2] + marchingDelta[triThreeIndex2][2], 
+										 posR[0] + marchingDelta[triTwoIndex2][0], posR[1] + marchingDelta[triTwoIndex2][1], posR[2] + marchingDelta[triTwoIndex2][2], 
+										 posR[0] + marchingDelta[triOneIndex2][0], posR[1] + marchingDelta[triOneIndex2][1], posR[2] + marchingDelta[triOneIndex2][2]};
+
+					glVertexPointer(3, GL_FLOAT, 0, vertices);
+
+					// draw a cube
+					glDrawArrays(GL_TRIANGLES, 0, 6);
+				}
+			}
+	
+			unsigned edgeIndex3 = 0;
+			for ( unsigned a = 16; a < 24; ++a) {
+				edgeIndex3 = edgeIndex3 << 1;
+				map<string, bool>::iterator isInside = inside.find(m_vVecState[i] -> MCLocs[a]);
+				if (isInside->second) {
+					edgeIndex3 += 1;
+				}
+			}
+
+			// cout << "2:" << edgeIndex3 << endl;
+
+			for (unsigned a = 0; a < 16; a+=3) {
+				if(triTable[edgeIndex3][a] == -1) {
+					break;
+				} else {
+					unsigned triOneIndex3 = triTable[edgeIndex3][a];
+					unsigned triTwoIndex3 = triTable[edgeIndex3][a+1];
+					unsigned triThreeIndex3 = triTable[edgeIndex3][a+2];
+					GLfloat vertices[] = { posR[0] + marchingDelta[triOneIndex3][0], posR[1] + marchingDelta[triOneIndex3][1], posR[2] + marchingDelta[triOneIndex3][2],
+										  posR[0] + marchingDelta[triTwoIndex3][0], posR[1] + marchingDelta[triTwoIndex3][1], posR[2] + marchingDelta[triTwoIndex3][2], 
+										 posR[0] + marchingDelta[triThreeIndex3][0], posR[1] + marchingDelta[triThreeIndex3][1], posR[2] + marchingDelta[triThreeIndex3][2], 
+										 posR[0] + marchingDelta[triThreeIndex3][0], posR[1] + marchingDelta[triThreeIndex3][1], posR[2] + marchingDelta[triThreeIndex3][2], 
+										 posR[0] + marchingDelta[triTwoIndex3][0], posR[1] + marchingDelta[triTwoIndex3][1], posR[2] + marchingDelta[triTwoIndex3][2], 
+										 posR[0] + marchingDelta[triOneIndex3][0], posR[1] + marchingDelta[triOneIndex3][1], posR[2] + marchingDelta[triOneIndex3][2]};
+
+					glVertexPointer(3, GL_FLOAT, 0, vertices);
+
+					// draw a cube
+					glDrawArrays(GL_TRIANGLES, 0, 6);
+				}
+			}
+
+			unsigned edgeIndex4 = 0;
+			for ( unsigned a = 24; a < 32; ++a) {
+				edgeIndex4 = edgeIndex4 << 1;
+				map<string, bool>::iterator isInside = inside.find(m_vVecState[i] -> MCLocs[a]);
+				if (isInside->second) {
+					edgeIndex4 += 1;
+				}
+			}
+
+			// cout << "2:" << edgeIndex4 << endl;
+
+			for (unsigned a = 0; a < 16; a+=3) {
+				if(triTable[edgeIndex4][a] == -1) {
+					break;
+				} else {
+					unsigned triOneIndex4 = triTable[edgeIndex4][a];
+					unsigned triTwoIndex4 = triTable[edgeIndex4][a+1];
+					unsigned triThreeIndex4 = triTable[edgeIndex4][a+2];
+					GLfloat vertices[] = { posR[0] + marchingDelta[triOneIndex4][0], posR[1] + marchingDelta[triOneIndex4][1], posR[2] + marchingDelta[triOneIndex4][2],
+										  posR[0] + marchingDelta[triTwoIndex4][0], posR[1] + marchingDelta[triTwoIndex4][1], posR[2] + marchingDelta[triTwoIndex4][2], 
+										 posR[0] + marchingDelta[triThreeIndex4][0], posR[1] + marchingDelta[triThreeIndex4][1], posR[2] + marchingDelta[triThreeIndex4][2], 
+										 posR[0] + marchingDelta[triThreeIndex4][0], posR[1] + marchingDelta[triThreeIndex4][1], posR[2] + marchingDelta[triThreeIndex4][2], 
+										 posR[0] + marchingDelta[triTwoIndex4][0], posR[1] + marchingDelta[triTwoIndex4][1], posR[2] + marchingDelta[triTwoIndex4][2], 
+										 posR[0] + marchingDelta[triOneIndex4][0], posR[1] + marchingDelta[triOneIndex4][1], posR[2] + marchingDelta[triOneIndex4][2]};
+
+					glVertexPointer(3, GL_FLOAT, 0, vertices);
+
+					// draw a cube
+					glDrawArrays(GL_TRIANGLES, 0, 6);
+				}
+			}
+
+			unsigned edgeIndex5 = 0;
+			for ( unsigned a = 32; a < 40; ++a) {
+				edgeIndex5 = edgeIndex5 << 1;
+				map<string, bool>::iterator isInside = inside.find(m_vVecState[i] -> MCLocs[a]);
+				if (isInside->second) {
+					edgeIndex5 += 1;
+				}
+			}
+
+			// cout << "2:" << edgeIndex5 << endl;
+
+			for (unsigned a = 0; a < 16; a+=3) {
+				if(triTable[edgeIndex5][a] == -1) {
+					break;
+				} else {
+					unsigned triOneIndex5 = triTable[edgeIndex5][a];
+					unsigned triTwoIndex5 = triTable[edgeIndex5][a+1];
+					unsigned triThreeIndex5 = triTable[edgeIndex5][a+2];
+					GLfloat vertices[] = { posR[0] + marchingDelta[triOneIndex5][0], posR[1] + marchingDelta[triOneIndex5][1], posR[2] + marchingDelta[triOneIndex5][2],
+										  posR[0] + marchingDelta[triTwoIndex5][0], posR[1] + marchingDelta[triTwoIndex5][1], posR[2] + marchingDelta[triTwoIndex5][2], 
+										 posR[0] + marchingDelta[triThreeIndex5][0], posR[1] + marchingDelta[triThreeIndex5][1], posR[2] + marchingDelta[triThreeIndex5][2], 
+										 posR[0] + marchingDelta[triThreeIndex5][0], posR[1] + marchingDelta[triThreeIndex5][1], posR[2] + marchingDelta[triThreeIndex5][2], 
+										 posR[0] + marchingDelta[triTwoIndex5][0], posR[1] + marchingDelta[triTwoIndex5][1], posR[2] + marchingDelta[triTwoIndex5][2], 
+										 posR[0] + marchingDelta[triOneIndex5][0], posR[1] + marchingDelta[triOneIndex5][1], posR[2] + marchingDelta[triOneIndex5][2]};
+
+					glVertexPointer(3, GL_FLOAT, 0, vertices);
+
+					// draw a cube
+					glDrawArrays(GL_TRIANGLES, 0, 6);
+				}
+			}			
+
+			unsigned edgeIndex6 = 0;
+			for ( unsigned a = 40; a < 48; ++a) {
+				edgeIndex6 = edgeIndex6 << 1;
+				map<string, bool>::iterator isInside = inside.find(m_vVecState[i] -> MCLocs[a]);
+				if (isInside->second) {
+					edgeIndex6 += 1;
+				}
+			}
+
+			// cout << "2:" << edgeIndex6 << endl;
+
+			for (unsigned a = 0; a < 16; a+=3) {
+				if(triTable[edgeIndex6][a] == -1) {
+					break;
+				} else {
+					unsigned triOneIndex6 = triTable[edgeIndex6][a];
+					unsigned triTwoIndex6 = triTable[edgeIndex6][a+1];
+					unsigned triThreeIndex6 = triTable[edgeIndex6][a+2];
+					GLfloat vertices[] = { posR[0] + marchingDelta[triOneIndex6][0], posR[1] + marchingDelta[triOneIndex6][1], posR[2] + marchingDelta[triOneIndex6][2],
+										  posR[0] + marchingDelta[triTwoIndex6][0], posR[1] + marchingDelta[triTwoIndex6][1], posR[2] + marchingDelta[triTwoIndex6][2], 
+										 posR[0] + marchingDelta[triThreeIndex6][0], posR[1] + marchingDelta[triThreeIndex6][1], posR[2] + marchingDelta[triThreeIndex6][2], 
+										 posR[0] + marchingDelta[triThreeIndex6][0], posR[1] + marchingDelta[triThreeIndex6][1], posR[2] + marchingDelta[triThreeIndex6][2], 
+										 posR[0] + marchingDelta[triTwoIndex6][0], posR[1] + marchingDelta[triTwoIndex6][1], posR[2] + marchingDelta[triTwoIndex6][2], 
+										 posR[0] + marchingDelta[triOneIndex6][0], posR[1] + marchingDelta[triOneIndex6][1], posR[2] + marchingDelta[triOneIndex6][2]};
+
+					glVertexPointer(3, GL_FLOAT, 0, vertices);
+
+					// draw a cube
+					glDrawArrays(GL_TRIANGLES, 0, 6);
+				}
+			}
+
+			unsigned edgeIndex7 = 0;
+			for ( unsigned a = 48; a < 56; ++a) {
+				edgeIndex7 = edgeIndex7 << 1;
+				map<string, bool>::iterator isInside = inside.find(m_vVecState[i] -> MCLocs[a]);
+				if (isInside->second) {
+					edgeIndex7 += 1;
+				}
+			}
+
+			// cout << "2:" << edgeIndex7 << endl;
+
+			for (unsigned a = 0; a < 16; a+=3) {
+				if(triTable[edgeIndex7][a] == -1) {
+					break;
+				} else {
+					unsigned triOneIndex7 = triTable[edgeIndex7][a];
+					unsigned triTwoIndex7 = triTable[edgeIndex7][a+1];
+					unsigned triThreeIndex7 = triTable[edgeIndex7][a+2];
+					GLfloat vertices[] = { posR[0] + marchingDelta[triOneIndex7][0], posR[1] + marchingDelta[triOneIndex7][1], posR[2] + marchingDelta[triOneIndex7][2],
+										  posR[0] + marchingDelta[triTwoIndex7][0], posR[1] + marchingDelta[triTwoIndex7][1], posR[2] + marchingDelta[triTwoIndex7][2], 
+										 posR[0] + marchingDelta[triThreeIndex7][0], posR[1] + marchingDelta[triThreeIndex7][1], posR[2] + marchingDelta[triThreeIndex7][2], 
+										 posR[0] + marchingDelta[triThreeIndex7][0], posR[1] + marchingDelta[triThreeIndex7][1], posR[2] + marchingDelta[triThreeIndex7][2], 
+										 posR[0] + marchingDelta[triTwoIndex7][0], posR[1] + marchingDelta[triTwoIndex7][1], posR[2] + marchingDelta[triTwoIndex7][2], 
+										 posR[0] + marchingDelta[triOneIndex7][0], posR[1] + marchingDelta[triOneIndex7][1], posR[2] + marchingDelta[triOneIndex7][2]};
+
+					glVertexPointer(3, GL_FLOAT, 0, vertices);
+
+					// draw a cube
+					glDrawArrays(GL_TRIANGLES, 0, 6);
+				}
+			}
+
+			unsigned edgeIndex8 = 0;
+			for ( unsigned a = 56; a < 64; ++a) {
+				edgeIndex8 = edgeIndex8 << 1;
+				map<string, bool>::iterator isInside = inside.find(m_vVecState[i] -> MCLocs[a]);
+				if (isInside->second) {
+					edgeIndex8 += 1;
+				}
+			}
+
+			// cout << "2:" << edgeIndex8 << endl;
+
+			for (unsigned a = 0; a < 16; a+=3) {
+				if(triTable[edgeIndex8][a] == -1) {
+					break;
+				} else {
+					unsigned triOneIndex8 = triTable[edgeIndex8][a];
+					unsigned triTwoIndex8 = triTable[edgeIndex8][a+1];
+					unsigned triThreeIndex8 = triTable[edgeIndex8][a+2];
+					GLfloat vertices[] = { posR[0] + marchingDelta[triOneIndex8][0], posR[1] + marchingDelta[triOneIndex8][1], posR[2] + marchingDelta[triOneIndex8][2],
+										  posR[0] + marchingDelta[triTwoIndex8][0], posR[1] + marchingDelta[triTwoIndex8][1], posR[2] + marchingDelta[triTwoIndex8][2], 
+										 posR[0] + marchingDelta[triThreeIndex8][0], posR[1] + marchingDelta[triThreeIndex8][1], posR[2] + marchingDelta[triThreeIndex8][2], 
+										 posR[0] + marchingDelta[triThreeIndex8][0], posR[1] + marchingDelta[triThreeIndex8][1], posR[2] + marchingDelta[triThreeIndex8][2], 
+										 posR[0] + marchingDelta[triTwoIndex8][0], posR[1] + marchingDelta[triTwoIndex8][1], posR[2] + marchingDelta[triTwoIndex8][2], 
+										 posR[0] + marchingDelta[triOneIndex8][0], posR[1] + marchingDelta[triOneIndex8][1], posR[2] + marchingDelta[triOneIndex8][2]};
+
+					glVertexPointer(3, GL_FLOAT, 0, vertices);
+
+					// draw a cube
+					glDrawArrays(GL_TRIANGLES, 0, 6);
+				}
+			}
+		
+
+			// deactivate vertex arrays after drawing
+			glDisableClientState(GL_VERTEX_ARRAY);
 		}
 	}
-	//drawbox(0,-2,0);
+	drawbox(0,-2,0);
 	
 }
 
@@ -348,61 +593,78 @@ void ParticleSystem::drawbox(float x, float y, float z){
     GLfloat floorColor[] = {0.5f, 0.5f, .5f, 0.5f};
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, floorColor);
     glPushMatrix();
-    float epsilon = 0.03;
+    float epsilon = .1;
     //glEnable (GL_BLEND);
     //float alpha = .9;
     //glBlendFunc (alpha, 1.0-alpha);
-    glTranslatef(0.0f+x,.5f+y,.5f+z);
+    glTranslatef(2.5f+x,.5f+y,.5f+z);
     glScaled(0.01f,1.0f,1.0f);
     glutSolidCube(1);
     glPopMatrix();
 	
     glPushMatrix();
-    glTranslatef(.5f+x,.5f+y,.5f+z);
+    GLfloat wallColor0[] = {1.f, 0.f, .0f, 1.f};
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, wallColor0);
+    glTranslatef(-2.5f+x,.5f+y,.5f+z);
     glScaled(0.01f,1.0f,1.0f);
     glutSolidCube(1);
     glPopMatrix();
 
     glPushMatrix();
+    GLfloat wallColor1[] = {0.5f, 1.0f, .0f, 1.f};
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, wallColor1);
     glTranslatef(.25f+x,0.0f+y,.5f+z);
-    glScaled(.51f,.01f,1.0f);
+    glScaled(5.51f,.01f,4.0f);
     glutSolidCube(1);
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(.25f+x,.5f+y,0.0f+z);
-    glScaled(.51f,1.0f,.01f);
+    GLfloat wallColor2[] = {1.f, 1.0f, 1.0f, 1.f};
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, wallColor2);
+    glTranslatef(.25f+x,0.5f+y,.0f+z);
+    glScaled(5.51f,1.0f,.01f);
     glutSolidCube(1);
     glPopMatrix();
 
     glPushMatrix();
+    GLfloat wallColor3[] = {0.f, 1.0f, 1.0f, 1.f};
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, wallColor3);
     glTranslatef(.25f+x,.5f+y,1.0f+z);
-    glScaled(.51f,1.01f,.01f);
+    glScaled(5.51f,1.01f,.01f);
     glutSolidCube(1);
     glPopMatrix();
 
 	for (int i = 0; i < m_vVecState.size(); i++){
 		Vector3f location = m_vVecState[i]->position.x();
-		if (m_vVecState[i]->position.y() < .0f+y && .5f+x< m_vVecState[i]->position.x()<1.0f+x && z<= m_vVecState[i]->position.z()<=1.0f+z){
-			//cout << "haha" << endl;
+		if (m_vVecState[i]->position.y() < .0f+y && -2.0f+x< m_vVecState[i]->position.x()< 2.0f+x && -2.5f + z + epsilon<= m_vVecState[i]->position.z()<= 2.5f+z-epsilon){
+			//cout << "I am in the right spot..." << endl;
 			m_vVecState[i]->position.y() = y+epsilon; 
-
-			if ( .5f +x > m_vVecState[i]->position.x()){
+			m_vVecState[i]->velocity = Vector3f(0,0,0);
+			/*if ( .5f +x > m_vVecState[i]->position.x()){
 				m_vVecState[i]->position.x() = .5+x+epsilon;
 			}
 			else if ( 1.0f +x < m_vVecState[i]->position.x()){
 				m_vVecState[i]->position.x() = 1.+x-epsilon;
 			}
-	
+			else {
+				m_vVecState[i]->position.x() = location.x();	
+			} 
+
+
 			if (m_vVecState[i]->position.z() < z){
 				m_vVecState[i]->position.z() = z+epsilon;
 			}
 			else if (m_vVecState[i]->position.z() > 1.0f+z){
 				m_vVecState[i]->position.z() = 1.0f+z-epsilon;
 			}
+			else{
+				m_vVecState[i]->position.z() = location.z();
+			}
+			*/
+
 			//m_vVecState[i]->position.x() = location.x();
 			//m_vVecState[i]->position.z() = location.z();
-			m_vVecState[i]->velocity = Vector3f(0,0,0);
+			//m_vVecState[i]->velocity = Vector3f(0,0,0);
 		}		
 	}
 
@@ -414,8 +676,8 @@ void ParticleSystem::draw_scatter(){
 		// cout << neighbors.size() << endl;
 		for (unsigned j = 0; j < m_vVecState.size();++j){
 		    Vector3f locBall = m_vVecState[j]->position;
-			float radBall = .05;
-			float epsilon = 0.1;
+			float radBall = .05f;
+			float epsilon = 0.1f;
 			if (m_vVecState[i] != m_vVecState[j]){
 		    	if ((m_vVecState[i]->position - locBall).abs() <= (radBall + epsilon)){
 
