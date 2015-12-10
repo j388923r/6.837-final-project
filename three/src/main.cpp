@@ -74,7 +74,8 @@ namespace
     system->draw();
     system->draw3();
     
-    system->particleEmitter();
+    system->particleEmitter(true);
+	system->particleEmitter2(true);
     system->draw2();
     glDisable (GL_BLEND);
     
@@ -129,7 +130,7 @@ namespace
 	//timeStepper = new RK4;
 	
 	}
-	case 'd':
+	case 'w':
 	{
 	//system = new SimpleSystem(1);
 	//system = new PendulumSystem(4);

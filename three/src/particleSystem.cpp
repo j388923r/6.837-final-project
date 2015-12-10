@@ -41,7 +41,7 @@
 		
 	}
 
-	vector<Particle *> ParticleSystem::particleEmitter() {
+	vector<Particle *> ParticleSystem::particleEmitter(bool emit) {
 
 	vector<Particle *> PL;
 	float spread = .3;
@@ -55,7 +55,8 @@
 		float r3 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
 		Particle * p = new Particle(1);
 		p->position = Vector3f(0,0,0);
-		p->velocity = Vector3f(-1,1,-1) + spread*Vector3f(r1,r2,r3);	
+		p->velocity = Vector3f(-1,1,-1) + spread*Vector3f(r1,r2,r3);
+		
 		emitter.push_back(p);
 	}
 
@@ -70,7 +71,7 @@
 		p->velocity -= Vector3f(0,.98,0)*dt;
 		glVertex(p->position);
 		Vector3f pos = p->position;
-
+		p->density = 1.0;
 		
 		//p->position.print();
 		glPushMatrix();
@@ -84,6 +85,52 @@
 		glPopMatrix();
 	}
 }
+
+vector<Particle *> ParticleSystem::particleEmitter2(bool emit2) {
+
+	vector<Particle *> PL;
+	float spread = .3;
+	float colorSpread = .2;
+	int k = 5;
+	Vector3f color = (0,0,0);
+
+	for(unsigned i =0;i< k; i++){
+		float r1 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+		float r2 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+		float r3 = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+		Particle * p = new Particle(1);
+		p->position = Vector3f(0,0,0);
+		p->velocity = Vector3f(-1,1,-1) + spread*Vector3f(r1,r2,r3);	
+		p->density = 100;
+		emitter2.push_back(p);
+	}
+
+	float epsilon = 0.001;
+	float dt = .08;
+	//cout << emitter2.size() << endl;
+	
+	for (int i = 0; i < emitter2.size(); i++) {
+		
+		Particle* p = emitter2[i];
+		p->position += p->velocity*dt;
+		p->velocity -= Vector3f(0,.98,0)*dt;
+		glVertex(p->position);
+		Vector3f pos = p->position;
+
+		
+		//p->position.print();
+		glPushMatrix();
+		//GLfloat ballColor[] = {0.1f, 0.6f, 1.0f, 0.5f};//light blue
+		float c1 = (static_cast <float> (rand()) / static_cast <float> (RAND_MAX))*.1;
+		float c2 = (static_cast <float> (rand()) / static_cast <float> (RAND_MAX))*.3;
+		GLfloat ballColor[] = {.1f, .1f, .0f, .5f};
+		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, ballColor);
+		glTranslatef(pos[0], pos[1], pos[2] );
+		glutSolidSphere(0.075f,10.0f,10.0f);
+		glPopMatrix();
+	}
+}
+
 
 	vector <Particle *> getNeighbors(ParticleSystem * particleSystem, Particle * p)
 	{
@@ -137,7 +184,7 @@
 		}
 
 		float rest_density = 0.2;	
-		float k  = 2.6*pow(10, -3);//*pow(10,-24);
+		float k  = 2.6*pow(10, -24);//*pow(10,-24);
 		float eta = 2;
 		//Vector3f gravity_force = (0, -9.8,0);
 	
@@ -252,7 +299,7 @@ void ParticleSystem::draw()
 		glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, ballColor);
 		glPushMatrix();
 		glTranslatef(locBall.x(), locBall.y(), locBall.z());
-		//glutSolidSphere(radBall, 10.0, 10.0);
+		glutSolidSphere(radBall, 10.0, 10.0);
 		glPopMatrix();
 
 		//glColor3f(0.0, 1.0, 0.0);
@@ -289,12 +336,12 @@ void ParticleSystem::draw2(){
 		Vector3f posR = Vector3f(round(pos[0] * Particle::stretcher) / Particle::stretcher, round(pos[1] * Particle::stretcher) / Particle::stretcher, round(pos[2] * Particle::stretcher) / Particle::stretcher);
 		//cout << "Position" << pos[0] << pos[1] << pos[2] << endl;
 		//pos.print();
-		/*glPushMatrix();
-		
+		glPushMatrix();
+		/*
 		glTranslatef(pos[0], pos[1], pos[2] );
 		glutSolidSphere(0.075f,10.0f,10.0f);
-		glPopMatrix();*/
-
+		glPopMatrix();
+		*/
 		map<string, bool>::iterator hasNeighbors = inside.find(m_vVecState[i] -> getGridLoc());
 		if(hasNeighbors->second) {
 			unsigned edgeIndex1 = 1;
@@ -555,7 +602,7 @@ void ParticleSystem::draw2(){
 				}
 			}
 		
-
+			glShadeModel(GL_FLAT);
 			// deactivate vertex arrays after drawing
 			glDisableClientState(GL_VERTEX_ARRAY);
 		}
@@ -703,7 +750,14 @@ void ParticleSystem::drawbox(float x, float y, float z){
 			//m_vVecState[i]->velocity = Vector3f(0,0,0);
 		*/
 		}
-	      		
+	}
+	    for (int i = 0; i < emitter2.size(); i++){
+		Vector3f location = emitter2[i]->position.x();
+			if (0.f + y > emitter2[i]->position.y() && 1.f + x> emitter2[i]->position.x() > 0.f + x && 1.0f + z > emitter2[i]->position.z() > z -0.f){
+			//cout << "I am in the right spot..." << endl;
+				emitter2[i]->position.y() = radBall+y+epsilon; 
+				emitter2[i]->velocity = Vector3f(0,0,0);
+		}  		
 	}
 
 
@@ -739,10 +793,22 @@ void ParticleSystem::draw_scatter(){
 
 					emitter[i]->position = (locBall + (radBall + epsilon) * (emitter[i]->position - locBall).normalized());
 			
-				}
-		        }
+				   }
+		    }
 		}
 	}
+}
+
+void calculate_normal(int polygon[3], float vertices[][3], Vector3f normal) {
+  Vector3f u; 
+  Vector3f v;
+  for (int i = 0; i < 3; i++) {
+    u[i] = vertices[polygon[0]][i] - vertices[polygon[1]][i];
+    v[i] = vertices[polygon[2]][i] - vertices[polygon[1]][i];
+  }
+
+  normal = Vector3f::cross(u, v);
+  normal.normalized();
 }
 
 

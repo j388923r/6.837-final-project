@@ -38,13 +38,18 @@ public:
 
 	vector<Particle *> stateClone;
 
-	vector<Particle *> particleEmitter();
+	vector<Particle *> particleEmitter(bool emit);
+
+	vector<Particle *> particleEmitter2(bool emit2);
 
 	vector<Particle *> emitter;
+
+	vector<Particle *> emitter2;
 	
 	vector<Particle *> fluid_particles;
 
-
+	void shading();
+	
 	//vector<Vector3f> evalF(vector<Vector3f> state);
 	
 	std::map<string, bool> inside;
@@ -55,6 +60,8 @@ public:
 	
 	// setter method for the system's state
 	void setState(const vector<Particle *>  & newState) { m_vVecState = newState; };
+
+	
 
 	float randomNumbers[13];
 
