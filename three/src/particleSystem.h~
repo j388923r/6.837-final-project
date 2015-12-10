@@ -45,6 +45,7 @@ public:
 	vector<Particle *> fluid_particles;
 
 
+	void <Particle *> shading;
 	//vector<Vector3f> evalF(vector<Vector3f> state);
 	
 	std::map<string, bool> inside;
@@ -358,7 +359,7 @@ public:
 		Vector3f(.5f/Particle::stretcher, 1.0f/Particle::stretcher, 0.0f),
 		Vector3f(1.0f/Particle::stretcher, 1.0f/Particle::stretcher, -0.5f/Particle::stretcher),
 		Vector3f(.5f/Particle::stretcher, 1.0f/Particle::stretcher, -1.0f/Particle::stretcher),
-		Vector3f(0.0f, 1.0f/Particle::stretcher, -0.5f/stretcher),
+		Vector3f(0.0f, 1.0f/Particle::stretcher, -0.5f/Particle::stretcher),
 		Vector3f(0.0f, 0.5f/Particle::stretcher, 0.0f),
 		Vector3f(1.0f/Particle::stretcher, 0.5f/Particle::stretcher, 0.0f),
 		Vector3f(1.0f/Particle::stretcher, 0.5f/Particle::stretcher, -1.0f/Particle::stretcher),
